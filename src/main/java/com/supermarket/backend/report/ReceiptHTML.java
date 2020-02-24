@@ -1,6 +1,6 @@
-package com.supermarket.backend.receiptoutput;
+package com.supermarket.backend.report;
 
-import com.supermarket.backend.model.Receipt;
+import com.supermarket.backend.cart.Receipt;
 
 public class ReceiptHTML implements ReceiptOutput {
 

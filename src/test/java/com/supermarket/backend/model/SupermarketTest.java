@@ -1,8 +1,15 @@
 package com.supermarket.backend.model;
 
+import com.supermarket.backend.cart.*;
 import com.supermarket.backend.model.fakecatalog.FakeCatalog;
-import com.supermarket.backend.receiptoutput.ReceiptHTML;
-import com.supermarket.backend.receiptoutput.ReceiptPrinter;
+import com.supermarket.backend.offer.Bundle;
+import com.supermarket.backend.offer.SpecialOfferType;
+import com.supermarket.backend.offer.SpecialOfferTypeV2;
+import com.supermarket.backend.product.Product;
+import com.supermarket.backend.product.ProductQuantity;
+import com.supermarket.backend.product.ProductUnit;
+import com.supermarket.backend.report.ReceiptHTML;
+import com.supermarket.backend.report.ReceiptPrinter;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
 package com.supermarket.backend.catalogues;
 
-import com.supermarket.backend.model.Product;
-import com.supermarket.backend.model.ProductUnit;
-import com.supermarket.backend.model.SupermarketCatalog;
+import com.supermarket.backend.product.Product;
+import com.supermarket.backend.product.ProductUnit;
+import com.supermarket.backend.cart.SupermarketCatalog;
 
 import java.util.HashMap;
 import java.util.Map;
