@@ -19,4 +19,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: artifact
-          path: /target/backend-0.0.1-SNAPSHOT.jar
+          path: github-actions-java-maven/target/backend-0.0.1-SNAPSHOT.jar
