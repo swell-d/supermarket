@@ -1,9 +1,9 @@
-package com.supermarket.backend.receiptoutput;
+package com.supermarket.backend.report;
 
-import com.supermarket.backend.model.Discount;
-import com.supermarket.backend.model.ProductUnit;
-import com.supermarket.backend.model.Receipt;
-import com.supermarket.backend.model.ReceiptItem;
+import com.supermarket.backend.offer.Discount;
+import com.supermarket.backend.product.ProductUnit;
+import com.supermarket.backend.cart.Receipt;
+import com.supermarket.backend.cart.ReceiptItem;
 
 import java.util.Locale;
 

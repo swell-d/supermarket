@@ -1,4 +1,4 @@
-package com.supermarket.backend.restservice;
+package com.supermarket.backend.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,9 @@
-package com.supermarket.backend.model;
+package com.supermarket.backend.cart;
+
+import com.supermarket.backend.offer.Bundle;
+import com.supermarket.backend.product.Product;
+import com.supermarket.backend.product.ProductQuantity;
+import com.supermarket.backend.product.ProductUnit;
 
 import java.util.ArrayList;
 import java.util.HashMap;

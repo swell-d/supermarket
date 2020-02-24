@@ -1,7 +1,7 @@
 package com.supermarket.backend.model.fakecatalog;
 
-import com.supermarket.backend.model.Product;
-import com.supermarket.backend.model.SupermarketCatalog;
+import com.supermarket.backend.product.Product;
+import com.supermarket.backend.cart.SupermarketCatalog;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,7 @@
-package com.supermarket.backend.restservice.config;
+package com.supermarket.backend.rest.config;
 
 import com.supermarket.backend.catalogues.MockCatalog;
-import com.supermarket.backend.model.SupermarketCatalog;
+import com.supermarket.backend.cart.SupermarketCatalog;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
