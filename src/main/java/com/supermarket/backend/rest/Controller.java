@@ -1,8 +1,8 @@
 package com.supermarket.backend.rest;
 
-import com.supermarket.backend.product.Product;
 import com.supermarket.backend.cart.ShoppingCart;
-import com.supermarket.backend.cart.SupermarketCatalog;
+import com.supermarket.backend.catalogues.SupermarketCatalog;
+import com.supermarket.backend.product.Product;
 import com.supermarket.backend.report.ReceiptHTML;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

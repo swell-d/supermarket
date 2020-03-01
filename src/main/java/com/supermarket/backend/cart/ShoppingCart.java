@@ -1,5 +1,6 @@
 package com.supermarket.backend.cart;
 
+import com.supermarket.backend.catalogues.SupermarketCatalog;
 import com.supermarket.backend.offer.Bundle;
 import com.supermarket.backend.product.Product;
 import com.supermarket.backend.product.ProductQuantity;
