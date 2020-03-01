@@ -1,6 +1,8 @@
 package com.supermarket.backend.model;
 
-import com.supermarket.backend.cart.*;
+import com.supermarket.backend.cart.Receipt;
+import com.supermarket.backend.cart.ShoppingCart;
+import com.supermarket.backend.catalogues.SupermarketCatalog;
 import com.supermarket.backend.model.fakecatalog.FakeCatalog;
 import com.supermarket.backend.offer.Bundle;
 import com.supermarket.backend.offer.SpecialOfferType;

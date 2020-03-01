@@ -1,9 +1,9 @@
 package com.supermarket.backend.report;
 
-import com.supermarket.backend.offer.Discount;
-import com.supermarket.backend.product.ProductUnit;
 import com.supermarket.backend.cart.Receipt;
 import com.supermarket.backend.cart.ReceiptItem;
+import com.supermarket.backend.offer.Discount;
+import com.supermarket.backend.product.ProductUnit;
 
 import java.util.Locale;
 
@@ -29,7 +29,6 @@ public class ReceiptPrinter implements ReceiptOutput {
             String discountPresentation = presentDiscount(discount);
             result.append(discountPresentation);
         }
-
         result.append("\n");
         result.append(presentTotal(receipt));
         return result.toString();

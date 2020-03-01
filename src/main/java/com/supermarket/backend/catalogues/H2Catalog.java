@@ -1,7 +1,6 @@
 package com.supermarket.backend.catalogues;
 
 import com.supermarket.backend.product.Product;
-import com.supermarket.backend.cart.SupermarketCatalog;
 
 public class H2Catalog implements SupermarketCatalog {
     @Override

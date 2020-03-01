@@ -1,8 +1,8 @@
 package com.supermarket.backend.model.fakecatalog;
 
+import com.supermarket.backend.catalogues.SupermarketCatalog;
 import com.supermarket.backend.product.Product;
 import com.supermarket.backend.product.ProductUnit;
-import com.supermarket.backend.cart.SupermarketCatalog;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,5 +1,6 @@
 package com.supermarket.backend.cart;
 
+import com.supermarket.backend.catalogues.SupermarketCatalog;
 import com.supermarket.backend.offer.Bundle;
 import com.supermarket.backend.product.Product;
 import com.supermarket.backend.product.ProductQuantity;
@@ -7,7 +8,6 @@ import com.supermarket.backend.product.ProductUnit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ShoppingCart {
@@ -18,14 +18,6 @@ public class ShoppingCart {
 
     public ShoppingCart(SupermarketCatalog catalog) {
         this.catalog = catalog;
-    }
-
-    List<ProductQuantity> getItems() {
-        List<ProductQuantity> items = new ArrayList<>();
-        for (Map.Entry<Product, Double> entry : productQuantities.entrySet()) {
-            items.add(new ProductQuantity(entry.getKey(), entry.getValue()));
-        }
-        return new ArrayList<>(items);
     }
 
     public void addItemQuantity(Product product, double quantity) {
@@ -40,9 +32,8 @@ public class ShoppingCart {
 
     public Receipt checksOutArticlesFrom() {
         Receipt receipt = new Receipt();
-        List<ProductQuantity> productQuantities = getItems();
-        for (ProductQuantity pq : productQuantities) {
-            receipt.addProduct(pq.getProduct(), pq.getQuantity(), catalog.getUnitPrice(pq.getProduct()));
+        for (Map.Entry<Product, Double> entry : productQuantities.entrySet()) {
+            receipt.addProduct(entry.getKey(), entry.getValue(), catalog.getUnitPrice(entry.getKey()));
         }
         handleOffers(receipt);
         return receipt;

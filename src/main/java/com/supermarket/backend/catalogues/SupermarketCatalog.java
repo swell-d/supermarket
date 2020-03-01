@@ -1,4 +1,4 @@
-package com.supermarket.backend.cart;
+package com.supermarket.backend.catalogues;
 
 import com.supermarket.backend.product.Product;
 

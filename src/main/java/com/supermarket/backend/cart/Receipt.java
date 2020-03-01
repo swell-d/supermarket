@@ -22,7 +22,7 @@ public class Receipt {
     }
 
     public void addProduct(Product p, double quantity, double price) {
-        this.items.add(new ReceiptItem(p, quantity, price, quantity * price));
+        this.items.add(new ReceiptItem(p, quantity, price));
     }
 
     public List<ReceiptItem> getItems() {
