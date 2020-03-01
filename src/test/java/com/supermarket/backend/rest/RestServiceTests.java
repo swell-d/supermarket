@@ -20,14 +20,6 @@ public class RestServiceTests {
     private MockMvc mockMvc;
 
     @Test
-    public void testNewCartCreation() throws Exception {
-        this.mockMvc.perform(get("/start"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("New shopping cart created.")));
-    }
-
-    @Test
     public void testNonexistentProduct() throws Exception {
         this.mockMvc.perform(get("/start"));
         this.mockMvc.perform(get("/addProduct")
@@ -35,7 +27,7 @@ public class RestServiceTests {
                 .param("productCount", "42"))
                 .andDo(print())
                 .andExpect(status().isOk())  // Todo return 404 ? to be discussed
-                .andExpect(content().string(containsString("Product not found.")));
+                .andExpect(content().string(containsString("product3 not found.")));
     }
 
     @Test
