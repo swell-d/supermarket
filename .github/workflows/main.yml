@@ -20,7 +20,7 @@ jobs:
       - name: Build with Maven
         run: mvn clean package
       - uses: raccoondev/push-docker-gcr
-      - name:
+      - name: Build and Push docker image
         with:
           gcr_host: eu.gcr.io
           image_name: backend/supermarket
