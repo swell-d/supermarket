@@ -26,5 +26,5 @@ jobs:
           image_name: backend/supermarket
           image_tag: latest
           env:
-            GCLOUD_SERVICE_KEY: ${{ secrets.DOCKER_PASSWORD }}
+            GCLOUD_SERVICE_KEY: fvrijvpiorv
             GOOGLE_PROJECT_ID: genial-analyzer-268419
