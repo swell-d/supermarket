@@ -19,11 +19,15 @@ jobs:
           java-version: 13.0.2
       - name: Build with Maven
         run: mvn clean package
-      - name: Deploy service to Cloud Run
-        uses: stefda/action-cloud-run@1.0.0
+      - name: Cloud Run branch deployment
+        uses: schliflo/action-cloud-run@1.0.0
         with:
-          image: eu.gcr.io/genial-analyzer-268419/backend
-          service: highvoltage@genial-analyzer-268419.iam.gserviceaccount.com
+          # Directory where the Dockerfile is to be found
+          working_directory: .
+          # Cloud run service name
+          service_name: highvoltage@genial-analyzer-268419.iam.gserviceaccount.com
+          # GCP service key with storage and run permissions
+          key: ${{ secrets.GCLOUD_AUTH }}
+          # GCP project
           project: genial-analyzer-268419
           region: europe-west3
-          service key: ${{ secrets.GCLOUD_AUTH }}
