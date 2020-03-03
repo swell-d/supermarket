@@ -20,10 +20,10 @@ jobs:
       - name: Build with Maven
         run: mvn clean package
       - uses: mr-smithers-excellent/docker-build-push@v2
-          with:
-            image: repo/image
-            tag: latest
-            registry: gcr.io/genial-analyzer-268419
-            dockerfile: Dockerfile
-            username: highvoltage@genial-analyzer-268419.iam.gserviceaccount.com
-            password: ${{ secrets.DOCKER_PASSWORD }}
+        with:
+          image: backend/supermarket
+          tag: latest
+          registry: gcr.io/genial-analyzer-268419
+          dockerfile: Dockerfile
+          username: highvoltage@genial-analyzer-268419.iam.gserviceaccount.com
+          password: ${{ secrets.DOCKER_PASSWORD }}
