@@ -13,17 +13,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 1.8
+      - name: Set up JDK 13
         uses: actions/setup-java@v1
         with:
           java-version: 13.0.2
       - name: Build with Maven
         run: mvn clean package
-      - uses: mr-smithers-excellent/docker-build-push@v2
+        uses: raccoondev/push-docker-gcr
+      - name:
         with:
-          image: backend/supermarket
-          tag: latest
-          registry: gcr.io/genial-analyzer-268419
-          dockerfile: Dockerfile
-          username: highvoltage@genial-analyzer-268419.iam.gserviceaccount.com
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          gcr_host: eu.gcr.io
+          image_name: backend/supermarket
+          image_tag: latest
+          env:
+            GCLOUD_SERVICE_KEY: ${{ secrets.DOCKER_PASSWORD }}
+            GOOGLE_PROJECT_ID: genial-analyzer-268419
