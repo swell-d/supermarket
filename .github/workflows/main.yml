@@ -30,4 +30,4 @@ jobs:
           key: ${{ secrets.GCLOUD_AUTH }}
           # GCP project
           project: genial-analyzer-268419
-          region: europe-west3
+          region: europe-west1
