@@ -19,12 +19,11 @@ jobs:
           java-version: 13.0.2
       - name: Build with Maven
         run: mvn clean package
-      - uses: raccoondev/push-docker-gcr
-        name: Build and Push docker image
+      - name: Deploy service to Cloud Run
+        uses: stefda/action-cloud-run@1.0.0
         with:
-          gcr_host: eu.gcr.io
-          image_name: backend/supermarket
-          image_tag: latest
-          env:
-            GCLOUD_SERVICE_KEY: fvrijvpiorv
-            GOOGLE_PROJECT_ID: genial-analyzer-268419
+          image: eu.gcr.io/genial-analyzer-268419/backend
+          service: highvoltage@genial-analyzer-268419.iam.gserviceaccount.com
+          project: genial-analyzer-268419
+          region: europe-west3
+          service key: ${{ secrets.GCLOUD_AUTH }}
