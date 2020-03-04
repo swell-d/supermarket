@@ -19,15 +19,15 @@ jobs:
           java-version: 13.0.2
       - name: Build with Maven
         run: mvn clean package
-      - name: Cloud Run branch deployment
-        uses: schliflo/action-cloud-run@1.0.0
+      - name: Login to gcloud registry
+        id: gcloud
+        uses: elgohr/gcloud-login-action@master
         with:
-          # Directory where the Dockerfile is to be found
-          working_directory: .
-          # Cloud run service name
-          service_name: highvoltage
-          # GCP service key with storage and run permissions
-          key: ${{ secrets.GCLOUD_AUTH }}
-          # GCP project
-          project: genial-analyzer-268419
-          region: europe-west1
+          account_key: ${{ secrets.GCLOUD_AUTH }}
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: supermarket/backend
+          username: ${{ steps.gcloud.outputs.username }}
+          password: ${{ steps.gcloud.outputs.password }}
+          registry: eu.gcr.io
