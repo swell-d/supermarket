@@ -30,4 +30,4 @@ jobs:
           name: supermarket/backend
           username: ${{ steps.gcloud.outputs.username }}
           password: ${{ steps.gcloud.outputs.password }}
-          registry: eu.gcr.io
+          registry: gcr.io/genial-analyzer-268419
