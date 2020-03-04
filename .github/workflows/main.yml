@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 
 jobs:
   build:
@@ -28,6 +25,7 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: supermarket/backend
+          tag: "latest"
           username: ${{ steps.gcloud.outputs.username }}
           password: ${{ steps.gcloud.outputs.password }}
-          registry: eu.gcr.io
+          registry: gcr.io/genial-analyzer-268419
