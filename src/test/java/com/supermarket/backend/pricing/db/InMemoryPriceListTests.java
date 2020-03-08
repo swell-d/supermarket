@@ -3,18 +3,18 @@ package com.supermarket.backend.pricing.db;
 import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.catalog.ProductUnit;
-import com.supermarket.backend.catalog.db.array.ArrayCatalog;
+import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
 import com.supermarket.backend.pricing.PriceList;
-import com.supermarket.backend.pricing.db.hashmap.HashMapPriceList;
+import com.supermarket.backend.pricing.db.memory.InMemoryPriceList;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class HashMapPriceListTests {
+public class InMemoryPriceListTests {
 
     @Test
     public void createPriceListTest() {
-        PriceList priceList = new HashMapPriceList(null);
+        PriceList priceList = new InMemoryPriceList(null);
         assertNotNull(priceList);
         assertEquals(0, priceList.getPriceList().size());
     }
@@ -24,18 +24,18 @@ public class HashMapPriceListTests {
         Product product1 = new Product("test sku 1", "test name 1", ProductUnit.Each);
         Product product2 = new Product("test sku 2", "test name 2", ProductUnit.Kilo);
 
-        Catalog catalog = new ArrayCatalog();
+        Catalog catalog = new InMemoryCatalog();
         catalog.addProduct(product1);
         catalog.addProduct(product2);
 
-        PriceList priceList = new HashMapPriceList(catalog);
+        PriceList priceList = new InMemoryPriceList(catalog);
 
-        assertTrue(priceList.addProduct(product1, 123));
+        assertTrue(priceList.addPrice(product1, 123));
         assertEquals(1, priceList.getPriceList().size());
         assertEquals(123, priceList.getPriceList().get(product1));
         assertEquals(123, priceList.getProductPrice(product1));
 
-        assertTrue(priceList.addProduct(product2, 234));
+        assertTrue(priceList.addPrice(product2, 234));
         assertEquals(2, priceList.getPriceList().size());
         assertEquals(123, priceList.getProductPrice(product1));
         assertEquals(234, priceList.getProductPrice(product2));
@@ -46,15 +46,15 @@ public class HashMapPriceListTests {
         Product product1 = new Product("test sku 1", "test name 1", ProductUnit.Each);
         Product product2 = new Product("test sku 2", "test name 2", ProductUnit.Kilo);
 
-        Catalog catalog = new ArrayCatalog();
+        Catalog catalog = new InMemoryCatalog();
         catalog.addProduct(product1);
         catalog.addProduct(product2);
 
-        PriceList priceList = new HashMapPriceList(catalog);
+        PriceList priceList = new InMemoryPriceList(catalog);
 
-        priceList.addProduct(product1, 123);
+        priceList.addPrice(product1, 123);
         assertEquals(1, priceList.getPriceList().size());
-        priceList.addProduct(product2, 234);
+        priceList.addPrice(product2, 234);
         assertEquals(2, priceList.getPriceList().size());
 
         assertTrue(priceList.deleteProduct(product2));

@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 
 public interface PriceList {
 
-    boolean addProduct(Product product, double price);
+    boolean addPrice(Product product, double price);
 
     boolean deleteProduct(Product product);
 

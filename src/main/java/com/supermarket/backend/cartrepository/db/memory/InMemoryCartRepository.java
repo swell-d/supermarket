@@ -1,4 +1,4 @@
-package com.supermarket.backend.cartrepository.db.hashmap;
+package com.supermarket.backend.cartrepository.db.memory;
 
 import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.cartrepository.CartRepository;

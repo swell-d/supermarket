@@ -1,4 +1,4 @@
-package com.supermarket.backend.pricing.db.hashmap;
+package com.supermarket.backend.pricing.db.memory;
 
 import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
@@ -6,17 +6,17 @@ import com.supermarket.backend.pricing.PriceList;
 
 import java.util.LinkedHashMap;
 
-public class HashMapPriceList implements PriceList {
+public class InMemoryPriceList implements PriceList {
 
     public Catalog catalog;
     private LinkedHashMap<Product, Double> priceList = new LinkedHashMap<>();
 
-    public HashMapPriceList(Catalog catalog) {
+    public InMemoryPriceList(Catalog catalog) {
         this.catalog = catalog;
     }
 
     @Override
-    public boolean addProduct(Product product, double price) {
+    public boolean addPrice(Product product, double price) {
         if (!catalog.getCatalog().contains(product)) throw new IllegalArgumentException();
         priceList.put(product, price);
         return true;

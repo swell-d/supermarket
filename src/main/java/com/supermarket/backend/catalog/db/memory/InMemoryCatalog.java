@@ -1,4 +1,4 @@
-package com.supermarket.backend.catalog.db.array;
+package com.supermarket.backend.catalog.db.memory;
 
 import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
@@ -6,7 +6,7 @@ import com.supermarket.backend.catalog.Product;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class ArrayCatalog implements Catalog {
+public class InMemoryCatalog implements Catalog {
 
     private ArrayList<Product> products = new ArrayList<>();
 
