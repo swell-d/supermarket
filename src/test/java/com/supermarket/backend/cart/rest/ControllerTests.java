@@ -8,6 +8,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,7 +22,7 @@ public class ControllerTests {
 
     @Test
     public void testNonexistentProduct() throws Exception {
-        this.mockMvc.perform(get("/addProduct")
+        this.mockMvc.perform(put("/addProduct")
                 .param("productName", "product3")
                 .param("productCount", "42"))
                 .andDo(print())
@@ -31,14 +32,14 @@ public class ControllerTests {
 
     @Test
     public void testAddTwoProductsToCart() throws Exception {
-        this.mockMvc.perform(get("/addProduct")
+        this.mockMvc.perform(put("/addProduct")
                 .param("productName", "tomatoes")
                 .param("productCount", "42"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("tomatoes added.")));
 
-        this.mockMvc.perform(get("/addProduct")
+        this.mockMvc.perform(put("/addProduct")
                 .param("productName", "potatoes")
                 .param("productCount", "24"))
                 .andDo(print())
@@ -57,14 +58,14 @@ public class ControllerTests {
 
     @Test
     public void testClearCart() throws Exception {
-        this.mockMvc.perform(get("/addProduct")
+        this.mockMvc.perform(put("/addProduct")
                 .param("productName", "tomatoes")
                 .param("productCount", "42"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("tomatoes added.")));
 
-        this.mockMvc.perform(get("/clearCart"))
+        this.mockMvc.perform(put("/clearCart"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Cart cleared.")));

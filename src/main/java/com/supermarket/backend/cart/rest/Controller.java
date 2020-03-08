@@ -6,6 +6,7 @@ import com.supermarket.backend.cart.actions.GetHTMLReceipt;
 import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.pricing.PriceList;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class Controller {
         this.priceList = priceList;
     }
 
-    @GetMapping("/addProduct")
+    @PutMapping("/addProduct")
     public String addProduct(@RequestParam(name = "productName") String productName,
                              @RequestParam(name = "productCount") String productCount) {
         if (!AddProductToCartByName.addProduct(this.cart, this.priceList, productName, productCount))
@@ -33,7 +34,7 @@ public class Controller {
         return GetHTMLReceipt.getHTMLReceipt(this.cart);
     }
 
-    @GetMapping("/clearCart")
+    @PutMapping("/clearCart")
     public String clearCart() {
         this.cart = CreateCart.createCart(this.priceList);
         return "Cart cleared.";
