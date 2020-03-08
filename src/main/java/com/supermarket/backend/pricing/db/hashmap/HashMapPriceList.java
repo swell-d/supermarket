@@ -1,14 +1,19 @@
 package com.supermarket.backend.pricing.db.hashmap;
 
+import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.pricing.PriceList;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class HashMapPriceList implements PriceList {
 
+    private Catalog catalog;
     private LinkedHashMap<Product, Double> priceList = new LinkedHashMap<>();
+
+    public HashMapPriceList(Catalog catalog) {
+        this.catalog = catalog;
+    }
 
     @Override
     public boolean addProduct(Product product, double price) {
@@ -39,12 +44,7 @@ public class HashMapPriceList implements PriceList {
     }
 
     public Product getProductByName(String productName) {
-        for (Map.Entry<Product, Double> entry : this.priceList.entrySet()) {
-            if (entry.getKey().getName().equals(productName)) {
-                return entry.getKey();
-            }
-        }
-        return null;
+        return catalog.getProductByName(productName);
     }
 
 }

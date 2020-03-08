@@ -5,6 +5,7 @@ import com.supermarket.backend.cart.domain.Receipt;
 import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.catalog.ProductUnit;
+import com.supermarket.backend.catalog.db.array.ArrayCatalog;
 import com.supermarket.backend.offer.Bundle;
 import com.supermarket.backend.offer.SpecialOfferType;
 import com.supermarket.backend.offer.SpecialOfferTypeV2;
@@ -22,7 +23,7 @@ public class SupermarketTest {
 
     @Test
     public void testBundles() {
-        PriceList priceList = new HashMapPriceList();
+        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product1 = new Product("product1", ProductUnit.Each);
         priceList.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
@@ -56,7 +57,7 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsOld() {
-        PriceList priceList = new HashMapPriceList();
+        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product toothbrush = new Product("toothbrush", ProductUnit.Each);
         priceList.addProduct(toothbrush, 0.99);
         Product apples = new Product("apples", ProductUnit.Kilo);
@@ -175,7 +176,7 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsNewV1() {
-        PriceList priceList = new HashMapPriceList();
+        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product1 = new Product("product1", ProductUnit.Each);
         priceList.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
@@ -199,7 +200,7 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsNewV2() {
-        PriceList priceList = new HashMapPriceList();
+        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product1 = new Product("product1", ProductUnit.Each);
         priceList.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
@@ -235,7 +236,7 @@ public class SupermarketTest {
 
     @Test
     public void testThreeForTwo() {
-        PriceList priceList = new HashMapPriceList();
+        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
         priceList.addProduct(product, 1);
 
@@ -253,7 +254,7 @@ public class SupermarketTest {
 
     @Test
     public void testTenPercentDiscount10() {
-        PriceList priceList = new HashMapPriceList();
+        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
         priceList.addProduct(product, 1);
 
@@ -266,7 +267,7 @@ public class SupermarketTest {
 
     @Test
     public void testTenPercentDiscount20() {
-        PriceList priceList = new HashMapPriceList();
+        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
         priceList.addProduct(product, 1);
 
@@ -279,7 +280,7 @@ public class SupermarketTest {
 
     @Test
     public void testTwoForAmount() {
-        PriceList priceList = new HashMapPriceList();
+        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
         priceList.addProduct(product, 1);
 
@@ -295,7 +296,7 @@ public class SupermarketTest {
 
     @Test
     public void testFiveForAmount() {
-        PriceList priceList = new HashMapPriceList();
+        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
         priceList.addProduct(product, 1);
 
