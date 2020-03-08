@@ -1,8 +1,8 @@
 package com.supermarket.backend.offer;
 
-import com.supermarket.backend.cart.ShoppingCart;
-import com.supermarket.backend.product.Product;
-import com.supermarket.backend.product.ProductQuantity;
+import com.supermarket.backend.cart.domain.ProductQuantity;
+import com.supermarket.backend.cart.domain.ShoppingCart;
+import com.supermarket.backend.catalog.Product;
 
 import java.util.ArrayList;
 

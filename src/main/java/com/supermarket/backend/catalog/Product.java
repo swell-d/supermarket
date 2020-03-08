@@ -1,4 +1,4 @@
-package com.supermarket.backend.product;
+package com.supermarket.backend.catalog;
 
 import java.util.Objects;
 

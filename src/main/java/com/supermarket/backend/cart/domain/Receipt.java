@@ -1,7 +1,7 @@
-package com.supermarket.backend.cart;
+package com.supermarket.backend.cart.domain;
 
+import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.offer.Discount;
-import com.supermarket.backend.product.Product;
 
 import java.util.ArrayList;
 import java.util.List;

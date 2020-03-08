@@ -1,12 +1,12 @@
 package com.supermarket.backend.model.fakecatalog;
 
-import com.supermarket.backend.catalogues.SupermarketCatalog;
-import com.supermarket.backend.product.Product;
+import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.catalog.Product;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class FakeCatalog implements SupermarketCatalog {
+public class FakeCatalog implements Catalog {
     private Map<String, Product> products = new HashMap<>();
     private Map<String, Double> prices = new HashMap<>();
 

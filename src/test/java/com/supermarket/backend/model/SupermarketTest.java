@@ -1,15 +1,15 @@
 package com.supermarket.backend.model;
 
-import com.supermarket.backend.cart.Receipt;
-import com.supermarket.backend.cart.ShoppingCart;
-import com.supermarket.backend.catalogues.SupermarketCatalog;
+import com.supermarket.backend.cart.domain.ProductQuantity;
+import com.supermarket.backend.cart.domain.Receipt;
+import com.supermarket.backend.cart.domain.ShoppingCart;
+import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.catalog.Product;
+import com.supermarket.backend.catalog.ProductUnit;
 import com.supermarket.backend.model.fakecatalog.FakeCatalog;
 import com.supermarket.backend.offer.Bundle;
 import com.supermarket.backend.offer.SpecialOfferType;
 import com.supermarket.backend.offer.SpecialOfferTypeV2;
-import com.supermarket.backend.product.Product;
-import com.supermarket.backend.product.ProductQuantity;
-import com.supermarket.backend.product.ProductUnit;
 import com.supermarket.backend.report.ReceiptHTML;
 import com.supermarket.backend.report.ReceiptPrinter;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class SupermarketTest {
 
     @Test
     public void testBundles() {
-        SupermarketCatalog catalog = new FakeCatalog();
+        Catalog catalog = new FakeCatalog();
         Product product1 = new Product("product1", ProductUnit.Each);
         catalog.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
@@ -56,7 +56,7 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsOld() {
-        SupermarketCatalog catalog = new FakeCatalog();
+        Catalog catalog = new FakeCatalog();
         Product toothbrush = new Product("toothbrush", ProductUnit.Each);
         catalog.addProduct(toothbrush, 0.99);
         Product apples = new Product("apples", ProductUnit.Kilo);
@@ -175,7 +175,7 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsNewV1() {
-        SupermarketCatalog catalog = new FakeCatalog();
+        Catalog catalog = new FakeCatalog();
         Product product1 = new Product("product1", ProductUnit.Each);
         catalog.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
@@ -199,7 +199,7 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsNewV2() {
-        SupermarketCatalog catalog = new FakeCatalog();
+        Catalog catalog = new FakeCatalog();
         Product product1 = new Product("product1", ProductUnit.Each);
         catalog.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
@@ -235,7 +235,7 @@ public class SupermarketTest {
 
     @Test
     public void testThreeForTwo() {
-        SupermarketCatalog catalog = new FakeCatalog();
+        Catalog catalog = new FakeCatalog();
         Product product = new Product("product", ProductUnit.Each);
         catalog.addProduct(product, 1);
 
@@ -253,7 +253,7 @@ public class SupermarketTest {
 
     @Test
     public void testTenPercentDiscount10() {
-        SupermarketCatalog catalog = new FakeCatalog();
+        Catalog catalog = new FakeCatalog();
         Product product = new Product("product", ProductUnit.Each);
         catalog.addProduct(product, 1);
 
@@ -266,7 +266,7 @@ public class SupermarketTest {
 
     @Test
     public void testTenPercentDiscount20() {
-        SupermarketCatalog catalog = new FakeCatalog();
+        Catalog catalog = new FakeCatalog();
         Product product = new Product("product", ProductUnit.Each);
         catalog.addProduct(product, 1);
 
@@ -279,7 +279,7 @@ public class SupermarketTest {
 
     @Test
     public void testTwoForAmount() {
-        SupermarketCatalog catalog = new FakeCatalog();
+        Catalog catalog = new FakeCatalog();
         Product product = new Product("product", ProductUnit.Each);
         catalog.addProduct(product, 1);
 
@@ -295,7 +295,7 @@ public class SupermarketTest {
 
     @Test
     public void testFiveForAmount() {
-        SupermarketCatalog catalog = new FakeCatalog();
+        Catalog catalog = new FakeCatalog();
         Product product = new Product("product", ProductUnit.Each);
         catalog.addProduct(product, 1);
 

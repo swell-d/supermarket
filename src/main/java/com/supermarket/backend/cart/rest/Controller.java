@@ -1,8 +1,8 @@
-package com.supermarket.backend.rest;
+package com.supermarket.backend.cart.rest;
 
-import com.supermarket.backend.cart.CartActions;
-import com.supermarket.backend.cart.ShoppingCart;
-import com.supermarket.backend.catalogues.SupermarketCatalog;
+import com.supermarket.backend.cart.actions.CartActions;
+import com.supermarket.backend.cart.domain.ShoppingCart;
+import com.supermarket.backend.catalog.Catalog;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     private ShoppingCart cart = null;
-    private SupermarketCatalog catalog = null;
+    private Catalog catalog = null;
 
-    public Controller(SupermarketCatalog catalog) {
+    public Controller(Catalog catalog) {
         this.cart = CartActions.createCart(catalog);
         this.catalog = catalog;
     }

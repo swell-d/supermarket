@@ -1,6 +1,6 @@
 package com.supermarket.backend.offer;
 
-import com.supermarket.backend.product.Product;
+import com.supermarket.backend.catalog.Product;
 
 public class Discount {
     private final String description;

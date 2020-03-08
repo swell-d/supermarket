@@ -1,8 +1,9 @@
-package com.supermarket.backend.catalogues;
+package com.supermarket.backend.catalog.db.h2;
 
-import com.supermarket.backend.product.Product;
+import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.catalog.Product;
 
-public class H2Catalog implements SupermarketCatalog {
+public class H2Catalog implements Catalog {
     @Override
     public void addProduct(Product product, double price) {
 
