@@ -3,6 +3,7 @@ package com.supermarket.backend.model;
 import com.supermarket.backend.cart.domain.ProductQuantity;
 import com.supermarket.backend.cart.domain.Receipt;
 import com.supermarket.backend.cart.domain.ShoppingCart;
+import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.catalog.ProductUnit;
 import com.supermarket.backend.catalog.db.array.ArrayCatalog;
@@ -23,12 +24,18 @@ public class SupermarketTest {
 
     @Test
     public void testBundles() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product1 = new Product("product1", ProductUnit.Each);
-        priceList.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
-        priceList.addProduct(product2, 1);
         Product product3 = new Product("product3", ProductUnit.Each);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product1);
+        catalog.addProduct(product2);
+        catalog.addProduct(product3);
+
+        PriceList priceList = new HashMapPriceList(catalog);
+        priceList.addProduct(product1, 1);
+        priceList.addProduct(product2, 1);
         priceList.addProduct(product3, 22);
 
         ArrayList<ProductQuantity> productsArray1 = new ArrayList<>();
@@ -57,16 +64,24 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsOld() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product toothbrush = new Product("toothbrush", ProductUnit.Each);
-        priceList.addProduct(toothbrush, 0.99);
         Product apples = new Product("apples", ProductUnit.Kilo);
-        priceList.addProduct(apples, 1.99);
         Product rice = new Product("rice", ProductUnit.Each);
-        priceList.addProduct(rice, 2.49);
         Product toothpaste = new Product("toothpaste", ProductUnit.Each);
-        priceList.addProduct(toothpaste, 1.79);
         Product cherrytomatoes = new Product("cherrytomatoes", ProductUnit.Each);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(toothbrush);
+        catalog.addProduct(apples);
+        catalog.addProduct(rice);
+        catalog.addProduct(toothpaste);
+        catalog.addProduct(cherrytomatoes);
+
+        PriceList priceList = new HashMapPriceList(catalog);
+        priceList.addProduct(toothbrush, 0.99);
+        priceList.addProduct(apples, 1.99);
+        priceList.addProduct(rice, 2.49);
+        priceList.addProduct(toothpaste, 1.79);
         priceList.addProduct(cherrytomatoes, 0.69);
 
         ShoppingCart cart = new ShoppingCart(priceList);
@@ -176,14 +191,21 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsNewV1() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product1 = new Product("product1", ProductUnit.Each);
-        priceList.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
-        priceList.addProduct(product2, 1);
         Product product3 = new Product("product3", ProductUnit.Each);
-        priceList.addProduct(product3, 1);
         Product product4 = new Product("product4", ProductUnit.Each);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product1);
+        catalog.addProduct(product2);
+        catalog.addProduct(product3);
+        catalog.addProduct(product4);
+
+        PriceList priceList = new HashMapPriceList(catalog);
+        priceList.addProduct(product1, 1);
+        priceList.addProduct(product2, 1);
+        priceList.addProduct(product3, 1);
         priceList.addProduct(product4, 1);
 
         ShoppingCart cart = new ShoppingCart(priceList);
@@ -200,14 +222,21 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsNewV2() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product1 = new Product("product1", ProductUnit.Each);
-        priceList.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
-        priceList.addProduct(product2, 1);
         Product product3 = new Product("product3", ProductUnit.Each);
-        priceList.addProduct(product3, 1);
         Product product4 = new Product("product4", ProductUnit.Each);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product1);
+        catalog.addProduct(product2);
+        catalog.addProduct(product3);
+        catalog.addProduct(product4);
+
+        PriceList priceList = new HashMapPriceList(catalog);
+        priceList.addProduct(product1, 1);
+        priceList.addProduct(product2, 1);
+        priceList.addProduct(product3, 1);
         priceList.addProduct(product4, 1);
 
         ShoppingCart cart = new ShoppingCart(priceList);
@@ -236,8 +265,12 @@ public class SupermarketTest {
 
     @Test
     public void testThreeForTwo() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product);
+
+        PriceList priceList = new HashMapPriceList(catalog);
         priceList.addProduct(product, 1);
 
         ShoppingCart cart = new ShoppingCart(priceList);
@@ -254,8 +287,12 @@ public class SupermarketTest {
 
     @Test
     public void testTenPercentDiscount10() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product);
+
+        PriceList priceList = new HashMapPriceList(catalog);
         priceList.addProduct(product, 1);
 
         ShoppingCart cart = new ShoppingCart(priceList);
@@ -267,8 +304,12 @@ public class SupermarketTest {
 
     @Test
     public void testTenPercentDiscount20() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product);
+
+        PriceList priceList = new HashMapPriceList(catalog);
         priceList.addProduct(product, 1);
 
         ShoppingCart cart = new ShoppingCart(priceList);
@@ -280,8 +321,12 @@ public class SupermarketTest {
 
     @Test
     public void testTwoForAmount() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product);
+
+        PriceList priceList = new HashMapPriceList(catalog);
         priceList.addProduct(product, 1);
 
         ShoppingCart cart = new ShoppingCart(priceList);
@@ -296,8 +341,12 @@ public class SupermarketTest {
 
     @Test
     public void testFiveForAmount() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product = new Product("product", ProductUnit.Each);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product);
+
+        PriceList priceList = new HashMapPriceList(catalog);
         priceList.addProduct(product, 1);
 
         ShoppingCart cart = new ShoppingCart(priceList);

@@ -1,5 +1,6 @@
 package com.supermarket.backend.pricing.db;
 
+import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.catalog.ProductUnit;
 import com.supermarket.backend.catalog.db.array.ArrayCatalog;
@@ -20,9 +21,14 @@ public class HashMapPriceListTests {
 
     @Test
     public void addProductTest() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product1 = new Product("test sku 1", "test name 1", ProductUnit.Each);
         Product product2 = new Product("test sku 2", "test name 2", ProductUnit.Kilo);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product1);
+        catalog.addProduct(product2);
+
+        PriceList priceList = new HashMapPriceList(catalog);
 
         assertTrue(priceList.addProduct(product1, 123));
         assertEquals(1, priceList.getPriceList().size());
@@ -37,9 +43,14 @@ public class HashMapPriceListTests {
 
     @Test
     public void deleteProductTest() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
         Product product1 = new Product("test sku 1", "test name 1", ProductUnit.Each);
         Product product2 = new Product("test sku 2", "test name 2", ProductUnit.Kilo);
+
+        Catalog catalog = new ArrayCatalog();
+        catalog.addProduct(product1);
+        catalog.addProduct(product2);
+
+        PriceList priceList = new HashMapPriceList(catalog);
 
         priceList.addProduct(product1, 123);
         assertEquals(1, priceList.getPriceList().size());

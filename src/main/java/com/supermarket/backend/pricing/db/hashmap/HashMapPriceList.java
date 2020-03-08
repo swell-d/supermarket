@@ -17,6 +17,7 @@ public class HashMapPriceList implements PriceList {
 
     @Override
     public boolean addProduct(Product product, double price) {
+        if (!catalog.getCatalog().contains(product)) throw new IllegalArgumentException();
         priceList.put(product, price);
         return true;
     }
@@ -43,6 +44,7 @@ public class HashMapPriceList implements PriceList {
         return priceList;
     }
 
+    @Override
     public Product getProductByName(String productName) {
         return catalog.getProductByName(productName);
     }
