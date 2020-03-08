@@ -14,7 +14,7 @@ public class HashMapPriceListTests {
 
     @Test
     public void createPriceListTest() {
-        PriceList priceList = new HashMapPriceList(new ArrayCatalog());
+        PriceList priceList = new HashMapPriceList(null);
         assertNotNull(priceList);
         assertEquals(0, priceList.getPriceList().size());
     }
