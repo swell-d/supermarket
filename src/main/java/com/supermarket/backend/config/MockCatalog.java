@@ -1,12 +1,13 @@
-package com.supermarket.backend.catalogues;
+package com.supermarket.backend.config;
 
-import com.supermarket.backend.product.Product;
-import com.supermarket.backend.product.ProductUnit;
+import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.catalog.Product;
+import com.supermarket.backend.catalog.ProductUnit;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MockCatalog implements SupermarketCatalog {
+public class MockCatalog implements Catalog {
 
     private Map<String, Product> products = new HashMap<>();
     private Map<String, Double> prices = new HashMap<>();

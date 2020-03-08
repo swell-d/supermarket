@@ -1,10 +1,9 @@
-package com.supermarket.backend.cart;
+package com.supermarket.backend.cart.domain;
 
-import com.supermarket.backend.catalogues.SupermarketCatalog;
+import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.catalog.Product;
+import com.supermarket.backend.catalog.ProductUnit;
 import com.supermarket.backend.offer.Bundle;
-import com.supermarket.backend.product.Product;
-import com.supermarket.backend.product.ProductQuantity;
-import com.supermarket.backend.product.ProductUnit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,9 +13,9 @@ public class ShoppingCart {
 
     public ArrayList<Bundle> bundles = new ArrayList<>();
     public Map<Product, Double> productQuantities = new HashMap<>();
-    public final SupermarketCatalog catalog;
+    public final Catalog catalog;
 
-    public ShoppingCart(SupermarketCatalog catalog) {
+    public ShoppingCart(Catalog catalog) {
         this.catalog = catalog;
     }
 

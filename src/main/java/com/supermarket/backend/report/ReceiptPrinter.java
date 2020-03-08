@@ -1,13 +1,13 @@
 package com.supermarket.backend.report;
 
-import com.supermarket.backend.cart.Receipt;
-import com.supermarket.backend.cart.ReceiptItem;
+import com.supermarket.backend.cart.domain.Receipt;
+import com.supermarket.backend.cart.domain.ReceiptItem;
+import com.supermarket.backend.catalog.ProductUnit;
 import com.supermarket.backend.offer.Discount;
-import com.supermarket.backend.product.ProductUnit;
 
 import java.util.Locale;
 
-public class ReceiptPrinter implements ReceiptOutput {
+public class ReceiptPrinter implements Report {
 
     private final int columns;
 

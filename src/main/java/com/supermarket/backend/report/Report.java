@@ -1,7 +1,7 @@
 package com.supermarket.backend.report;
 
-import com.supermarket.backend.cart.Receipt;
+import com.supermarket.backend.cart.domain.Receipt;
 
-public interface ReceiptOutput {
+public interface Report {
     public String printReceipt(Receipt receipt);
 }

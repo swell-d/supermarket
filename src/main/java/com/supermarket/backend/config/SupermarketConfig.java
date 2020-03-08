@@ -1,7 +1,6 @@
-package com.supermarket.backend.rest.config;
+package com.supermarket.backend.config;
 
-import com.supermarket.backend.catalogues.MockCatalog;
-import com.supermarket.backend.catalogues.SupermarketCatalog;
+import com.supermarket.backend.catalog.Catalog;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class SupermarketConfig {
 
     @Bean
-    public SupermarketCatalog supermarketCatalog() {
+    public Catalog supermarketCatalog() {
         return new MockCatalog();
     }
 }

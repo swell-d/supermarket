@@ -1,8 +1,8 @@
 package com.supermarket.backend.report;
 
-import com.supermarket.backend.cart.Receipt;
+import com.supermarket.backend.cart.domain.Receipt;
 
-public class ReceiptHTML implements ReceiptOutput {
+public class ReceiptHTML implements Report {
 
     public String printReceipt(Receipt receipt) {
         StringBuilder result = new StringBuilder();

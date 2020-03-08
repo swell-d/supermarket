@@ -1,8 +1,6 @@
-package com.supermarket.backend.catalogues;
+package com.supermarket.backend.catalog;
 
-import com.supermarket.backend.product.Product;
-
-public interface SupermarketCatalog {
+public interface Catalog {
     void addProduct(Product product, double price);
 
     double getUnitPrice(Product product);

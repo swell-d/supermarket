@@ -1,4 +1,4 @@
-package com.supermarket.backend.rest;
+package com.supermarket.backend.cart.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class RestServiceTests {
+public class ControllerTests {
 
     @Autowired
     private MockMvc mockMvc;

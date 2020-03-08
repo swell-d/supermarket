@@ -1,6 +1,6 @@
-package com.supermarket.backend.cart;
+package com.supermarket.backend.cart.domain;
 
-import com.supermarket.backend.product.Product;
+import com.supermarket.backend.catalog.Product;
 
 import java.util.Objects;
 
