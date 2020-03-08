@@ -9,8 +9,8 @@ import java.util.LinkedHashMap;
 public class HashMapPriceList implements PriceList {
 
     public Catalog catalog;
-    private LinkedHashMap<Product, Double> priceList = new LinkedHashMap<>();
 
+    private LinkedHashMap<Product, Double> priceList = new LinkedHashMap<>();
     public HashMapPriceList(Catalog catalog) {
         this.catalog = catalog;
     }
@@ -45,8 +45,7 @@ public class HashMapPriceList implements PriceList {
     }
 
     @Override
-    public Product getProductByName(String productName) {
-        return catalog.getProductByName(productName);
+    public Catalog getCatalog() {
+        return catalog;
     }
-
 }

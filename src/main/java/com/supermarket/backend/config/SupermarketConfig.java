@@ -8,7 +8,8 @@ import org.springframework.context.annotation.Configuration;
 public class SupermarketConfig {
 
     @Bean
-    public PriceList supermarketCatalog() {
+    public PriceList priceList() {
         return new MockPriceList();
     }
+
 }

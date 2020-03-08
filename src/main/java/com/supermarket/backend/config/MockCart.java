@@ -1,21 +1,21 @@
 package com.supermarket.backend.config;
 
 import com.supermarket.backend.cart.domain.ShoppingCart;
-import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.pricing.PriceList;
 
 public class MockCart {
 
     public static ShoppingCart getMockCart() {
-        Catalog catalog = new MockCatalog();
-        ShoppingCart cart = new ShoppingCart(new MockPriceList());
+        PriceList priceList = new MockPriceList();
+        ShoppingCart cart = new ShoppingCart(priceList);
 
-        cart.addBundle(MockBundles.tenPercentBundle(catalog));
-        cart.addBundle(MockBundles.fixPriceBundle(catalog));
+        cart.addBundle(MockBundles.tenPercentBundle(priceList.getCatalog()));
+        cart.addBundle(MockBundles.fixPriceBundle(priceList.getCatalog()));
 
-        cart.addItemQuantity(catalog.getProductByName("tomatoes"), 4.4);
-        cart.addItemQuantity(catalog.getProductByName("potatoes"), 5.5);
-        cart.addItemQuantity(catalog.getProductByName("phone"), 1);
-        cart.addItemQuantity(catalog.getProductByName("bag"), 3);
+        cart.addItemQuantity(priceList.getCatalog().getProductByName("tomatoes"), 4.4);
+        cart.addItemQuantity(priceList.getCatalog().getProductByName("potatoes"), 5.5);
+        cart.addItemQuantity(priceList.getCatalog().getProductByName("phone"), 1);
+        cart.addItemQuantity(priceList.getCatalog().getProductByName("bag"), 3);
 
         return cart;
     }

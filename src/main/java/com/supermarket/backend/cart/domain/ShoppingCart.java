@@ -4,6 +4,7 @@ import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.offer.Bundle;
 import com.supermarket.backend.offer.SpecialOfferType;
 import com.supermarket.backend.pricing.PriceList;
+import com.supermarket.backend.report.Report;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -60,4 +61,9 @@ public class ShoppingCart {
         if (fullSets < 1.0) return;
         bundle.getSpecialOfferType().addDiscountToReceipt(receipt, bundle, fullSets, priceList);
     }
+
+    public String export(Report printer) {
+        return printer.printReceipt(getReceipt());
+    }
+
 }

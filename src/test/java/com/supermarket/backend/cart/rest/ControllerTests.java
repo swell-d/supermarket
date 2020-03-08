@@ -21,7 +21,6 @@ public class ControllerTests {
 
     @Test
     public void testNonexistentProduct() throws Exception {
-        this.mockMvc.perform(get("/start"));
         this.mockMvc.perform(get("/addProduct")
                 .param("productName", "product3")
                 .param("productCount", "42"))
@@ -32,7 +31,6 @@ public class ControllerTests {
 
     @Test
     public void testAddTwoProductsToCart() throws Exception {
-        this.mockMvc.perform(get("/start"));
         this.mockMvc.perform(get("/addProduct")
                 .param("productName", "tomatoes")
                 .param("productCount", "42"))
@@ -46,11 +44,7 @@ public class ControllerTests {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("potatoes added.")));
-    }
 
-    @Test
-    public void testCheckReceipt() throws Exception {
-        testAddTwoProductsToCart();
         this.mockMvc.perform(get("/receipt"))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -63,6 +57,13 @@ public class ControllerTests {
 
     @Test
     public void testClearCart() throws Exception {
+        this.mockMvc.perform(get("/addProduct")
+                .param("productName", "tomatoes")
+                .param("productCount", "42"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("tomatoes added.")));
+
         this.mockMvc.perform(get("/clearCart"))
                 .andDo(print())
                 .andExpect(status().isOk())
