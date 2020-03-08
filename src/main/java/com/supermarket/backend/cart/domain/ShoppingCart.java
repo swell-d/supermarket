@@ -1,9 +1,9 @@
 package com.supermarket.backend.cart.domain;
 
-import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.catalog.ProductUnit;
 import com.supermarket.backend.offer.Bundle;
+import com.supermarket.backend.pricing.PriceList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,10 +13,10 @@ public class ShoppingCart {
 
     public ArrayList<Bundle> bundles = new ArrayList<>();
     public Map<Product, Double> productQuantities = new HashMap<>();
-    public final Catalog catalog;
+    public final PriceList priceList;
 
-    public ShoppingCart(Catalog catalog) {
-        this.catalog = catalog;
+    public ShoppingCart(PriceList priceList) {
+        this.priceList = priceList;
     }
 
     public void addItemQuantity(Product product, double quantity) {
@@ -32,7 +32,7 @@ public class ShoppingCart {
     public Receipt checksOutArticlesFrom() {
         Receipt receipt = new Receipt();
         for (Map.Entry<Product, Double> entry : productQuantities.entrySet()) {
-            receipt.addProduct(entry.getKey(), entry.getValue(), catalog.getUnitPrice(entry.getKey()));
+            receipt.addProduct(entry.getKey(), entry.getValue(), priceList.getProductPrice(entry.getKey()));
         }
         handleOffers(receipt);
         return receipt;
@@ -60,7 +60,7 @@ public class ShoppingCart {
             Product product = pq.getProduct();
             if (product.getUnit() == ProductUnit.Each) fullSets = (int) fullSets;
             if (fullSets == 0.0) return;
-            double totalPrice = catalog.getUnitPrice(product) * fullSets * pq.getQuantity();
+            double totalPrice = priceList.getProductPrice(product) * fullSets * pq.getQuantity();
             bundle.getSpecialOfferType().addDiscountToReceipt(totalPrice, receipt, bundle, fullSets, pq, product);
         }
     }

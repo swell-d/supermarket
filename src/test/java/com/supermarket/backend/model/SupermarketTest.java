@@ -3,13 +3,13 @@ package com.supermarket.backend.model;
 import com.supermarket.backend.cart.domain.ProductQuantity;
 import com.supermarket.backend.cart.domain.Receipt;
 import com.supermarket.backend.cart.domain.ShoppingCart;
-import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.catalog.ProductUnit;
-import com.supermarket.backend.model.fakecatalog.FakeCatalog;
 import com.supermarket.backend.offer.Bundle;
 import com.supermarket.backend.offer.SpecialOfferType;
 import com.supermarket.backend.offer.SpecialOfferTypeV2;
+import com.supermarket.backend.pricing.PriceList;
+import com.supermarket.backend.pricing.db.hashmap.HashMapPriceList;
 import com.supermarket.backend.report.ReceiptHTML;
 import com.supermarket.backend.report.ReceiptPrinter;
 import org.junit.jupiter.api.Test;
@@ -22,13 +22,13 @@ public class SupermarketTest {
 
     @Test
     public void testBundles() {
-        Catalog catalog = new FakeCatalog();
+        PriceList priceList = new HashMapPriceList();
         Product product1 = new Product("product1", ProductUnit.Each);
-        catalog.addProduct(product1, 1);
+        priceList.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
-        catalog.addProduct(product2, 1);
+        priceList.addProduct(product2, 1);
         Product product3 = new Product("product3", ProductUnit.Each);
-        catalog.addProduct(product3, 22);
+        priceList.addProduct(product3, 22);
 
         ArrayList<ProductQuantity> productsArray1 = new ArrayList<>();
         productsArray1.add(new ProductQuantity(product1, 2));
@@ -37,7 +37,7 @@ public class SupermarketTest {
         assertEquals(productsArray1, bundle1.getProductsArray());
         assertEquals(10, bundle1.getValue());
 
-        ShoppingCart cart = new ShoppingCart(catalog);
+        ShoppingCart cart = new ShoppingCart(priceList);
         cart.addBundle(bundle1);
 
         AddProductToCartAndTestIt(cart, product1, 1, 1, 0, 1);
@@ -56,19 +56,19 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsOld() {
-        Catalog catalog = new FakeCatalog();
+        PriceList priceList = new HashMapPriceList();
         Product toothbrush = new Product("toothbrush", ProductUnit.Each);
-        catalog.addProduct(toothbrush, 0.99);
+        priceList.addProduct(toothbrush, 0.99);
         Product apples = new Product("apples", ProductUnit.Kilo);
-        catalog.addProduct(apples, 1.99);
+        priceList.addProduct(apples, 1.99);
         Product rice = new Product("rice", ProductUnit.Each);
-        catalog.addProduct(rice, 2.49);
+        priceList.addProduct(rice, 2.49);
         Product toothpaste = new Product("toothpaste", ProductUnit.Each);
-        catalog.addProduct(toothpaste, 1.79);
+        priceList.addProduct(toothpaste, 1.79);
         Product cherrytomatoes = new Product("cherrytomatoes", ProductUnit.Each);
-        catalog.addProduct(cherrytomatoes, 0.69);
+        priceList.addProduct(cherrytomatoes, 0.69);
 
-        ShoppingCart cart = new ShoppingCart(catalog);
+        ShoppingCart cart = new ShoppingCart(priceList);
         SpecialOfferType.TwoForAmount.addSpecialOffer(toothbrush, 0.99, cart);
         SpecialOfferType.TenPercentDiscount.addSpecialOffer(apples, 20.0, cart);
         SpecialOfferType.TenPercentDiscount.addSpecialOffer(rice, 10.0, cart);
@@ -175,17 +175,17 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsNewV1() {
-        Catalog catalog = new FakeCatalog();
+        PriceList priceList = new HashMapPriceList();
         Product product1 = new Product("product1", ProductUnit.Each);
-        catalog.addProduct(product1, 1);
+        priceList.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
-        catalog.addProduct(product2, 1);
+        priceList.addProduct(product2, 1);
         Product product3 = new Product("product3", ProductUnit.Each);
-        catalog.addProduct(product3, 1);
+        priceList.addProduct(product3, 1);
         Product product4 = new Product("product4", ProductUnit.Each);
-        catalog.addProduct(product4, 1);
+        priceList.addProduct(product4, 1);
 
-        ShoppingCart cart = new ShoppingCart(catalog);
+        ShoppingCart cart = new ShoppingCart(priceList);
         SpecialOfferType.ThreeForTwo.addSpecialOffer(product1, 2, cart);
         SpecialOfferType.TenPercentDiscount.addSpecialOffer(product2, 10, cart);
         SpecialOfferType.TwoForAmount.addSpecialOffer(product3, 1, cart);
@@ -199,17 +199,17 @@ public class SupermarketTest {
 
     @Test
     public void testDiscountsNewV2() {
-        Catalog catalog = new FakeCatalog();
+        PriceList priceList = new HashMapPriceList();
         Product product1 = new Product("product1", ProductUnit.Each);
-        catalog.addProduct(product1, 1);
+        priceList.addProduct(product1, 1);
         Product product2 = new Product("product2", ProductUnit.Each);
-        catalog.addProduct(product2, 1);
+        priceList.addProduct(product2, 1);
         Product product3 = new Product("product3", ProductUnit.Each);
-        catalog.addProduct(product3, 1);
+        priceList.addProduct(product3, 1);
         Product product4 = new Product("product4", ProductUnit.Each);
-        catalog.addProduct(product4, 1);
+        priceList.addProduct(product4, 1);
 
-        ShoppingCart cart = new ShoppingCart(catalog);
+        ShoppingCart cart = new ShoppingCart(priceList);
 
         ArrayList<ProductQuantity> productsArray1 = new ArrayList<>();
         productsArray1.add(new ProductQuantity(product1, 3));
@@ -235,11 +235,11 @@ public class SupermarketTest {
 
     @Test
     public void testThreeForTwo() {
-        Catalog catalog = new FakeCatalog();
+        PriceList priceList = new HashMapPriceList();
         Product product = new Product("product", ProductUnit.Each);
-        catalog.addProduct(product, 1);
+        priceList.addProduct(product, 1);
 
-        ShoppingCart cart = new ShoppingCart(catalog);
+        ShoppingCart cart = new ShoppingCart(priceList);
         SpecialOfferType.ThreeForTwo.addSpecialOffer(product, 2, cart);
 
         AddProductToCartAndTestIt(cart, product, 1, 1, 0, 1);
@@ -253,11 +253,11 @@ public class SupermarketTest {
 
     @Test
     public void testTenPercentDiscount10() {
-        Catalog catalog = new FakeCatalog();
+        PriceList priceList = new HashMapPriceList();
         Product product = new Product("product", ProductUnit.Each);
-        catalog.addProduct(product, 1);
+        priceList.addProduct(product, 1);
 
-        ShoppingCart cart = new ShoppingCart(catalog);
+        ShoppingCart cart = new ShoppingCart(priceList);
         SpecialOfferType.TenPercentDiscount.addSpecialOffer(product, 10, cart);
 
         AddProductToCartAndTestIt(cart, product, 1, 0.9, 1, 1);
@@ -266,11 +266,11 @@ public class SupermarketTest {
 
     @Test
     public void testTenPercentDiscount20() {
-        Catalog catalog = new FakeCatalog();
+        PriceList priceList = new HashMapPriceList();
         Product product = new Product("product", ProductUnit.Each);
-        catalog.addProduct(product, 1);
+        priceList.addProduct(product, 1);
 
-        ShoppingCart cart = new ShoppingCart(catalog);
+        ShoppingCart cart = new ShoppingCart(priceList);
         SpecialOfferType.TenPercentDiscount.addSpecialOffer(product, 20, cart);
 
         AddProductToCartAndTestIt(cart, product, 1, 0.8, 1, 1);
@@ -279,11 +279,11 @@ public class SupermarketTest {
 
     @Test
     public void testTwoForAmount() {
-        Catalog catalog = new FakeCatalog();
+        PriceList priceList = new HashMapPriceList();
         Product product = new Product("product", ProductUnit.Each);
-        catalog.addProduct(product, 1);
+        priceList.addProduct(product, 1);
 
-        ShoppingCart cart = new ShoppingCart(catalog);
+        ShoppingCart cart = new ShoppingCart(priceList);
         SpecialOfferType.TwoForAmount.addSpecialOffer(product, 1, cart);
 
         AddProductToCartAndTestIt(cart, product, 1, 1, 0, 1);
@@ -295,11 +295,11 @@ public class SupermarketTest {
 
     @Test
     public void testFiveForAmount() {
-        Catalog catalog = new FakeCatalog();
+        PriceList priceList = new HashMapPriceList();
         Product product = new Product("product", ProductUnit.Each);
-        catalog.addProduct(product, 1);
+        priceList.addProduct(product, 1);
 
-        ShoppingCart cart = new ShoppingCart(catalog);
+        ShoppingCart cart = new ShoppingCart(priceList);
         SpecialOfferType.FiveForAmount.addSpecialOffer(product, 3, cart);
 
         AddProductToCartAndTestIt(cart, product, 1, 1, 0, 1);
