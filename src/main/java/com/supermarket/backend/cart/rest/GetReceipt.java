@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GetReceipt {
 
-    PriceList priceList;
-    CartRepository cartRepository;
+    private PriceList priceList;
+    private CartRepository cartRepository;
 
     public GetReceipt(PriceList priceList, CartRepository cartRepository) {
         this.priceList = priceList;
@@ -19,7 +19,7 @@ public class GetReceipt {
 
     @GetMapping("/receipt")
     public String receipt() {
-        return GetReceiptAction.getReceipt(cartRepository.getCart("user1"), priceList);
+        return GetReceiptAction.getReceipt(cartRepository.getCart("user1", priceList));
     }
 
 }

@@ -1,7 +1,7 @@
 package com.supermarket.backend.config;
 
 import com.supermarket.backend.cartrepository.CartRepository;
-import com.supermarket.backend.cartrepository.db.hashmap.HashMapCartRepository;
+import com.supermarket.backend.cartrepository.db.hashmap.InMemoryCartRepository;
 import com.supermarket.backend.pricing.PriceList;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ public class SupermarketConfig {
 
     @Bean
     public CartRepository cartRepository() {
-        return new HashMapCartRepository();
+        return new InMemoryCartRepository();
     }
 
 }

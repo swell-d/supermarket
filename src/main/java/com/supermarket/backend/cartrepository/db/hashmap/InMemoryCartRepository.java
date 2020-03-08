@@ -6,26 +6,22 @@ import com.supermarket.backend.pricing.PriceList;
 
 import java.util.LinkedHashMap;
 
-public class HashMapCartRepository implements CartRepository {
+public class InMemoryCartRepository implements CartRepository {
 
     private LinkedHashMap<String, ShoppingCart> carts = new LinkedHashMap<>();
 
     @Override
-    public ShoppingCart createCart(String userName, PriceList priceList) {
-        if (carts.containsKey(userName)) {
-            throw new IllegalArgumentException();
-        }
-        ShoppingCart shoppingCart = new ShoppingCart(priceList);
-        carts.put(userName, shoppingCart);
-        return shoppingCart;
-    }
-
-    @Override
-    public ShoppingCart getCart(String userName) {
+    public ShoppingCart getCart(String userName, PriceList priceList) {
         if (carts.containsKey(userName)) {
             return carts.get(userName);
         }
-        return null;
+        return createCart(userName, priceList);
+    }
+
+    private ShoppingCart createCart(String userName, PriceList priceList) {
+        ShoppingCart shoppingCart = new ShoppingCart(priceList);
+        carts.put(userName, shoppingCart);
+        return shoppingCart;
     }
 
     @Override

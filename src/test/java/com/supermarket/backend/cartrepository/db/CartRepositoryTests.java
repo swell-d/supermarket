@@ -16,17 +16,17 @@ public class CartRepositoryTests {
     }
 
     public static void createCartTest(CartRepository cartRepository) {
-        ShoppingCart newCart = cartRepository.createCart("test name 1", new MockPriceList());
+        ShoppingCart newCart = cartRepository.getCart("test name 1", new MockPriceList());
         assertNotNull(newCart);
         assertEquals(1, cartRepository.getSize());
     }
 
     public static void getCartByUserNameTest(CartRepository cartRepository) {
-        ShoppingCart newCart1 = cartRepository.createCart("test name 1", new MockPriceList());
-        ShoppingCart newCart2 = cartRepository.createCart("test name 2", new MockPriceList());
+        ShoppingCart newCart1 = cartRepository.getCart("test name 1", new MockPriceList());
+        ShoppingCart newCart2 = cartRepository.getCart("test name 2", new MockPriceList());
         assertEquals(2, cartRepository.getSize());
-        assertEquals(newCart1, cartRepository.getCart("test name 1"));
-        assertEquals(newCart2, cartRepository.getCart("test name 2"));
+        assertEquals(newCart1, cartRepository.getCart("test name 1", new MockPriceList()));
+        assertEquals(newCart2, cartRepository.getCart("test name 2", new MockPriceList()));
     }
 
 }

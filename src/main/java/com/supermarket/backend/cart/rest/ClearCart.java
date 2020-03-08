@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ClearCart {
 
-    PriceList priceList;
-    CartRepository cartRepository;
+    private PriceList priceList;
+    private CartRepository cartRepository;
 
     public ClearCart(PriceList priceList, CartRepository cartRepository) {
         this.priceList = priceList;
@@ -19,7 +19,7 @@ public class ClearCart {
 
     @PutMapping("/clearCart")
     public String clearCart() {
-        return ClearCartAction.clearCart(cartRepository.getCart("user1"), priceList);
+        return ClearCartAction.clearCart(cartRepository.getCart("user1", priceList));
     }
 
 }

@@ -1,22 +1,16 @@
 package com.supermarket.backend.cart.actions;
 
 import com.supermarket.backend.cart.domain.ShoppingCart;
-import com.supermarket.backend.pricing.PriceList;
+import com.supermarket.backend.catalog.Product;
 
 public class AddProductAction {
 
-    public static String addProduct(ShoppingCart cart, PriceList priceList,
+    public static String addProduct(ShoppingCart cart,
                                     String productName, String productCount) {
-
-        if (!AddProductAction.addProduct(cartRepository.getCart("user1"), priceList, productName, productCount))
-            return productName + " not found.";
+        Product product = cart.getPriceList().getCatalog().getProductByName(productName);
+        if (product == null) return productName + " not found.";
+        cart.addItemQuantity(product, Double.parseDouble(productCount));
         return productName + " added.";
-
-
-//        Product product = priceList.getCatalog().getProductByName(productName);
-//        if (product == null) return false;
-//        cart.addItemQuantity(product, Double.parseDouble(productCount));
-//        return true;
     }
 
 }

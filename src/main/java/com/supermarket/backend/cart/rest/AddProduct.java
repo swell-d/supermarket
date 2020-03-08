@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AddProduct {
 
-    PriceList priceList;
-    CartRepository cartRepository;
+    private PriceList priceList;
+    private CartRepository cartRepository;
 
     public AddProduct(PriceList priceList, CartRepository cartRepository) {
         this.priceList = priceList;
@@ -22,6 +22,6 @@ public class AddProduct {
     public String addProduct(@RequestParam(name = "productName") String productName,
                              @RequestParam(name = "productCount") String productCount) {
         return AddProductAction.addProduct(
-                cartRepository.getCart("user1"), priceList, productName, productCount);
+                cartRepository.getCart("user1", priceList), productName, productCount);
     }
 }

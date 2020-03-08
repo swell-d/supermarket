@@ -16,6 +16,10 @@ public class ShoppingCart {
     private LinkedHashMap<Product, Double> productQuantities = new LinkedHashMap<>();
     private final PriceList priceList;
 
+    public PriceList getPriceList() {
+        return priceList;
+    }
+
     public ShoppingCart(PriceList priceList) {
         this.priceList = priceList;
     }

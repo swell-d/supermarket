@@ -5,8 +5,10 @@ import com.supermarket.backend.pricing.PriceList;
 
 public class ClearCartAction {
 
-    public static String clearCart(ShoppingCart cart, PriceList priceList) {
-        return "";
+    public static String clearCart(ShoppingCart cart) {
+        PriceList priceList = cart.getPriceList();
+        cart = new ShoppingCart(priceList);
+        return "Cart cleared.";
     }
 
 }

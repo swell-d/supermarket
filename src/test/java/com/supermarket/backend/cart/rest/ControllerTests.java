@@ -46,14 +46,12 @@ public class ControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("potatoes added.")));
 
+        String expected = "<div class=\"receipt\" style=\"font-family: monospace;\">tomatoes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4158.00<br>&nbsp;&nbsp;99.00&nbsp;*&nbsp;42.000<br>potatoes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1584.00<br>&nbsp;&nbsp;66.00&nbsp;*&nbsp;24.000<br><br>Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5742.00<br></div>";
+
         this.mockMvc.perform(get("/receipt"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("tomatoes")))
-                .andExpect(content().string(containsString("42.00")))
-                .andExpect(content().string(containsString("potatoes")))
-                .andExpect(content().string(containsString("24.00")))
-                .andExpect(content().string(containsString("66.00")));
+                .andExpect(content().string(containsString(expected)));
     }
 
     @Test

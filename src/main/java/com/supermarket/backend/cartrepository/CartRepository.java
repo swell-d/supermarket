@@ -5,9 +5,7 @@ import com.supermarket.backend.pricing.PriceList;
 
 public interface CartRepository {
 
-    public ShoppingCart createCart(String userName, PriceList priceList);
-
-    public ShoppingCart getCart(String userName);
+    public ShoppingCart getCart(String userName, PriceList priceList);
 
     public int getSize();
 
