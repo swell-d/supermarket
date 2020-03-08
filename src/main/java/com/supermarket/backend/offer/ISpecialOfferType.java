@@ -1,8 +1,10 @@
 package com.supermarket.backend.offer;
 
-import com.supermarket.backend.cart.domain.ShoppingCart;
-import com.supermarket.backend.catalog.Product;
+import com.supermarket.backend.cart.domain.Receipt;
+import com.supermarket.backend.pricing.PriceList;
 
 public interface ISpecialOfferType {
-    void addSpecialOffer(Product product, double argument, ShoppingCart shoppingCart);
+
+    void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList);
+
 }

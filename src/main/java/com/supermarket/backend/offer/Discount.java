@@ -1,14 +1,10 @@
 package com.supermarket.backend.offer;
 
-import com.supermarket.backend.catalog.Product;
-
 public class Discount {
     private final String description;
     private final double discountAmount;
-    private final Product product;
 
-    public Discount(Product product, String description, double discountAmount) {
-        this.product = product;
+    public Discount(String description, double discountAmount) {
         this.description = description;
         this.discountAmount = discountAmount;
     }
@@ -19,10 +15,6 @@ public class Discount {
 
     public double getDiscountAmount() {
         return discountAmount;
-    }
-
-    public Product getProduct() {
-        return product;
     }
 
 }

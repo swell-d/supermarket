@@ -19,7 +19,7 @@ public class CartActions {
     }
 
     public static String getHTMLReceipt(ShoppingCart cart) {
-        return new ReceiptHTML().printReceipt(cart.checksOutArticlesFrom());
+        return new ReceiptHTML().printReceipt(cart.getReceipt());
     }
 
 }

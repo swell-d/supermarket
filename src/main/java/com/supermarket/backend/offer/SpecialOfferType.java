@@ -1,39 +1,39 @@
 package com.supermarket.backend.offer;
 
 import com.supermarket.backend.cart.domain.ProductQuantity;
-import com.supermarket.backend.cart.domain.ShoppingCart;
+import com.supermarket.backend.cart.domain.Receipt;
 import com.supermarket.backend.catalog.Product;
+import com.supermarket.backend.pricing.PriceList;
 
-import java.util.ArrayList;
+import java.util.Locale;
 
 public enum SpecialOfferType implements ISpecialOfferType {
-    ThreeForTwo {
+    Percent {
         @Override
-        public void addSpecialOffer(Product product, double argument, ShoppingCart shoppingCart) {
-            ArrayList<ProductQuantity> productsArray = new ArrayList<>();
-            productsArray.add(new ProductQuantity(product, 3));
-            shoppingCart.bundles.add(new Bundle(productsArray, argument, SpecialOfferTypeV2.FixAmount));
+        public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList) {
+            for (ProductQuantity pq : bundle.getProductsArray()) {
+                Product product = pq.getProduct();
+                double totalPrice = priceList.getProductPrice(product) * fullSets * pq.getQuantity();
+                double discountAmount = totalPrice * bundle.getValue() / 100.0;
+                String description = String.format(Locale.UK, "%.0f", bundle.getValue()) + "% off" +
+                        " (" + product.getName() + ")";
+                receipt.addDiscount(new Discount(description, discountAmount));
+            }
         }
-    }, TenPercentDiscount {
+
+    }, FixAmount {
         @Override
-        public void addSpecialOffer(Product product, double argument, ShoppingCart shoppingCart) {
-            ArrayList<ProductQuantity> productsArray = new ArrayList<>();
-            productsArray.add(new ProductQuantity(product, 1));
-            shoppingCart.bundles.add(new Bundle(productsArray, argument, SpecialOfferTypeV2.Percent));
+        public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList) {
+            double totalPrice = 0;
+            StringBuilder productNames = new StringBuilder();
+            for (ProductQuantity pq : bundle.getProductsArray()) {
+                totalPrice += priceList.getProductPrice(pq.getProduct()) * fullSets * pq.getQuantity();
+                productNames.append(pq.getProduct().getName()).append("+");
+            }
+            double discountAmount = totalPrice - bundle.getValue() * fullSets;
+            String description = "bundle for " + String.format(Locale.UK, "%.2f", bundle.getValue()) +
+                    " (" + productNames.substring(0, productNames.length() - 1) + ")";
+            receipt.addDiscount(new Discount(description, discountAmount));
         }
-    }, TwoForAmount {
-        @Override
-        public void addSpecialOffer(Product product, double argument, ShoppingCart shoppingCart) {
-            ArrayList<ProductQuantity> productsArray = new ArrayList<>();
-            productsArray.add(new ProductQuantity(product, 2));
-            shoppingCart.bundles.add(new Bundle(productsArray, argument, SpecialOfferTypeV2.FixAmount));
-        }
-    }, FiveForAmount {
-        @Override
-        public void addSpecialOffer(Product product, double argument, ShoppingCart shoppingCart) {
-            ArrayList<ProductQuantity> productsArray = new ArrayList<>();
-            productsArray.add(new ProductQuantity(product, 5));
-            shoppingCart.bundles.add(new Bundle(productsArray, argument, SpecialOfferTypeV2.FixAmount));
-        }
-    }
+    };
 }

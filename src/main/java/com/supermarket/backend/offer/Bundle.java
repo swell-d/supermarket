@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public class Bundle {
     private final ArrayList<ProductQuantity> productsSet;
     private final double value;
-    private final SpecialOfferTypeV2 specialOfferType;
+    private final SpecialOfferType specialOfferType;
 
-    public Bundle(ArrayList<ProductQuantity> productsSet, double value, SpecialOfferTypeV2 specialOfferType) {
+    public Bundle(ArrayList<ProductQuantity> productsSet, double value, SpecialOfferType specialOfferType) {
         this.productsSet = productsSet;
         this.value = value;
         this.specialOfferType = specialOfferType;
@@ -23,7 +23,7 @@ public class Bundle {
         return value;
     }
 
-    public SpecialOfferTypeV2 getSpecialOfferType() {
+    public SpecialOfferType getSpecialOfferType() {
         return specialOfferType;
     }
 }
