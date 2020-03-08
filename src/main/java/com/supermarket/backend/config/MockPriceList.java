@@ -6,10 +6,10 @@ public class MockPriceList extends HashMapPriceList {
 
     public MockPriceList() {
         super(new MockCatalog());
-        this.addProduct(this.getProductByName("tomatoes"), 99);
-        this.addProduct(this.getProductByName("potatoes"), 66);
-        this.addProduct(this.getProductByName("phone"), 999.90);
-        this.addProduct(this.getProductByName("bag"), 9);
+        this.addProduct(catalog.getProductByName("tomatoes"), 99);
+        this.addProduct(catalog.getProductByName("potatoes"), 66);
+        this.addProduct(catalog.getProductByName("phone"), 999.90);
+        this.addProduct(catalog.getProductByName("bag"), 9);
     }
 
 }

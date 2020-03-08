@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 
 public class HashMapPriceList implements PriceList {
 
-    private Catalog catalog;
+    public Catalog catalog;
     private LinkedHashMap<Product, Double> priceList = new LinkedHashMap<>();
 
     public HashMapPriceList(Catalog catalog) {
