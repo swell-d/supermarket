@@ -1,4 +1,4 @@
-package com.supermarket.backend.cart.actions;
+package com.supermarket.backend.pricing.actions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.supermarket.backend.catalog.Product;

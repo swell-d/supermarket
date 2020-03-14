@@ -15,23 +15,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ControllerTests {
+public class GetReceiptTests {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void testNonexistentProduct() throws Exception {
-        this.mockMvc.perform(put("/addProduct")
-                .param("productName", "product3")
-                .param("productCount", "42"))
-                .andDo(print())
-                .andExpect(status().isOk())  // Todo return 404 ? to be discussed
-                .andExpect(content().string(containsString("product3 not found.")));
-    }
-
-    @Test
-    public void testAddTwoProductsToCart() throws Exception {
+    public void getReceiptTest() throws Exception {
         this.mockMvc.perform(put("/addProduct")
                 .param("productName", "tomatoes")
                 .param("productCount", "42"))
@@ -54,23 +44,4 @@ public class ControllerTests {
                 .andExpect(content().string(containsString(expected)));
     }
 
-    @Test
-    public void testClearCart() throws Exception {
-        this.mockMvc.perform(put("/addProduct")
-                .param("productName", "tomatoes")
-                .param("productCount", "42"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("tomatoes added.")));
-
-        this.mockMvc.perform(put("/clearCart"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Cart cleared.")));
-
-        this.mockMvc.perform(get("/receipt"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("0.00")));
-    }
 }
