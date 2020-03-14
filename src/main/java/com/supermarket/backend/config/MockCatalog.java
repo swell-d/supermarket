@@ -6,9 +6,9 @@ import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
 
 public class MockCatalog extends InMemoryCatalog {
     public MockCatalog() {
-        this.addProduct(new Product("tomatoes", ProductUnit.Kilo));
-        this.addProduct(new Product("potatoes", ProductUnit.Kilo));
-        this.addProduct(new Product("phone", ProductUnit.Each));
-        this.addProduct(new Product("bag", ProductUnit.Each));
+        this.addProduct(new Product("Tomatoes", ProductUnit.Kilo));
+        this.addProduct(new Product("Potatoes", ProductUnit.Kilo));
+        this.addProduct(new Product("Phone", ProductUnit.Each));
+        this.addProduct(new Product("Bag", ProductUnit.Each));
     }
 }

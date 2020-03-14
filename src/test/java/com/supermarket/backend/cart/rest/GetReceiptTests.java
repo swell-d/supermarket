@@ -23,20 +23,20 @@ public class GetReceiptTests {
     @Test
     public void getReceiptTest() throws Exception {
         this.mockMvc.perform(put("/addProduct")
-                .param("productName", "tomatoes")
+                .param("productName", "Tomatoes")
                 .param("productCount", "42"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("tomatoes added.")));
+                .andExpect(content().string(containsString("Tomatoes added.")));
 
         this.mockMvc.perform(put("/addProduct")
-                .param("productName", "potatoes")
+                .param("productName", "Potatoes")
                 .param("productCount", "24"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("potatoes added.")));
+                .andExpect(content().string(containsString("Potatoes added.")));
 
-        String expected = "<div class=\"receipt\" style=\"font-family: monospace;\">tomatoes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4158.00<br>&nbsp;&nbsp;99.00&nbsp;*&nbsp;42.000<br>potatoes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1584.00<br>&nbsp;&nbsp;66.00&nbsp;*&nbsp;24.000<br><br>Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5742.00<br></div>";
+        String expected = "<div class=\"receipt\" style=\"font-family: monospace;\">Tomatoes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4158.00<br>&nbsp;&nbsp;99.00&nbsp;*&nbsp;42.000<br>Potatoes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1584.00<br>&nbsp;&nbsp;66.00&nbsp;*&nbsp;24.000<br><br>Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5742.00<br></div>";
 
         this.mockMvc.perform(get("/receipt"))
                 .andDo(print())

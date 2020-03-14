@@ -6,10 +6,10 @@ public class MockPriceList extends InMemoryPriceList {
 
     public MockPriceList() {
         super(new MockCatalog());
-        this.addPrice(catalog.getProductByName("tomatoes"), 99);
-        this.addPrice(catalog.getProductByName("potatoes"), 66);
-        this.addPrice(catalog.getProductByName("phone"), 999.90);
-        this.addPrice(catalog.getProductByName("bag"), 9);
+        this.addPrice(catalog.getProductByName("Tomatoes"), 99);
+        this.addPrice(catalog.getProductByName("Potatoes"), 66);
+        this.addPrice(catalog.getProductByName("Phone"), 999.90);
+        this.addPrice(catalog.getProductByName("Bag"), 9);
     }
 
 }

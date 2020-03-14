@@ -12,15 +12,15 @@ public class ReceiptPrinterTests {
     public void receiptPrinterTest() {
         ShoppingCart cart = MockCart.getMockCart();
         String expected =
-                "tomatoes                          435.60\n" +
+                "Tomatoes                          435.60\n" +
                         "  99.00 * 4.400\n" +
-                        "potatoes                          363.00\n" +
+                        "Potatoes                          363.00\n" +
                         "  66.00 * 5.500\n" +
-                        "phone                             999.90\n" +
-                        "bag                                27.00\n" +
+                        "Phone                             999.90\n" +
+                        "Bag                                27.00\n" +
                         "  9.00 * 3\n" +
-                        "10% off (tomatoes)                -43.56\n" +
-                        "bundle for 899.90 (phone+bag)    -109.00\n" +
+                        "10% off (Tomatoes)                -43.56\n" +
+                        "bundle for 899.90 (Phone+Bag)    -109.00\n" +
                         "\n" +
                         "Total:                           1672.94\n";
         assertEquals(expected, new ReceiptPrinter(40).printReceipt(cart.getReceipt()));

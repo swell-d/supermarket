@@ -32,18 +32,18 @@ public class AddProductTests {
     @Test
     public void addTwoProductsToCartTest() throws Exception {
         this.mockMvc.perform(put("/addProduct")
-                .param("productName", "tomatoes")
+                .param("productName", "Tomatoes")
                 .param("productCount", "42"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("tomatoes added.")));
+                .andExpect(content().string(containsString("Tomatoes added.")));
 
         this.mockMvc.perform(put("/addProduct")
-                .param("productName", "potatoes")
+                .param("productName", "Potatoes")
                 .param("productCount", "24"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("potatoes added.")));
+                .andExpect(content().string(containsString("Potatoes added.")));
     }
 
 }

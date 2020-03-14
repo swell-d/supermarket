@@ -12,10 +12,10 @@ public class MockCart {
         cart.addBundle(MockBundles.tenPercentBundle(priceList.getCatalog()));
         cart.addBundle(MockBundles.fixPriceBundle(priceList.getCatalog()));
 
-        cart.addItemQuantity(priceList.getCatalog().getProductByName("tomatoes"), 4.4);
-        cart.addItemQuantity(priceList.getCatalog().getProductByName("potatoes"), 5.5);
-        cart.addItemQuantity(priceList.getCatalog().getProductByName("phone"), 1);
-        cart.addItemQuantity(priceList.getCatalog().getProductByName("bag"), 3);
+        cart.addItemQuantity(priceList.getCatalog().getProductByName("Tomatoes"), 4.4);
+        cart.addItemQuantity(priceList.getCatalog().getProductByName("Potatoes"), 5.5);
+        cart.addItemQuantity(priceList.getCatalog().getProductByName("Phone"), 1);
+        cart.addItemQuantity(priceList.getCatalog().getProductByName("Bag"), 3);
 
         return cart;
     }

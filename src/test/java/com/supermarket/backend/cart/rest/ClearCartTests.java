@@ -23,11 +23,11 @@ public class ClearCartTests {
     @Test
     public void clearCartTest() throws Exception {
         this.mockMvc.perform(put("/addProduct")
-                .param("productName", "tomatoes")
+                .param("productName", "Tomatoes")
                 .param("productCount", "42"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("tomatoes added.")));
+                .andExpect(content().string(containsString("Tomatoes added.")));
 
         this.mockMvc.perform(put("/clearCart"))
                 .andDo(print())
