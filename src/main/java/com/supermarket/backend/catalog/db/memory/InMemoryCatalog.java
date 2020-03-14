@@ -11,7 +11,7 @@ public class InMemoryCatalog implements Catalog {
     private ArrayList<Product> products = new ArrayList<>();
 
     @Override
-    public boolean addProduct(Product product) {  // Todo check for unique Article
+    public boolean addProduct(Product product) {
         for (Product existProduct : this.products) {
             if (Objects.equals(existProduct, product)) return false;
         }
@@ -28,11 +28,6 @@ public class InMemoryCatalog implements Catalog {
             }
         }
         return false;
-    }
-
-    @Override
-    public Product getProductById(long productId) {  // Todo - need to discuss
-        return null;
     }
 
     @Override

@@ -8,8 +8,6 @@ public interface Catalog {
 
     boolean deleteProduct(Product product);
 
-    Product getProductById(long productId);
-
     Product getProductByArticle(String productArticle);
 
     Product getProductByName(String productName);

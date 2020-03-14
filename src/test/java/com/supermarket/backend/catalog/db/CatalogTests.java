@@ -60,4 +60,10 @@ public class CatalogTests {
         assertEquals(product1, catalog.getProductByName("product1"));
     }
 
+    public static void checkExistsProductTest(Catalog catalog) {
+        Product product1 = new Product("test article 1", "test name 1", ProductUnit.Each);
+        Product product2 = new Product("test article 1", "test name 2", ProductUnit.Kilo);
+        assertTrue(catalog.addProduct(product1));
+        assertFalse(catalog.addProduct(product2));
+    }
 }
