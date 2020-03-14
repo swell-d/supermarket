@@ -1,7 +1,7 @@
 package com.supermarket.backend.catalog.db;
 
 import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.supermarket.backend.catalog.db.CatalogTests.*;
 
