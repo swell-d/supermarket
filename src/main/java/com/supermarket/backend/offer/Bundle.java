@@ -1,6 +1,8 @@
 package com.supermarket.backend.offer;
 
 import com.supermarket.backend.cart.domain.ProductQuantity;
+import com.supermarket.backend.cart.domain.Receipt;
+import com.supermarket.backend.pricing.PriceList;
 
 import java.util.ArrayList;
 
@@ -26,4 +28,9 @@ public class Bundle {
     public SpecialOfferType getSpecialOfferType() {
         return specialOfferType;
     }
+
+    public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList) {
+        specialOfferType.addDiscountToReceipt(receipt, bundle, fullSets, priceList);
+    }
+
 }

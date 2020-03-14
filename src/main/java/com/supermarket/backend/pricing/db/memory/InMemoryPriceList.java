@@ -48,4 +48,9 @@ public class InMemoryPriceList implements PriceList {
     public Catalog getCatalog() {
         return catalog;
     }
+
+    @Override
+    public Product getProductByName(String productName) {
+        return catalog.getProductByName(productName);
+    }
 }

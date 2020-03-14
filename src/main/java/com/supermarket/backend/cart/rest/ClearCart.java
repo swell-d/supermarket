@@ -19,7 +19,8 @@ public class ClearCart {
 
     @PutMapping("/clearCart")
     public String clearCart() {
-        return ClearCartAction.clearCart(cartRepository.getCart("user1", priceList));
+        ClearCartAction.clearCart(cartRepository.getCart("user1", priceList));
+        return "Cart cleared.";
     }
 
 }

@@ -17,4 +17,6 @@ public interface PriceList {
 
     public Catalog getCatalog();
 
+    Product getProductByName(String productName);
+
 }

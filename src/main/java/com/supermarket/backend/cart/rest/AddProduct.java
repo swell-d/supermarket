@@ -21,7 +21,10 @@ public class AddProduct {
     @PutMapping("/addProduct")
     public String addProduct(@RequestParam(name = "productName") String productName,
                              @RequestParam(name = "productCount") String productCount) {
-        return AddProductAction.addProduct(
-                cartRepository.getCart("user1", priceList), productName, productCount);
+        if (AddProductAction.addProduct(cartRepository.getCart("user1", priceList), productName, productCount)) {
+            return productName + " added.";
+        } else {
+            return productName + " not found.";
+        }
     }
 }

@@ -5,12 +5,14 @@ import com.supermarket.backend.catalog.Product;
 
 public class AddProductAction {
 
-    public static String addProduct(ShoppingCart cart,
-                                    String productName, String productCount) {
-        Product product = cart.getPriceList().getCatalog().getProductByName(productName);
-        if (product == null) return productName + " not found.";
-        cart.addItemQuantity(product, Double.parseDouble(productCount));
-        return productName + " added.";
+    public static boolean addProduct(ShoppingCart cart,
+                                     String productName, String productCount) {
+        Product product = cart.getProductByName(productName);
+        if (product != null) {
+            cart.addItemQuantity(product, Double.parseDouble(productCount));
+            return true;
+        } else {
+            return false;
+        }
     }
-
 }

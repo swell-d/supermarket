@@ -63,11 +63,15 @@ public class ShoppingCart {
 
     private void createDiscounts(Receipt receipt, Bundle bundle, double fullSets) {
         if (fullSets < 1.0) return;
-        bundle.getSpecialOfferType().addDiscountToReceipt(receipt, bundle, fullSets, priceList);
+        bundle.addDiscountToReceipt(receipt, bundle, fullSets, priceList);
     }
 
     public String export(Report printer) {
         return printer.printReceipt(getReceipt());
+    }
+
+    public Product getProductByName(String productName) {
+        return priceList.getProductByName(productName);
     }
 
 }
