@@ -1,9 +1,17 @@
 package com.supermarket.backend.catalog;
 
-public interface Catalog {
-    void addProduct(Product product, double price);
+import java.util.ArrayList;
 
-    double getUnitPrice(Product product);
+public interface Catalog {
+
+    boolean addProduct(Product product);
+
+    boolean deleteProduct(Product product);
+
+    Product getProductByArticle(String productArticle);
 
     Product getProductByName(String productName);
+
+    ArrayList<Product> getCatalog();
+
 }

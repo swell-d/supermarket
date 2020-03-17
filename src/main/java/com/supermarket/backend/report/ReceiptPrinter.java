@@ -15,7 +15,7 @@ public class ReceiptPrinter implements Report {
         this(40);
     }
 
-    public ReceiptPrinter(int columns) {
+    ReceiptPrinter(int columns) {
         this.columns = columns;
     }
 
@@ -44,9 +44,8 @@ public class ReceiptPrinter implements Report {
     }
 
     private String presentDiscount(Discount discount) {
-        String name = discount.getDescription() + " (" + discount.getProduct().getName() + ")";
-        String value = "-" + presentPrice(discount.getDiscountAmount());
-        return formatLineWithWhitespace(name, value);
+        return formatLineWithWhitespace(discount.getDescription(),
+                "-" + presentPrice(discount.getDiscountAmount()));
     }
 
     private String presentTotal(Receipt receipt) {

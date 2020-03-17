@@ -2,7 +2,7 @@ package com.supermarket.backend.catalog;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class ProductTests {
 
@@ -13,6 +13,18 @@ public class ProductTests {
         assertEquals("test article 1", product.getArticle());
         assertEquals("test name 1", product.getName());
         assertEquals(ProductUnit.Each, product.getUnit());
+
+        product.setShortDescription("short description");
+        assertEquals("short description", product.getShortDescription());
+
+        product.setDescription("description");
+        assertEquals("description", product.getDescription());
+
+        product.setSmallImage("small image");
+        assertEquals("small image", product.getSmallImage());
+
+        product.setImage("image");
+        assertEquals("image", product.getImage());
     }
 
     @Test
@@ -24,8 +36,8 @@ public class ProductTests {
         Product anotherUnitProduct = new Product("test article 1", "test name 1", ProductUnit.Kilo);
         assertEquals(baseProduct, sameProduct);
         assertNotEquals(baseProduct, anotherArticleProduct);
-        assertNotEquals(baseProduct, anotherNameProduct);
-        assertNotEquals(baseProduct, anotherUnitProduct);
+        assertEquals(baseProduct, anotherNameProduct);
+        assertEquals(baseProduct, anotherUnitProduct);
     }
 
 }
