@@ -6,6 +6,7 @@ import com.supermarket.backend.cart.actions.GetReceiptAction;
 import com.supermarket.backend.cartrepository.CartRepository;
 import com.supermarket.backend.cartrepository.db.memory.InMemoryCartRepository;
 import com.supermarket.backend.pricing.PriceList;
+import com.supermarket.backend.pricing.actions.GetCatalogAction;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -38,5 +39,10 @@ public class SupermarketConfig {
     @Bean
     public GetReceiptAction getReceiptAction() {
         return new GetReceiptAction(cartRepository, priceList);
+    }
+
+    @Bean
+    public GetCatalogAction getCatalogAction() {
+        return new GetCatalogAction(priceList);
     }
 }
