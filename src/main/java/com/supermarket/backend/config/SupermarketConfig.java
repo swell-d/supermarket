@@ -37,6 +37,6 @@ public class SupermarketConfig {
 
     @Bean
     public GetReceiptAction getReceiptAction() {
-        return new GetReceiptAction();
+        return new GetReceiptAction(cartRepository, priceList);
     }
 }
