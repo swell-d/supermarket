@@ -74,4 +74,8 @@ public class ShoppingCart {
         return priceList.getProductByName(productName);
     }
 
+    public void clearCart() {
+        productQuantities = new LinkedHashMap<>();
+    }
+
 }

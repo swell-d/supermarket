@@ -16,17 +16,17 @@ public class CartRepositoryTests {
     }
 
     public static void createCartTest(CartRepository cartRepository) {
-        ShoppingCart newCart = cartRepository.getCart("test name 1", new MockPriceListFactory().createMockPriceListFactory());
+        ShoppingCart newCart = cartRepository.getCart("test name 1", new MockPriceListFactory().createMockPriceList());
         assertNotNull(newCart);
         assertEquals(1, cartRepository.getSize());
     }
 
     public static void getCartByUserNameTest(CartRepository cartRepository) {
-        ShoppingCart newCart1 = cartRepository.getCart("test name 1", new MockPriceListFactory().createMockPriceListFactory());
-        ShoppingCart newCart2 = cartRepository.getCart("test name 2", new MockPriceListFactory().createMockPriceListFactory());
+        ShoppingCart newCart1 = cartRepository.getCart("test name 1", new MockPriceListFactory().createMockPriceList());
+        ShoppingCart newCart2 = cartRepository.getCart("test name 2", new MockPriceListFactory().createMockPriceList());
         assertEquals(2, cartRepository.getSize());
-        assertEquals(newCart1, cartRepository.getCart("test name 1", new MockPriceListFactory().createMockPriceListFactory()));
-        assertEquals(newCart2, cartRepository.getCart("test name 2", new MockPriceListFactory().createMockPriceListFactory()));
+        assertEquals(newCart1, cartRepository.getCart("test name 1", new MockPriceListFactory().createMockPriceList()));
+        assertEquals(newCart2, cartRepository.getCart("test name 2", new MockPriceListFactory().createMockPriceList()));
     }
 
 }

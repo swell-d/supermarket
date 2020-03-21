@@ -1,13 +1,22 @@
 package com.supermarket.backend.cart.actions;
 
 import com.supermarket.backend.cart.domain.ShoppingCart;
+import com.supermarket.backend.cartrepository.CartRepository;
 import com.supermarket.backend.pricing.PriceList;
 
 public class ClearCartAction {
 
-    public static void clearCart(ShoppingCart cart) {
-        PriceList priceList = cart.getPriceList();
-        cart = new ShoppingCart(priceList);
+    private CartRepository cartRepository;
+    private PriceList priceList;
+
+    public ClearCartAction(CartRepository cartRepository, PriceList priceList) {
+        this.cartRepository = cartRepository;
+        this.priceList = priceList;
+    }
+
+    public void clearCart() {
+        ShoppingCart cart = cartRepository.getCart("user 1", priceList);
+        cart.clearCart();
     }
 
 }
