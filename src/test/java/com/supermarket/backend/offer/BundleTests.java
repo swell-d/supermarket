@@ -5,7 +5,7 @@ import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.config.MockBundles;
-import com.supermarket.backend.config.MockCatalog;
+import com.supermarket.backend.config.MockCatalogFactory;
 import com.supermarket.backend.config.MockPriceList;
 import com.supermarket.backend.pricing.PriceList;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ public class BundleTests {
 
     @Test
     public void percentBundleTest() {
-        Catalog catalog = new MockCatalog();
+        Catalog catalog = new MockCatalogFactory().createMockCatalog();
         Product tomatoes = catalog.getProductByName("Tomatoes");
         PriceList priceList = new MockPriceList();
         ShoppingCart cart = new ShoppingCart(priceList);
@@ -36,7 +36,7 @@ public class BundleTests {
 
     @Test
     public void fixAmountBundleTest() {
-        Catalog catalog = new MockCatalog();
+        Catalog catalog = new MockCatalogFactory().createMockCatalog();
         Product phone = catalog.getProductByName("Phone");
         Product bag = catalog.getProductByName("Bag");
         PriceList priceList = new MockPriceList();
