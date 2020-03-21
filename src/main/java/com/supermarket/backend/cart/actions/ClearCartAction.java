@@ -16,7 +16,7 @@ public class ClearCartAction {
 
     public void clearCart() {
         ShoppingCart cart = cartRepository.getCart("user 1", priceList);
-        cart = new ShoppingCart(priceList);
+        cart.clearCart();
     }
 
 }
