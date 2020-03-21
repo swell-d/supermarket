@@ -16,19 +16,19 @@ public class InMemoryPriceList implements PriceList {
     }
 
     @Override
-    public boolean addPrice(Product product, double price) {
+    public void addPrice(Product product, double price) {
         if (!catalog.getCatalog().contains(product)) throw new IllegalArgumentException();
+        if (priceList.containsKey(product)) throw new IllegalArgumentException();
         priceList.put(product, price);
-        return true;
     }
 
     @Override
-    public boolean deleteProduct(Product product) {
+    public void deleteProduct(Product product) {
         if (priceList.containsKey(product)) {
             priceList.remove(product);
-            return true;
+            return;
         }
-        return false;
+        throw new IllegalArgumentException();
     }
 
     @Override

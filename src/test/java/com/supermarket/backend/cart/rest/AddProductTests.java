@@ -25,7 +25,7 @@ public class AddProductTests {
                 .param("productName", "product3")
                 .param("productCount", "42"))
                 .andDo(print())
-                .andExpect(status().isOk())  // Todo return 404 ? to be discussed
+                .andExpect(status().isOk())
                 .andExpect(content().string(containsString("product3 not found.")));
     }
 

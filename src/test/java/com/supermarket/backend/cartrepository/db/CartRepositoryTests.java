@@ -10,18 +10,18 @@ import static org.junit.Assert.assertNotNull;
 
 public class CartRepositoryTests {
 
-    public static void createCartRepositoryTest(CartRepository cartRepository) {
+    public static void createCartRepository(CartRepository cartRepository) {
         assertNotNull(cartRepository);
         assertEquals(0, cartRepository.getSize());
     }
 
-    public static void createCartTest(CartRepository cartRepository) {
+    public static void createCart(CartRepository cartRepository) {
         ShoppingCart newCart = cartRepository.getCart("test name 1", new MockPriceListFactory().createMockPriceList());
         assertNotNull(newCart);
         assertEquals(1, cartRepository.getSize());
     }
 
-    public static void getCartByUserNameTest(CartRepository cartRepository) {
+    public static void getCartByUserName(CartRepository cartRepository) {
         ShoppingCart newCart1 = cartRepository.getCart("test name 1", new MockPriceListFactory().createMockPriceList());
         ShoppingCart newCart2 = cartRepository.getCart("test name 2", new MockPriceListFactory().createMockPriceList());
         assertEquals(2, cartRepository.getSize());

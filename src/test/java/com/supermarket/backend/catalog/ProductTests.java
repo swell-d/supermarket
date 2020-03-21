@@ -1,6 +1,6 @@
 package com.supermarket.backend.catalog;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -13,16 +13,12 @@ public class ProductTests {
         assertEquals("test article 1", product.getArticle());
         assertEquals("test name 1", product.getName());
         assertEquals(ProductUnit.Each, product.getUnit());
-
         product.setShortDescription("short description");
         assertEquals("short description", product.getShortDescription());
-
         product.setDescription("description");
         assertEquals("description", product.getDescription());
-
         product.setSmallImage("small image");
         assertEquals("small image", product.getSmallImage());
-
         product.setImage("image");
         assertEquals("image", product.getImage());
     }
