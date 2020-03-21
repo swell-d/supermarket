@@ -1,7 +1,7 @@
 package com.supermarket.backend.report;
 
 import com.supermarket.backend.cart.domain.ShoppingCart;
-import com.supermarket.backend.config.MockCart;
+import com.supermarket.backend.config.MockCartFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,7 +10,7 @@ public class ReceiptPrinterTests {
 
     @Test
     public void receiptPrinterTest() {
-        ShoppingCart cart = MockCart.getMockCart();
+        ShoppingCart cart = MockCartFactory.createMockCart();
         String expected =
                 "Tomatoes                          435.60\n" +
                         "  99.00 * 4.400\n" +

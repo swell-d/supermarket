@@ -7,15 +7,15 @@ import com.supermarket.backend.offer.SpecialOfferType;
 
 import java.util.ArrayList;
 
-public class MockBundles {
+public class MockBundlesFactory {
 
-    public static Bundle tenPercentBundle(Catalog catalog) {
+    public static Bundle createTenPercentBundle(Catalog catalog) {
         ArrayList<ProductQuantity> tenPercentBundle = new ArrayList<>();
         tenPercentBundle.add(new ProductQuantity(catalog.getProductByName("Tomatoes"), 1.5));
         return new Bundle(tenPercentBundle, 10, SpecialOfferType.Percent);
     }
 
-    public static Bundle fixPriceBundle(Catalog catalog) {
+    public static Bundle createFixPriceBundle(Catalog catalog) {
         ArrayList<ProductQuantity> fixPriceBundle = new ArrayList<>();
         fixPriceBundle.add(new ProductQuantity(catalog.getProductByName("Phone"), 1));
         fixPriceBundle.add(new ProductQuantity(catalog.getProductByName("Bag"), 1));
