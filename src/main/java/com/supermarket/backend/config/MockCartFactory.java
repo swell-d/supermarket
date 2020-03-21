@@ -6,7 +6,7 @@ import com.supermarket.backend.pricing.PriceList;
 public class MockCartFactory {
 
     public static ShoppingCart createMockCart() {
-        PriceList priceList = new MockPriceListFactory().createMockPriceListFactory();
+        PriceList priceList = new MockPriceListFactory().createMockPriceList();
         ShoppingCart cart = new ShoppingCart(priceList);
 
         cart.addBundle(MockBundlesFactory.createTenPercentBundle(priceList.getCatalog()));

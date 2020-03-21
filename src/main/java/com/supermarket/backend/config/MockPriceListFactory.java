@@ -6,7 +6,7 @@ import com.supermarket.backend.pricing.db.memory.InMemoryPriceList;
 
 public class MockPriceListFactory {
 
-    public PriceList createMockPriceListFactory() {
+    public PriceList createMockPriceList() {
 
         Catalog catalog = new MockCatalogFactory().createMockCatalog();
         PriceList priceList = new InMemoryPriceList(catalog);
