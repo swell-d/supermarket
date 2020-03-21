@@ -13,36 +13,33 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SupermarketConfig {
 
-    CartRepository cartRepository = new InMemoryCartRepository();
-    PriceList priceList = new MockPriceListFactory().createMockPriceList();
-
     @Bean
     public PriceList priceList() {
-        return priceList;
+        return new MockPriceListFactory().createMockPriceList();
     }
 
     @Bean
     public CartRepository cartRepository() {
-        return cartRepository;
+        return new InMemoryCartRepository();
     }
 
     @Bean
-    public AddProductAction addProductAction() {
+    public AddProductAction addProductAction(PriceList priceList, CartRepository cartRepository) {
         return new AddProductAction(cartRepository, priceList);
     }
 
     @Bean
-    public ClearCartAction clearCartAction() {
+    public ClearCartAction clearCartAction(PriceList priceList, CartRepository cartRepository) {
         return new ClearCartAction(cartRepository, priceList);
     }
 
     @Bean
-    public GetReceiptAction getReceiptAction() {
+    public GetReceiptAction getReceiptAction(PriceList priceList, CartRepository cartRepository) {
         return new GetReceiptAction(cartRepository, priceList);
     }
 
     @Bean
-    public GetCatalogAction getCatalogAction() {
+    public GetCatalogAction getCatalogAction(PriceList priceList) {
         return new GetCatalogAction(priceList);
     }
 }
