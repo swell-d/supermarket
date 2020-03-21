@@ -32,7 +32,7 @@ public class SupermarketConfig {
 
     @Bean
     public ClearCartAction clearCartAction() {
-        return new ClearCartAction();
+        return new ClearCartAction(cartRepository, priceList);
     }
 
     @Bean
