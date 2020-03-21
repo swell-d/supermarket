@@ -7,15 +7,15 @@ import java.util.LinkedHashMap;
 
 public interface PriceList {
 
-    boolean addPrice(Product product, double price);
+    void addPrice(Product product, double price);
 
-    boolean deleteProduct(Product product);
+    void deleteProduct(Product product);
 
     double getProductPrice(Product product);
 
     LinkedHashMap<Product, Double> getPriceList();
 
-    public Catalog getCatalog();
+    Catalog getCatalog();
 
     Product getProductByName(String productName);
 

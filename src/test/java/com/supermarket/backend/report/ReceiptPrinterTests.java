@@ -2,7 +2,7 @@ package com.supermarket.backend.report;
 
 import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.config.MockCartFactory;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

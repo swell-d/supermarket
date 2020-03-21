@@ -11,23 +11,22 @@ public class InMemoryCatalog implements Catalog {
     private ArrayList<Product> products = new ArrayList<>();
 
     @Override
-    public boolean addProduct(Product product) {
+    public void addProduct(Product product) {
         for (Product existProduct : this.products) {
-            if (Objects.equals(existProduct, product)) return false;
+            if (Objects.equals(existProduct, product)) throw new IllegalArgumentException();
         }
         products.add(product);
-        return true;
     }
 
     @Override
-    public boolean deleteProduct(Product product) {
+    public void deleteProduct(Product product) {
         for (Product existProduct : this.products) {
             if (Objects.equals(existProduct, product)) {
                 this.products.remove(product);
-                return true;
+                return;
             }
         }
-        return false;
+        throw new IllegalArgumentException();
     }
 
     @Override

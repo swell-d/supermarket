@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public interface Catalog {
 
-    boolean addProduct(Product product);
+    void addProduct(Product product);
 
-    boolean deleteProduct(Product product);
+    void deleteProduct(Product product);
 
     Product getProductByArticle(String productArticle);
 

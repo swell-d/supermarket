@@ -1,17 +1,23 @@
 package com.supermarket.backend.cartrepository.db;
 
 import com.supermarket.backend.cartrepository.db.memory.InMemoryCartRepository;
-import org.junit.jupiter.api.Test;
-
-import static com.supermarket.backend.cartrepository.db.CartRepositoryTests.*;
+import org.junit.Test;
 
 public class InMemoryCartRepositoryTests {
 
     @Test
-    public void hashMapCartRepositoryTests() {
-        createCartRepositoryTest(new InMemoryCartRepository());
-        createCartTest(new InMemoryCartRepository());
-        getCartByUserNameTest(new InMemoryCartRepository());
+    public void createCartRepositoryTest() {
+        CartRepositoryTests.createCartRepository(new InMemoryCartRepository());
+    }
+
+    @Test
+    public void createCartTest() {
+        CartRepositoryTests.createCart(new InMemoryCartRepository());
+    }
+
+    @Test
+    public void getCartByUserNameTest() {
+        CartRepositoryTests.getCartByUserName(new InMemoryCartRepository());
     }
 
 }

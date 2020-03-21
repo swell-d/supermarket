@@ -1,19 +1,43 @@
 package com.supermarket.backend.catalog.db;
 
 import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
-import org.junit.jupiter.api.Test;
-
-import static com.supermarket.backend.catalog.db.CatalogTests.*;
+import org.junit.Test;
 
 public class InMemoryCatalogTests {
 
     @Test
-    public void inMemoryCatalogTests() {
-        createCatalogTest(new InMemoryCatalog());
-        addProductTest(new InMemoryCatalog());
-        deleteProductTest(new InMemoryCatalog());
-        getProductByNameTest(new InMemoryCatalog());
-        checkExistsProductTest(new InMemoryCatalog());
+    public void createCatalogTest() {
+        CatalogTests.createCatalog(new InMemoryCatalog());
+    }
+
+    @Test
+    public void addProductTest() {
+        CatalogTests.addProduct(new InMemoryCatalog());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addProductTwiceTest() {
+        CatalogTests.addProductTwice(new InMemoryCatalog());
+    }
+
+    @Test
+    public void deleteProductTest() {
+        CatalogTests.deleteProduct(new InMemoryCatalog());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void deleteProductTwiceTest() {
+        CatalogTests.deleteProductTwice(new InMemoryCatalog());
+    }
+
+    @Test
+    public void getProductByNameTest() {
+        CatalogTests.getProductByName(new InMemoryCatalog());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void checkExistsProductTest() {
+        CatalogTests.checkExistsProduct(new InMemoryCatalog());
     }
 
 }
