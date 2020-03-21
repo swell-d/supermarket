@@ -22,6 +22,8 @@ public class GetReceiptTests {
 
     @Test
     public void getReceiptTest() throws Exception {
+        this.mockMvc.perform(put("/clearCart"));
+
         this.mockMvc.perform(put("/addProduct")
                 .param("productName", "Tomatoes")
                 .param("productCount", "42"))
