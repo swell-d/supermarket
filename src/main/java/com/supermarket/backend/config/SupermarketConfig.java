@@ -11,7 +11,7 @@ public class SupermarketConfig {
 
     @Bean
     public PriceList priceList() {
-        return new MockPriceList();
+        return new MockPriceListFactory().createMockPriceListFactory();
     }
 
     @Bean
