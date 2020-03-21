@@ -10,6 +10,7 @@ import java.util.Locale;
 public class ReceiptPrinter implements Report {
 
     private final int columns;
+    private final String LS = System.lineSeparator();
 
     public ReceiptPrinter() {
         this(40);
@@ -29,7 +30,7 @@ public class ReceiptPrinter implements Report {
             String discountPresentation = presentDiscount(discount);
             result.append(discountPresentation);
         }
-        result.append("\n");
+        result.append(LS);
         result.append(presentTotal(receipt));
         return result.toString();
     }
@@ -39,7 +40,7 @@ public class ReceiptPrinter implements Report {
         String name = item.getProduct().getName();
         String line = formatLineWithWhitespace(name, totalPricePresentation);
         if (item.getQuantity() != 1)
-            line += "  " + presentPrice(item.getPrice()) + " * " + presentQuantity(item) + "\n";
+            line += "  " + presentPrice(item.getPrice()) + " * " + presentQuantity(item) + LS;
         return line;
     }
 
@@ -60,7 +61,7 @@ public class ReceiptPrinter implements Report {
         int whitespaceSize = this.columns - name.length() - value.length();
         for (int i = 0; i < whitespaceSize; i++) line.append(" ");
         line.append(value);
-        line.append('\n');
+        line.append(LS);
         return line.toString();
     }
 

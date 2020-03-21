@@ -8,21 +8,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReceiptPrinterTests {
 
+    private final String LS = System.lineSeparator();
+
     @Test
     public void receiptPrinterTest() {
         ShoppingCart cart = MockCartFactory.createMockCart();
         String expected =
-                "Tomatoes                          435.60\n" +
-                        "  99.00 * 4.400\n" +
-                        "Potatoes                          363.00\n" +
-                        "  66.00 * 5.500\n" +
-                        "Phone                             999.90\n" +
-                        "Bag                                27.00\n" +
-                        "  9.00 * 3\n" +
-                        "10% off (Tomatoes)                -43.56\n" +
-                        "bundle for 899.90 (Phone+Bag)    -109.00\n" +
-                        "\n" +
-                        "Total:                           1672.94\n";
+                "Tomatoes                          435.60" + LS +
+                        "  99.00 * 4.400" + LS +
+                        "Potatoes                          363.00" + LS +
+                        "  66.00 * 5.500" + LS +
+                        "Phone                             999.90" + LS +
+                        "Bag                                27.00" + LS +
+                        "  9.00 * 3" + LS +
+                        "10% off (Tomatoes)                -43.56" + LS +
+                        "bundle for 899.90 (Phone+Bag)    -109.00" + LS +
+                        "" + LS +
+                        "Total:                           1672.94" + LS;
         assertEquals(expected, new ReceiptPrinter(40).printReceipt(cart.getReceipt()));
     }
 
