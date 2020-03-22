@@ -1,6 +1,5 @@
-package com.supermarket.backend.cartrepository;
+package com.supermarket.backend.cart.domain;
 
-import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.pricing.PriceList;
 
 public interface CartRepository {

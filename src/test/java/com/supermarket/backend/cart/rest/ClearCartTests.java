@@ -22,19 +22,19 @@ public class ClearCartTests {
 
     @Test
     public void clearCartTest() throws Exception {
-        this.mockMvc.perform(put("/addProduct")
+        this.mockMvc.perform(put("/cart/addProduct")
                 .param("productName", "Tomatoes")
                 .param("productCount", "42"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tomatoes added.")));
 
-        this.mockMvc.perform(put("/clearCart"))
+        this.mockMvc.perform(put("/cart/clearCart"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Cart cleared.")));
 
-        this.mockMvc.perform(get("/receipt"))
+        this.mockMvc.perform(get("/cart/receipt"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("0.00")));

@@ -22,23 +22,23 @@ public class GetReceiptTests {
 
     @Test
     public void getReceiptTest() throws Exception {
-        this.mockMvc.perform(put("/clearCart"));
+        this.mockMvc.perform(put("/cart/clearCart"));
 
-        this.mockMvc.perform(put("/addProduct")
+        this.mockMvc.perform(put("/cart/addProduct")
                 .param("productName", "Tomatoes")
                 .param("productCount", "42"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tomatoes added.")));
 
-        this.mockMvc.perform(put("/addProduct")
+        this.mockMvc.perform(put("/cart/addProduct")
                 .param("productName", "Potatoes")
                 .param("productCount", "24"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Potatoes added.")));
 
-        this.mockMvc.perform(get("/receipt"))
+        this.mockMvc.perform(get("/cart/receipt"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Total")))

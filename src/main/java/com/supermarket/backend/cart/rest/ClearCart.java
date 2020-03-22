@@ -13,7 +13,7 @@ public class ClearCart {
         this.clearCartAction = clearCartAction;
     }
 
-    @PutMapping("/clearCart")
+    @PutMapping("/cart/clearCart")
     public String clearCart() {
         clearCartAction.clearCart();
         return "Cart cleared.";
