@@ -15,7 +15,7 @@ public class AddProduct {
         this.addProductAction = addProductAction;
     }
 
-    @PutMapping("/addProduct")
+    @PutMapping("/cart/addProduct")
     public String addProduct(@RequestParam(name = "productName") String productName,
                              @RequestParam(name = "productCount") String productCount) {
         Product product = addProductAction.findProductByName(productName);

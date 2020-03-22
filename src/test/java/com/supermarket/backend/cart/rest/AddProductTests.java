@@ -21,7 +21,7 @@ public class AddProductTests {
 
     @Test
     public void noneExistentProductTest() throws Exception {
-        this.mockMvc.perform(put("/addProduct")
+        this.mockMvc.perform(put("/cart/addProduct")
                 .param("productName", "product3")
                 .param("productCount", "42"))
                 .andDo(print())
@@ -31,14 +31,14 @@ public class AddProductTests {
 
     @Test
     public void addTwoProductsToCartTest() throws Exception {
-        this.mockMvc.perform(put("/addProduct")
+        this.mockMvc.perform(put("/cart/addProduct")
                 .param("productName", "Tomatoes")
                 .param("productCount", "42"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tomatoes added.")));
 
-        this.mockMvc.perform(put("/addProduct")
+        this.mockMvc.perform(put("/cart/addProduct")
                 .param("productName", "Potatoes")
                 .param("productCount", "24"))
                 .andDo(print())
