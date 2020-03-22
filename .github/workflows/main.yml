@@ -39,3 +39,5 @@ jobs:
         run: |
           gcloud container clusters get-credentials my-gke-cluster --project=genial-analyzer-268419 --zone=europe-west3
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+      - name: 'Helm Install chart'
+        run: helm upgrade -n dev -i supermarket-backend ./chart
