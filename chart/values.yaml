@@ -6,7 +6,7 @@ replicaCount: 2
 
 image:
   repository: gcr.io/genial-analyzer-268419/supermarket/backend
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 imagePullSecrets: []
 nameOverride: ""
