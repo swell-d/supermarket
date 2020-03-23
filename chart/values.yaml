@@ -42,8 +42,8 @@ ingress:
      kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - name: backend.app
-      path: /api
+    - host: backend.app
+      paths: ["/api"]
 
   tls: []
   #  - secretName: chart-example-tls
