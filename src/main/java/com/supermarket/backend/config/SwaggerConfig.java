@@ -14,12 +14,12 @@ import javax.servlet.ServletContext;
 
 @Configuration
 @EnableSwagger2
-public class Swagger {
+public class SwaggerConfig {
 
     private final ServletContext servletContext;
 
     @Autowired
-    public Swagger(ServletContext servletContext) {
+    public SwaggerConfig(ServletContext servletContext) {
         this.servletContext = servletContext;
     }
 
