@@ -4,8 +4,8 @@ import com.supermarket.backend.cart.domain.Receipt;
 import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.catalog.domain.Product;
-import com.supermarket.backend.config.MockBundlesFactory;
-import com.supermarket.backend.config.MockCatalogFactory;
+import com.supermarket.backend.mock.MockBundlesFactory;
+import com.supermarket.backend.mock.MockCatalogFactory;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

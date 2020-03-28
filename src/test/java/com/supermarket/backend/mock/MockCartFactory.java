@@ -1,4 +1,4 @@
-package com.supermarket.backend.config;
+package com.supermarket.backend.mock;
 
 import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.catalog.domain.Catalog;

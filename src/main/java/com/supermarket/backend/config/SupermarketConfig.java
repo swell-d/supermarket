@@ -5,8 +5,9 @@ import com.supermarket.backend.cart.actions.ClearCartAction;
 import com.supermarket.backend.cart.actions.GetReceiptAction;
 import com.supermarket.backend.cart.db.memory.InMemoryCartRepository;
 import com.supermarket.backend.cart.domain.CartRepository;
-import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.catalog.actions.GetCatalogAction;
+import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
+import com.supermarket.backend.catalog.domain.Catalog;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,7 +16,7 @@ public class SupermarketConfig {
 
     @Bean
     public Catalog catalog() {
-        return new MockCatalogFactory().createMockCatalog();
+        return new InMemoryCatalog();
     }
 
     @Bean

@@ -13,7 +13,7 @@ public class Receipt {
     public Double getTotalPrice() {
         double total = 0.0;
         for (ReceiptItem item : this.items) {
-            total += item.price * item.quantity;
+            total += item.getTotalPrice();
         }
         for (Discount discount : this.discounts) {
             total -= discount.discountAmount;

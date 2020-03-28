@@ -2,7 +2,7 @@ package com.supermarket.backend.cartrepository.db;
 
 import com.supermarket.backend.cart.domain.CartRepository;
 import com.supermarket.backend.cart.domain.ShoppingCart;
-import com.supermarket.backend.config.MockCatalogFactory;
+import com.supermarket.backend.mock.MockCatalogFactory;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
