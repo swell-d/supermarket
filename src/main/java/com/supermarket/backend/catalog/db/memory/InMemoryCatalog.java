@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class InMemoryCatalog implements Catalog {
 
-    private ArrayList<Product> products = new ArrayList<>();
+    public ArrayList<Product> products = new ArrayList<>();
 
     @Override
     public void addProduct(Product product) {

@@ -49,14 +49,14 @@ public class ShoppingCart {
 
     private double getFullSets(Bundle bundle) {
         double fullSets = Double.MAX_VALUE;
-        for (ProductQuantity pq : bundle.getProductsArray()) {
+        for (ProductQuantity pq : bundle.productsSet) {
             Product product = pq.product;
             double quantity = pq.quantity;
             if (productQuantities.containsKey(product))
                 fullSets = Math.min(fullSets, productQuantities.get(product) / quantity);
             else return 0.0;
         }
-        if (bundle.getSpecialOfferType() == SpecialOfferType.FixAmount) fullSets = (int) fullSets;
+        if (bundle.specialOfferType == SpecialOfferType.FixAmount) fullSets = (int) fullSets;
         if (fullSets < 1.0) return 0.0;
         return fullSets;
     }
