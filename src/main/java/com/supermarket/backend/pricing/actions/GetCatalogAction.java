@@ -15,7 +15,7 @@ public class GetCatalogAction {
         this.priceList = priceList;
     }
 
-    public ArrayList getCatalog() {
+    public ArrayList<Map<String, String>> getCatalog() {
         ArrayList<Map<String, String>> result = new ArrayList<>();
         ObjectMapper oMapper = new ObjectMapper();
 
