@@ -16,7 +16,7 @@ public class Receipt {
             total += item.price * item.quantity;
         }
         for (Discount discount : this.discounts) {
-            total -= discount.getDiscountAmount();
+            total -= discount.discountAmount;
         }
         return total;
     }

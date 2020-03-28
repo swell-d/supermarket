@@ -45,8 +45,8 @@ public class ReceiptPrinter implements Report {
     }
 
     private String presentDiscount(Discount discount) {
-        return formatLineWithWhitespace(discount.getDescription(),
-                "-" + presentPrice(discount.getDiscountAmount()));
+        return formatLineWithWhitespace(discount.description,
+                "-" + presentPrice(discount.discountAmount));
     }
 
     private String presentTotal(Receipt receipt) {
