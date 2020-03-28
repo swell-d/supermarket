@@ -10,17 +10,17 @@ public class ProductTests {
     public void createProductTest() {
         Product product = new Product("test article 1", "test name 1", ProductUnit.Each);
         assertNotNull(product);
-        assertEquals("test article 1", product.getArticle());
-        assertEquals("test name 1", product.getName());
-        assertEquals(ProductUnit.Each, product.getUnit());
-        product.setShortDescription("short description");
-        assertEquals("short description", product.getShortDescription());
-        product.setDescription("description");
-        assertEquals("description", product.getDescription());
-        product.setSmallImage("small image");
-        assertEquals("small image", product.getSmallImage());
-        product.setImage("image");
-        assertEquals("image", product.getImage());
+        assertEquals("test article 1", product.article);
+        assertEquals("test name 1", product.name);
+        assertEquals(ProductUnit.Each, product.unit);
+        product.shortDescription = "short description";
+        assertEquals("short description", product.shortDescription);
+        product.description = "description";
+        assertEquals("description", product.description);
+        product.smallImage = "small image";
+        assertEquals("small image", product.smallImage);
+        product.image = "image";
+        assertEquals("image", product.image);
     }
 
     @Test

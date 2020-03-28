@@ -32,7 +32,7 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public Product getProductByArticle(String productArticle) {
         for (Product existProduct : this.products) {
-            if (existProduct.getArticle().equals(productArticle)) {
+            if (existProduct.article.equals(productArticle)) {
                 return existProduct;
             }
         }
@@ -42,7 +42,7 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public Product getProductByName(String productName) {
         for (Product existProduct : this.products) {
-            if (existProduct.getName().equals(productName)) {
+            if (existProduct.name.equals(productName)) {
                 return existProduct;
             }
         }
