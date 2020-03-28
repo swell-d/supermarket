@@ -6,6 +6,8 @@ import com.supermarket.backend.catalog.domain.Product;
 import com.supermarket.backend.mock.MockCatalogFactory;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CatalogActionsTests {
@@ -15,6 +17,13 @@ public class CatalogActionsTests {
         Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
         Catalog catalog = new CatalogActions(mockCatalog).getCatalog();
         assertEquals(mockCatalog, catalog);
+    }
+
+    @Test
+    public void getProductsTest() {
+        Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
+        List<Product> products = new CatalogActions(mockCatalog).getProducts();
+        assertEquals(mockCatalog.getProducts(), products);
     }
 
     @Test

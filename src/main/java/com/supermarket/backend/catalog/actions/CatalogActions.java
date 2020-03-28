@@ -3,6 +3,8 @@ package com.supermarket.backend.catalog.actions;
 import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.catalog.domain.Product;
 
+import java.util.List;
+
 public class CatalogActions {
 
     private Catalog catalog;
@@ -15,6 +17,10 @@ public class CatalogActions {
         return catalog;
     }
 
+    public List<Product> getProducts() {
+        return catalog.getProducts();
+    }
+
     public Product getProductByArticle(String article) {
         return catalog.getProductByArticle(article);
     }
@@ -23,7 +29,7 @@ public class CatalogActions {
         catalog.addProduct(product);
     }
 
-    public void changeProductInCatalog(String article, Product product) {
+    public void changeProductInCatalog(Product product, Product newProductData) {
         // Todo how??
     }
 

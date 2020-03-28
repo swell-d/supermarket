@@ -12,9 +12,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -36,35 +37,25 @@ public class CatalogRESTTests {
         this.mockMvc.perform(get("/catalog")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(4)))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
-    }
-
-    @Test
-    public void addProductToCatalogTest() throws Exception {
-        this.mockMvc.perform(post("/catalog")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(4)))
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
     @Test
     public void getProductFromCatalogTest() throws Exception {
-        this.mockMvc.perform(get("/catalog/Phone")
+        this.mockMvc.perform(get("/catalog/Tomatoes")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(4)))
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
     @Test
+    public void addProductToCatalogTest() throws Exception {
+        // Todo
+    }
+
+    @Test
     public void changeProductInCatalogTest() throws Exception {
-        this.mockMvc.perform(put("/catalog/new_product")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(4)))
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+        // Todo
     }
 
     @Test
@@ -77,7 +68,7 @@ public class CatalogRESTTests {
 
     @Test
     public void deleteNonExistProductFromCatalogTest() throws Exception {
-        this.mockMvc.perform(delete("/catalog/Phone2")
+        this.mockMvc.perform(delete("/catalog/NonExistProduct")
                 .contentType(MediaType.TEXT_PLAIN))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Product not exist")));
