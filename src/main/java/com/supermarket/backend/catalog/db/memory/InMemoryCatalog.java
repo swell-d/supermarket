@@ -1,7 +1,6 @@
 package com.supermarket.backend.catalog.db.memory;
 
 import com.supermarket.backend.catalog.domain.Catalog;
-import com.supermarket.backend.catalog.domain.PriceCategory;
 import com.supermarket.backend.catalog.domain.Product;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.Objects;
 
 public class InMemoryCatalog implements Catalog {
 
-    public ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Product> products = new ArrayList<>();
 
     @Override
     public void addProduct(Product product) {
@@ -57,7 +56,7 @@ public class InMemoryCatalog implements Catalog {
 
     @Override
     public Double getBaseProductPrice(Product product) {
-        return product.prices.get(PriceCategory.Base);
+        return product.prices.get("Base");
     }
 
 }
