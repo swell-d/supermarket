@@ -12,16 +12,10 @@ public class Product {
     public String smallImage;
     public String image;
     public MeasurementUnit unit;
-    public Map<PriceCategory, Double> prices = new HashMap<>();
+    public Map<String, Double> prices = new HashMap<>();
 
     public Product(String article, String name, MeasurementUnit unit) {
         this.article = article;
-        this.name = name;
-        this.unit = unit;
-    }
-
-    public Product(String name, MeasurementUnit unit) {
-        this.article = name;
         this.name = name;
         this.unit = unit;
     }

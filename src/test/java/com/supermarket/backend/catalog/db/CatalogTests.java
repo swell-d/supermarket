@@ -1,8 +1,8 @@
 package com.supermarket.backend.catalog.db;
 
 import com.supermarket.backend.catalog.domain.Catalog;
-import com.supermarket.backend.catalog.domain.Product;
 import com.supermarket.backend.catalog.domain.MeasurementUnit;
+import com.supermarket.backend.catalog.domain.Product;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -49,7 +49,7 @@ public class CatalogTests {
     }
 
     public static void getProductByName(Catalog catalog) {
-        Product product1 = new Product("product1", MeasurementUnit.Each);
+        Product product1 = new Product("product1", "product1", MeasurementUnit.Each);
         catalog.addProduct(product1);
         assertEquals(product1, catalog.getProductByName("product1"));
     }
