@@ -36,11 +36,11 @@ public class ReceiptPrinter implements Report {
     }
 
     private String presentReceiptItem(ReceiptItem item) {
-        String totalPricePresentation = presentPrice(item.getTotalPrice());
-        String name = item.getProduct().name;
+        String totalPricePresentation = presentPrice(item.price * item.quantity);
+        String name = item.product.name;
         String line = formatLineWithWhitespace(name, totalPricePresentation);
-        if (item.getQuantity() != 1)
-            line += "  " + presentPrice(item.getPrice()) + " * " + presentQuantity(item) + LS;
+        if (item.quantity != 1)
+            line += "  " + presentPrice(item.price) + " * " + presentQuantity(item) + LS;
         return line;
     }
 
@@ -71,9 +71,9 @@ public class ReceiptPrinter implements Report {
 
     private static String presentQuantity(ReceiptItem item) {
         return ProductUnit.Each.equals(
-                item.getProduct().unit) ?
-                String.format(Locale.UK, "%.0f", item.getQuantity())
-                : String.format(Locale.UK, "%.3f", item.getQuantity()
+                item.product.unit) ?
+                String.format(Locale.UK, "%.0f", item.quantity)
+                : String.format(Locale.UK, "%.3f", item.quantity
         );
     }
 }
