@@ -22,11 +22,11 @@ public class ReceiptPrinter implements Report {
 
     public String printReceipt(Receipt receipt) {
         StringBuilder result = new StringBuilder();
-        for (ReceiptItem item : receipt.getItems()) {
+        for (ReceiptItem item : receipt.items) {
             String receiptItem = presentReceiptItem(item);
             result.append(receiptItem);
         }
-        for (Discount discount : receipt.getDiscounts()) {
+        for (Discount discount : receipt.discounts) {
             String discountPresentation = presentDiscount(discount);
             result.append(discountPresentation);
         }

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Receipt {
-    private List<ReceiptItem> items = new ArrayList<>();
-    private List<Discount> discounts = new ArrayList<>();
+    public List<ReceiptItem> items = new ArrayList<>();
+    public List<Discount> discounts = new ArrayList<>();
 
     public Double getTotalPrice() {
         double total = 0.0;
@@ -25,15 +25,4 @@ public class Receipt {
         this.items.add(new ReceiptItem(p, quantity, price));
     }
 
-    public List<ReceiptItem> getItems() {
-        return new ArrayList<>(this.items);
-    }
-
-    public void addDiscount(Discount discount) {
-        this.discounts.add(discount);
-    }
-
-    public List<Discount> getDiscounts() {
-        return discounts;
-    }
 }

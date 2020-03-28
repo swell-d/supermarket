@@ -17,7 +17,7 @@ public enum SpecialOfferType implements ISpecialOfferType {
                 double discountAmount = totalPrice * bundle.getValue() / 100.0;
                 String description = String.format(Locale.UK, "%.0f", bundle.getValue()) + "% off" +
                         " (" + product.name + ")";
-                receipt.addDiscount(new Discount(description, discountAmount));
+                receipt.discounts.add(new Discount(description, discountAmount));
             }
         }
 
@@ -33,7 +33,7 @@ public enum SpecialOfferType implements ISpecialOfferType {
             double discountAmount = totalPrice - bundle.getValue() * fullSets;
             String description = "bundle for " + String.format(Locale.UK, "%.2f", bundle.getValue()) +
                     " (" + productNames.substring(0, productNames.length() - 1) + ")";
-            receipt.addDiscount(new Discount(description, discountAmount));
+            receipt.discounts.add(new Discount(description, discountAmount));
         }
     };
 }
