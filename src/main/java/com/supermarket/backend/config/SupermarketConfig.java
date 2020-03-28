@@ -1,10 +1,13 @@
 package com.supermarket.backend.config;
 
-import com.supermarket.backend.cart.actions.AddProductAction;
+import com.supermarket.backend.cart.actions.AddProductToCartAction;
 import com.supermarket.backend.cart.actions.ClearCartAction;
 import com.supermarket.backend.cart.actions.GetReceiptAction;
 import com.supermarket.backend.cart.db.memory.InMemoryCartRepository;
 import com.supermarket.backend.cart.domain.CartRepository;
+import com.supermarket.backend.catalog.actions.AddProductToCatalogAction;
+import com.supermarket.backend.catalog.actions.ChangeProductInCatalogAction;
+import com.supermarket.backend.catalog.actions.DeleteProductFromCatalogAction;
 import com.supermarket.backend.catalog.actions.GetCatalogAction;
 import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
 import com.supermarket.backend.catalog.domain.Catalog;
@@ -25,8 +28,8 @@ public class SupermarketConfig {
     }
 
     @Bean
-    public AddProductAction addProductAction(Catalog catalog, CartRepository cartRepository) {
-        return new AddProductAction(cartRepository, catalog);
+    public AddProductToCartAction addProductAction(Catalog catalog, CartRepository cartRepository) {
+        return new AddProductToCartAction(cartRepository, catalog);
     }
 
     @Bean
@@ -43,4 +46,20 @@ public class SupermarketConfig {
     public GetCatalogAction getCatalogAction(Catalog catalog) {
         return new GetCatalogAction(catalog);
     }
+
+    @Bean
+    public AddProductToCatalogAction addProductToCatalogAction(Catalog catalog) {
+        return new AddProductToCatalogAction(catalog);
+    }
+
+    @Bean
+    public ChangeProductInCatalogAction changeProductInCatalogAction(Catalog catalog) {
+        return new ChangeProductInCatalogAction(catalog);
+    }
+
+    @Bean
+    public DeleteProductFromCatalogAction deleteProductFromCatalogAction(Catalog catalog) {
+        return new DeleteProductFromCatalogAction(catalog);
+    }
+
 }

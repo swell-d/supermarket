@@ -5,12 +5,12 @@ import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.catalog.domain.Product;
 
-public class AddProductAction {
+public class AddProductToCartAction {
 
     private CartRepository cartRepository;
     private Catalog catalog;
 
-    public AddProductAction(CartRepository cartRepository, Catalog catalog) {
+    public AddProductToCartAction(CartRepository cartRepository, Catalog catalog) {
         this.cartRepository = cartRepository;
         this.catalog = catalog;
     }
