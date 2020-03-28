@@ -1,10 +1,10 @@
-package com.supermarket.backend.config;
+package com.supermarket.backend.mock;
 
+import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
 import com.supermarket.backend.catalog.domain.Catalog;
+import com.supermarket.backend.catalog.domain.MeasurementUnit;
 import com.supermarket.backend.catalog.domain.PriceCategory;
 import com.supermarket.backend.catalog.domain.Product;
-import com.supermarket.backend.catalog.domain.MeasurementUnit;
-import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
 
 public class MockCatalogFactory {
 
