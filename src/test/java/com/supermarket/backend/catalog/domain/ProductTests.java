@@ -1,7 +1,5 @@
-package com.supermarket.backend.catalog;
+package com.supermarket.backend.catalog.domain;
 
-import com.supermarket.backend.catalog.domain.MeasurementUnit;
-import com.supermarket.backend.catalog.domain.Product;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,6 +1,6 @@
-package com.supermarket.backend.catalog.db;
+package com.supermarket.backend.catalog.db.memory;
 
-import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
+import com.supermarket.backend.catalog.domain.CatalogTests;
 import org.junit.Test;
 
 public class InMemoryCatalogTests {

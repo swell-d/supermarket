@@ -1,8 +1,4 @@
-package com.supermarket.backend.catalog.db;
-
-import com.supermarket.backend.catalog.domain.Catalog;
-import com.supermarket.backend.catalog.domain.MeasurementUnit;
-import com.supermarket.backend.catalog.domain.Product;
+package com.supermarket.backend.catalog.domain;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
