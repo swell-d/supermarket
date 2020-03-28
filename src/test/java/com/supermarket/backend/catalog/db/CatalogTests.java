@@ -1,8 +1,8 @@
 package com.supermarket.backend.catalog.db;
 
-import com.supermarket.backend.catalog.Catalog;
-import com.supermarket.backend.catalog.Product;
-import com.supermarket.backend.catalog.ProductUnit;
+import com.supermarket.backend.catalog.domain.Catalog;
+import com.supermarket.backend.catalog.domain.Product;
+import com.supermarket.backend.catalog.domain.MeasurementUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,8 +15,8 @@ public class CatalogTests {
     }
 
     public static void addProduct(Catalog catalog) {
-        Product product1 = new Product("test article 1", "test name 1", ProductUnit.Each);
-        Product product2 = new Product("test article 2", "test name 2", ProductUnit.Kilo);
+        Product product1 = new Product("test article 1", "test name 1", MeasurementUnit.Each);
+        Product product2 = new Product("test article 2", "test name 2", MeasurementUnit.Kilo);
         catalog.addProduct(product1);
         assertEquals(1, catalog.getCatalog().size());
         assertEquals(product1, catalog.getCatalog().get(0));
@@ -25,14 +25,14 @@ public class CatalogTests {
     }
 
     public static void addProductTwice(Catalog catalog) {
-        Product product1 = new Product("test article 1", "test name 1", ProductUnit.Each);
+        Product product1 = new Product("test article 1", "test name 1", MeasurementUnit.Each);
         catalog.addProduct(product1);
         catalog.addProduct(product1);
     }
 
     public static void deleteProduct(Catalog catalog) {
-        Product product1 = new Product("test article 1", "test name 1", ProductUnit.Each);
-        Product product2 = new Product("test article 2", "test name 2", ProductUnit.Kilo);
+        Product product1 = new Product("test article 1", "test name 1", MeasurementUnit.Each);
+        Product product2 = new Product("test article 2", "test name 2", MeasurementUnit.Kilo);
         catalog.addProduct(product1);
         catalog.addProduct(product2);
         catalog.deleteProduct(product1);
@@ -42,21 +42,21 @@ public class CatalogTests {
     }
 
     public static void deleteProductTwice(Catalog catalog) {
-        Product product1 = new Product("test article 1", "test name 1", ProductUnit.Each);
+        Product product1 = new Product("test article 1", "test name 1", MeasurementUnit.Each);
         catalog.addProduct(product1);
         catalog.deleteProduct(product1);
         catalog.deleteProduct(product1);
     }
 
     public static void getProductByName(Catalog catalog) {
-        Product product1 = new Product("product1", ProductUnit.Each);
+        Product product1 = new Product("product1", MeasurementUnit.Each);
         catalog.addProduct(product1);
         assertEquals(product1, catalog.getProductByName("product1"));
     }
 
     public static void checkExistsProduct(Catalog catalog) {
-        Product product1 = new Product("test article 1", "test name 1", ProductUnit.Each);
-        Product product2 = new Product("test article 1", "test name 2", ProductUnit.Kilo);
+        Product product1 = new Product("test article 1", "test name 1", MeasurementUnit.Each);
+        Product product2 = new Product("test article 1", "test name 2", MeasurementUnit.Kilo);
         catalog.addProduct(product1);
         catalog.addProduct(product2);
     }

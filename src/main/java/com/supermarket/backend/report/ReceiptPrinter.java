@@ -2,7 +2,7 @@ package com.supermarket.backend.report;
 
 import com.supermarket.backend.cart.domain.Receipt;
 import com.supermarket.backend.cart.domain.ReceiptItem;
-import com.supermarket.backend.catalog.ProductUnit;
+import com.supermarket.backend.catalog.domain.MeasurementUnit;
 import com.supermarket.backend.offer.Discount;
 
 import java.util.Locale;
@@ -70,7 +70,7 @@ public class ReceiptPrinter implements Report {
     }
 
     private static String presentQuantity(ReceiptItem item) {
-        return ProductUnit.Each.equals(
+        return MeasurementUnit.Each.equals(
                 item.product.unit) ?
                 String.format(Locale.UK, "%.0f", item.quantity)
                 : String.format(Locale.UK, "%.3f", item.quantity

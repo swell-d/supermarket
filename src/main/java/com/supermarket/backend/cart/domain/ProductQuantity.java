@@ -1,6 +1,6 @@
 package com.supermarket.backend.cart.domain;
 
-import com.supermarket.backend.catalog.Product;
+import com.supermarket.backend.catalog.domain.Product;
 
 public class ProductQuantity {
     public final Product product;

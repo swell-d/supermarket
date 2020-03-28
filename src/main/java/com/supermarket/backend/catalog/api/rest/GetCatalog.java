@@ -1,10 +1,11 @@
-package com.supermarket.backend.catalog.rest;
+package com.supermarket.backend.catalog.api.rest;
 
 import com.supermarket.backend.catalog.actions.GetCatalogAction;
+import com.supermarket.backend.catalog.domain.Product;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class GetCatalog {
@@ -16,7 +17,7 @@ public class GetCatalog {
     }
 
     @GetMapping("/catalog")
-    public ArrayList catalog() {
-        return getCatalogAction.getCatalog();
+    public List<Product> catalog() {
+        return getCatalogAction.getCatalog().getCatalog();
     }
 }

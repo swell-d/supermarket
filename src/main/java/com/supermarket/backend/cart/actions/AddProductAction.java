@@ -2,8 +2,8 @@ package com.supermarket.backend.cart.actions;
 
 import com.supermarket.backend.cart.domain.CartRepository;
 import com.supermarket.backend.cart.domain.ShoppingCart;
-import com.supermarket.backend.catalog.Catalog;
-import com.supermarket.backend.catalog.Product;
+import com.supermarket.backend.catalog.domain.Catalog;
+import com.supermarket.backend.catalog.domain.Product;
 
 public class AddProductAction {
 

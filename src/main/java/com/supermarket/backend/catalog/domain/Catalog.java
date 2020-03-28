@@ -1,4 +1,4 @@
-package com.supermarket.backend.catalog;
+package com.supermarket.backend.catalog.domain;
 
 import java.util.ArrayList;
 
