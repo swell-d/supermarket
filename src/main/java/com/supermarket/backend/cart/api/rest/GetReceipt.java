@@ -1,4 +1,4 @@
-package com.supermarket.backend.cart.rest;
+package com.supermarket.backend.cart.api.rest;
 
 import com.supermarket.backend.cart.actions.GetReceiptAction;
 import org.springframework.web.bind.annotation.GetMapping;

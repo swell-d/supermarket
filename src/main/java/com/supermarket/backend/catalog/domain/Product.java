@@ -1,4 +1,4 @@
-package com.supermarket.backend.catalog;
+package com.supermarket.backend.catalog.domain;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,16 +11,16 @@ public class Product {
     public String description;
     public String smallImage;
     public String image;
-    public ProductUnit unit;
-    public Map<PriceType, Double> prices = new HashMap<>();
+    public MeasurementUnit unit;
+    public Map<PriceCategory, Double> prices = new HashMap<>();
 
-    public Product(String article, String name, ProductUnit unit) {
+    public Product(String article, String name, MeasurementUnit unit) {
         this.article = article;
         this.name = name;
         this.unit = unit;
     }
 
-    public Product(String name, ProductUnit unit) {
+    public Product(String name, MeasurementUnit unit) {
         this.article = name;
         this.name = name;
         this.unit = unit;
@@ -39,3 +39,4 @@ public class Product {
         return Objects.hash(article);
     }
 }
+

@@ -5,7 +5,7 @@ import com.supermarket.backend.cart.actions.ClearCartAction;
 import com.supermarket.backend.cart.actions.GetReceiptAction;
 import com.supermarket.backend.cart.db.memory.InMemoryCartRepository;
 import com.supermarket.backend.cart.domain.CartRepository;
-import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.catalog.actions.GetCatalogAction;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

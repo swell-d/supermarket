@@ -2,7 +2,7 @@ package com.supermarket.backend.cart.db.memory;
 
 import com.supermarket.backend.cart.domain.CartRepository;
 import com.supermarket.backend.cart.domain.ShoppingCart;
-import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.catalog.domain.Catalog;
 
 import java.util.LinkedHashMap;
 

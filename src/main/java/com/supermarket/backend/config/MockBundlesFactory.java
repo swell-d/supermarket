@@ -1,7 +1,7 @@
 package com.supermarket.backend.config;
 
 import com.supermarket.backend.cart.domain.ProductQuantity;
-import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.offer.Bundle;
 import com.supermarket.backend.offer.SpecialOfferType;
 

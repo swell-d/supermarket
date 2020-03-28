@@ -1,7 +1,7 @@
-package com.supermarket.backend.cart.rest;
+package com.supermarket.backend.cart.api.rest;
 
 import com.supermarket.backend.cart.actions.AddProductAction;
-import com.supermarket.backend.catalog.Product;
+import com.supermarket.backend.catalog.domain.Product;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
