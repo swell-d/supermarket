@@ -55,7 +55,7 @@ public class BundleTests {
 
 
     private void checkReceipt(Receipt receipt, int items, double sum) {
-        assertEquals(items, receipt.getItems().size());
+        assertEquals(items, receipt.items.size());
         assertEquals(sum, receipt.getTotalPrice(), 0.01);
     }
 

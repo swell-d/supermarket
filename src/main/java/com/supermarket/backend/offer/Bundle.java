@@ -7,26 +7,14 @@ import com.supermarket.backend.pricing.PriceList;
 import java.util.ArrayList;
 
 public class Bundle {
-    private final ArrayList<ProductQuantity> productsSet;
-    private final double value;
-    private final SpecialOfferType specialOfferType;
+    public final ArrayList<ProductQuantity> productsSet;
+    public final double value;
+    public final SpecialOfferType specialOfferType;
 
     public Bundle(ArrayList<ProductQuantity> productsSet, double value, SpecialOfferType specialOfferType) {
         this.productsSet = productsSet;
         this.value = value;
         this.specialOfferType = specialOfferType;
-    }
-
-    public ArrayList<ProductQuantity> getProductsArray() {
-        return productsSet;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public SpecialOfferType getSpecialOfferType() {
-        return specialOfferType;
     }
 
     public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList) {

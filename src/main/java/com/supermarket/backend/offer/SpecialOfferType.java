@@ -11,13 +11,13 @@ public enum SpecialOfferType implements ISpecialOfferType {
     Percent {
         @Override
         public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList) {
-            for (ProductQuantity pq : bundle.getProductsArray()) {
-                Product product = pq.getProduct();
-                double totalPrice = priceList.getProductPrice(product) * fullSets * pq.getQuantity();
-                double discountAmount = totalPrice * bundle.getValue() / 100.0;
-                String description = String.format(Locale.UK, "%.0f", bundle.getValue()) + "% off" +
-                        " (" + product.getName() + ")";
-                receipt.addDiscount(new Discount(description, discountAmount));
+            for (ProductQuantity pq : bundle.productsSet) {
+                Product product = pq.product;
+                double totalPrice = priceList.getProductPrice(product) * fullSets * pq.quantity;
+                double discountAmount = totalPrice * bundle.value / 100.0;
+                String description = String.format(Locale.UK, "%.0f", bundle.value) + "% off" +
+                        " (" + product.name + ")";
+                receipt.discounts.add(new Discount(description, discountAmount));
             }
         }
 
@@ -26,14 +26,14 @@ public enum SpecialOfferType implements ISpecialOfferType {
         public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList) {
             double totalPrice = 0;
             StringBuilder productNames = new StringBuilder();
-            for (ProductQuantity pq : bundle.getProductsArray()) {
-                totalPrice += priceList.getProductPrice(pq.getProduct()) * fullSets * pq.getQuantity();
-                productNames.append(pq.getProduct().getName()).append("+");
+            for (ProductQuantity pq : bundle.productsSet) {
+                totalPrice += priceList.getProductPrice(pq.product) * fullSets * pq.quantity;
+                productNames.append(pq.product.name).append("+");
             }
-            double discountAmount = totalPrice - bundle.getValue() * fullSets;
-            String description = "bundle for " + String.format(Locale.UK, "%.2f", bundle.getValue()) +
+            double discountAmount = totalPrice - bundle.value * fullSets;
+            String description = "bundle for " + String.format(Locale.UK, "%.2f", bundle.value) +
                     " (" + productNames.substring(0, productNames.length() - 1) + ")";
-            receipt.addDiscount(new Discount(description, discountAmount));
+            receipt.discounts.add(new Discount(description, discountAmount));
         }
     };
 }

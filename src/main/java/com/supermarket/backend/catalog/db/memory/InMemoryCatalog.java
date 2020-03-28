@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class InMemoryCatalog implements Catalog {
 
-    private ArrayList<Product> products = new ArrayList<>();
+    public ArrayList<Product> products = new ArrayList<>();
 
     @Override
     public void addProduct(Product product) {
@@ -32,7 +32,7 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public Product getProductByArticle(String productArticle) {
         for (Product existProduct : this.products) {
-            if (existProduct.getArticle().equals(productArticle)) {
+            if (existProduct.article.equals(productArticle)) {
                 return existProduct;
             }
         }
@@ -42,7 +42,7 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public Product getProductByName(String productName) {
         for (Product existProduct : this.products) {
-            if (existProduct.getName().equals(productName)) {
+            if (existProduct.name.equals(productName)) {
                 return existProduct;
             }
         }

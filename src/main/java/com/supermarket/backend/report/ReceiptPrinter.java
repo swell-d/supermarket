@@ -22,11 +22,11 @@ public class ReceiptPrinter implements Report {
 
     public String printReceipt(Receipt receipt) {
         StringBuilder result = new StringBuilder();
-        for (ReceiptItem item : receipt.getItems()) {
+        for (ReceiptItem item : receipt.items) {
             String receiptItem = presentReceiptItem(item);
             result.append(receiptItem);
         }
-        for (Discount discount : receipt.getDiscounts()) {
+        for (Discount discount : receipt.discounts) {
             String discountPresentation = presentDiscount(discount);
             result.append(discountPresentation);
         }
@@ -36,17 +36,17 @@ public class ReceiptPrinter implements Report {
     }
 
     private String presentReceiptItem(ReceiptItem item) {
-        String totalPricePresentation = presentPrice(item.getTotalPrice());
-        String name = item.getProduct().getName();
+        String totalPricePresentation = presentPrice(item.price * item.quantity);
+        String name = item.product.name;
         String line = formatLineWithWhitespace(name, totalPricePresentation);
-        if (item.getQuantity() != 1)
-            line += "  " + presentPrice(item.getPrice()) + " * " + presentQuantity(item) + LS;
+        if (item.quantity != 1)
+            line += "  " + presentPrice(item.price) + " * " + presentQuantity(item) + LS;
         return line;
     }
 
     private String presentDiscount(Discount discount) {
-        return formatLineWithWhitespace(discount.getDescription(),
-                "-" + presentPrice(discount.getDiscountAmount()));
+        return formatLineWithWhitespace(discount.description,
+                "-" + presentPrice(discount.discountAmount));
     }
 
     private String presentTotal(Receipt receipt) {
@@ -71,9 +71,9 @@ public class ReceiptPrinter implements Report {
 
     private static String presentQuantity(ReceiptItem item) {
         return ProductUnit.Each.equals(
-                item.getProduct().getUnit()) ?
-                String.format(Locale.UK, "%.0f", item.getQuantity())
-                : String.format(Locale.UK, "%.3f", item.getQuantity()
+                item.product.unit) ?
+                String.format(Locale.UK, "%.0f", item.quantity)
+                : String.format(Locale.UK, "%.3f", item.quantity
         );
     }
 }
