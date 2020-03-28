@@ -50,8 +50,8 @@ public class ShoppingCart {
     private double getFullSets(Bundle bundle) {
         double fullSets = Double.MAX_VALUE;
         for (ProductQuantity pq : bundle.getProductsArray()) {
-            Product product = pq.getProduct();
-            double quantity = pq.getQuantity();
+            Product product = pq.product;
+            double quantity = pq.quantity;
             if (productQuantities.containsKey(product))
                 fullSets = Math.min(fullSets, productQuantities.get(product) / quantity);
             else return 0.0;

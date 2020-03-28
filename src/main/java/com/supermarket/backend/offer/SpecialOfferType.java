@@ -12,8 +12,8 @@ public enum SpecialOfferType implements ISpecialOfferType {
         @Override
         public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList) {
             for (ProductQuantity pq : bundle.getProductsArray()) {
-                Product product = pq.getProduct();
-                double totalPrice = priceList.getProductPrice(product) * fullSets * pq.getQuantity();
+                Product product = pq.product;
+                double totalPrice = priceList.getProductPrice(product) * fullSets * pq.quantity;
                 double discountAmount = totalPrice * bundle.getValue() / 100.0;
                 String description = String.format(Locale.UK, "%.0f", bundle.getValue()) + "% off" +
                         " (" + product.name + ")";
@@ -27,8 +27,8 @@ public enum SpecialOfferType implements ISpecialOfferType {
             double totalPrice = 0;
             StringBuilder productNames = new StringBuilder();
             for (ProductQuantity pq : bundle.getProductsArray()) {
-                totalPrice += priceList.getProductPrice(pq.getProduct()) * fullSets * pq.getQuantity();
-                productNames.append(pq.getProduct().name).append("+");
+                totalPrice += priceList.getProductPrice(pq.product) * fullSets * pq.quantity;
+                productNames.append(pq.product.name).append("+");
             }
             double discountAmount = totalPrice - bundle.getValue() * fullSets;
             String description = "bundle for " + String.format(Locale.UK, "%.2f", bundle.getValue()) +
