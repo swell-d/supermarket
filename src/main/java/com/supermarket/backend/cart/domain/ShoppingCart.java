@@ -1,9 +1,9 @@
 package com.supermarket.backend.cart.domain;
 
+import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
 import com.supermarket.backend.offer.Bundle;
 import com.supermarket.backend.offer.SpecialOfferType;
-import com.supermarket.backend.pricing.PriceList;
 import com.supermarket.backend.report.Report;
 
 import java.util.ArrayList;
@@ -14,14 +14,10 @@ public class ShoppingCart {
 
     private ArrayList<Bundle> bundles = new ArrayList<>();
     private LinkedHashMap<Product, Double> productQuantities = new LinkedHashMap<>();
-    private final PriceList priceList;
+    public final Catalog catalog;
 
-    public PriceList getPriceList() {
-        return priceList;
-    }
-
-    public ShoppingCart(PriceList priceList) {
-        this.priceList = priceList;
+    public ShoppingCart(Catalog catalog) {
+        this.catalog = catalog;
     }
 
     public void addItemQuantity(Product product, double quantity) {
@@ -37,7 +33,7 @@ public class ShoppingCart {
     public Receipt getReceipt() {
         Receipt receipt = new Receipt();
         for (Map.Entry<Product, Double> entry : productQuantities.entrySet()) {
-            receipt.addProduct(entry.getKey(), entry.getValue(), priceList.getProductPrice(entry.getKey()));
+            receipt.addProduct(entry.getKey(), entry.getValue(), catalog.getBaseProductPrice(entry.getKey()));
         }
         handleOffers(receipt);
         return receipt;
@@ -63,7 +59,7 @@ public class ShoppingCart {
 
     private void createDiscounts(Receipt receipt, Bundle bundle, double fullSets) {
         if (fullSets < 1.0) return;
-        bundle.addDiscountToReceipt(receipt, bundle, fullSets, priceList);
+        bundle.addDiscountToReceipt(receipt, bundle, fullSets, catalog);
     }
 
     public String export(Report printer) {
@@ -71,7 +67,7 @@ public class ShoppingCart {
     }
 
     public Product getProductByName(String productName) {
-        return priceList.getProductByName(productName);
+        return catalog.getProductByName(productName);
     }
 
     public void clearCart() {

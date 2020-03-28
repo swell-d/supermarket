@@ -2,18 +2,18 @@ package com.supermarket.backend.offer;
 
 import com.supermarket.backend.cart.domain.ProductQuantity;
 import com.supermarket.backend.cart.domain.Receipt;
+import com.supermarket.backend.catalog.Catalog;
 import com.supermarket.backend.catalog.Product;
-import com.supermarket.backend.pricing.PriceList;
 
 import java.util.Locale;
 
 public enum SpecialOfferType implements ISpecialOfferType {
     Percent {
         @Override
-        public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList) {
+        public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, Catalog catalog) {
             for (ProductQuantity pq : bundle.productsSet) {
                 Product product = pq.product;
-                double totalPrice = priceList.getProductPrice(product) * fullSets * pq.quantity;
+                double totalPrice = catalog.getBaseProductPrice(product) * fullSets * pq.quantity;
                 double discountAmount = totalPrice * bundle.value / 100.0;
                 String description = String.format(Locale.UK, "%.0f", bundle.value) + "% off" +
                         " (" + product.name + ")";
@@ -23,11 +23,11 @@ public enum SpecialOfferType implements ISpecialOfferType {
 
     }, FixAmount {
         @Override
-        public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, PriceList priceList) {
+        public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, Catalog catalog) {
             double totalPrice = 0;
             StringBuilder productNames = new StringBuilder();
             for (ProductQuantity pq : bundle.productsSet) {
-                totalPrice += priceList.getProductPrice(pq.product) * fullSets * pq.quantity;
+                totalPrice += catalog.getBaseProductPrice(pq.product) * fullSets * pq.quantity;
                 productNames.append(pq.product.name).append("+");
             }
             double discountAmount = totalPrice - bundle.value * fullSets;

@@ -5,8 +5,8 @@ import com.supermarket.backend.cart.actions.ClearCartAction;
 import com.supermarket.backend.cart.actions.GetReceiptAction;
 import com.supermarket.backend.cart.db.memory.InMemoryCartRepository;
 import com.supermarket.backend.cart.domain.CartRepository;
-import com.supermarket.backend.pricing.PriceList;
-import com.supermarket.backend.pricing.actions.GetCatalogAction;
+import com.supermarket.backend.catalog.Catalog;
+import com.supermarket.backend.catalog.actions.GetCatalogAction;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 public class SupermarketConfig {
 
     @Bean
-    public PriceList priceList() {
-        return new MockPriceListFactory().createMockPriceList();
+    public Catalog catalog() {
+        return new MockCatalogFactory().createMockCatalog();
     }
 
     @Bean
@@ -24,22 +24,22 @@ public class SupermarketConfig {
     }
 
     @Bean
-    public AddProductAction addProductAction(PriceList priceList, CartRepository cartRepository) {
-        return new AddProductAction(cartRepository, priceList);
+    public AddProductAction addProductAction(Catalog catalog, CartRepository cartRepository) {
+        return new AddProductAction(cartRepository, catalog);
     }
 
     @Bean
-    public ClearCartAction clearCartAction(PriceList priceList, CartRepository cartRepository) {
-        return new ClearCartAction(cartRepository, priceList);
+    public ClearCartAction clearCartAction(Catalog catalog, CartRepository cartRepository) {
+        return new ClearCartAction(cartRepository, catalog);
     }
 
     @Bean
-    public GetReceiptAction getReceiptAction(PriceList priceList, CartRepository cartRepository) {
-        return new GetReceiptAction(cartRepository, priceList);
+    public GetReceiptAction getReceiptAction(Catalog catalog, CartRepository cartRepository) {
+        return new GetReceiptAction(cartRepository, catalog);
     }
 
     @Bean
-    public GetCatalogAction getCatalogAction(PriceList priceList) {
-        return new GetCatalogAction(priceList);
+    public GetCatalogAction getCatalogAction(Catalog catalog) {
+        return new GetCatalogAction(catalog);
     }
 }

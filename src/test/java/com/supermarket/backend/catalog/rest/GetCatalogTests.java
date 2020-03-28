@@ -1,4 +1,4 @@
-package com.supermarket.backend.pricing.rest;
+package com.supermarket.backend.catalog.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
