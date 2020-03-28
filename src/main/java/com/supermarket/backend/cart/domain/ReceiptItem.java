@@ -30,4 +30,7 @@ public class ReceiptItem {
         return Objects.hash(product, price, quantity);
     }
 
+    public double getTotalPrice() {
+        return price * quantity;
+    }
 }
