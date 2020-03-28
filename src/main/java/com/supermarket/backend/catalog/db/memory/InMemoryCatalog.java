@@ -50,7 +50,7 @@ public class InMemoryCatalog implements Catalog {
     }
 
     @Override
-    public ArrayList<Product> getCatalog() {
+    public ArrayList<Product> getProducts() {
         return products;
     }
 

@@ -1,7 +1,5 @@
-package com.supermarket.backend.cartrepository.db;
+package com.supermarket.backend.cart.domain;
 
-import com.supermarket.backend.cart.domain.CartRepository;
-import com.supermarket.backend.cart.domain.ShoppingCart;
 import com.supermarket.backend.mock.MockCatalogFactory;
 
 import static org.junit.Assert.assertEquals;
