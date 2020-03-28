@@ -1,5 +1,7 @@
 package com.supermarket.backend.catalog;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Product {
@@ -10,6 +12,7 @@ public class Product {
     public String smallImage;
     public String image;
     public ProductUnit unit;
+    public Map<PriceType, Double> prices = new HashMap<>();
 
     public Product(String article, String name, ProductUnit unit) {
         this.article = article;

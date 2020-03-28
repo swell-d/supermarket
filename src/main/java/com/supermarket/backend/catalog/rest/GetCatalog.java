@@ -1,6 +1,6 @@
-package com.supermarket.backend.pricing.rest;
+package com.supermarket.backend.catalog.rest;
 
-import com.supermarket.backend.pricing.actions.GetCatalogAction;
+import com.supermarket.backend.catalog.actions.GetCatalogAction;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

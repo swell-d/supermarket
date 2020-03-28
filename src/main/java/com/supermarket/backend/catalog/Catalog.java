@@ -14,4 +14,6 @@ public interface Catalog {
 
     ArrayList<Product> getCatalog();
 
+    Double getBaseProductPrice(Product product);
+
 }
