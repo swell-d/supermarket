@@ -34,8 +34,8 @@ public class GetReceiptTests {
 
     @Test
     public void getReceiptTest() throws Exception {
-        String requestJson1 = "{\"productName\": \"Tomatoes\", \"productCount\": \"42\"}";
-        String requestJson2 = "{\"productName\": \"Potatoes\", \"productCount\": \"24\"}";
+        String requestJson1 = "{\"article\": \"Tomatoes\", \"count\": \"42\"}";
+        String requestJson2 = "{\"article\": \"Potatoes\", \"count\": \"24\"}";
 
         this.mockMvc.perform(delete("/cart"));
 

@@ -34,7 +34,7 @@ public class ClearCartTests {
 
     @Test
     public void clearCartTest() throws Exception {
-        String requestJson1 = "{\"productName\": \"Tomatoes\", \"productCount\": \"42\"}";
+        String requestJson1 = "{\"article\": \"Tomatoes\", \"count\": \"42\"}";
 
         this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)

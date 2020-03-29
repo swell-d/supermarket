@@ -12,10 +12,15 @@ import java.util.ArrayList;
 public class InMemoryCatalog implements Catalog {
 
     private ArrayList<Product> products = new ArrayList<Product>();
-    private final String FILENAME = "catalog.dat";
+    private String FILENAME = "catalog.dat";
+    private boolean testMode = false;
 
     public InMemoryCatalog() {
         loadFromFile();
+    }
+
+    public InMemoryCatalog(boolean testMode) {
+        this.testMode = testMode;
     }
 
     @Override
@@ -70,6 +75,7 @@ public class InMemoryCatalog implements Catalog {
     }
 
     public void saveToFile() {
+        if (testMode) return;
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))) {
             oos.writeObject(products);
         } catch (Exception ex) {
@@ -78,6 +84,7 @@ public class InMemoryCatalog implements Catalog {
     }
 
     public void loadFromFile() {
+        if (testMode) return;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILENAME))) {
             products = ((ArrayList<Product>) ois.readObject());
         } catch (Exception ex) {
