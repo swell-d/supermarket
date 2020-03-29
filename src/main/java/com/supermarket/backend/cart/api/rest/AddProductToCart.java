@@ -17,7 +17,7 @@ public class AddProductToCart {
         this.addProductToCartAction = addProductToCartAction;
     }
 
-    @PostMapping(path = "/cart/addProduct", consumes = "application/json")
+    @PostMapping(path = "/cart", consumes = "application/json")
     public String addProduct(@RequestBody Map<String, String> newProduct) {
         Product product = addProductToCartAction.findProductByName(newProduct.get("productName"));
         if (product != null) {

@@ -36,7 +36,7 @@ public class AddProductToCartTests {
     public void noneExistentProductTest() throws Exception {
         String requestJson3 = "{\"productName\": \"product3\", \"productCount\": \"42\"}";
 
-        this.mockMvc.perform(post("/cart/addProduct")
+        this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson3))
                 .andDo(print())
@@ -49,14 +49,14 @@ public class AddProductToCartTests {
         String requestJson1 = "{\"productName\": \"Tomatoes\", \"productCount\": \"42\"}";
         String requestJson2 = "{\"productName\": \"Potatoes\", \"productCount\": \"24\"}";
 
-        this.mockMvc.perform(post("/cart/addProduct")
+        this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson1))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tomatoes added.")));
 
-        this.mockMvc.perform(post("/cart/addProduct")
+        this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson2))
                 .andDo(print())

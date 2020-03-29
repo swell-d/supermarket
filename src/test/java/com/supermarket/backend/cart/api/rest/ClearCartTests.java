@@ -36,19 +36,19 @@ public class ClearCartTests {
     public void clearCartTest() throws Exception {
         String requestJson1 = "{\"productName\": \"Tomatoes\", \"productCount\": \"42\"}";
 
-        this.mockMvc.perform(post("/cart/addProduct")
+        this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson1))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tomatoes added.")));
 
-        this.mockMvc.perform(delete("/cart/clearCart"))
+        this.mockMvc.perform(delete("/cart"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Cart cleared.")));
 
-        this.mockMvc.perform(get("/cart/receipt"))
+        this.mockMvc.perform(get("/cart"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("0.00")));

@@ -37,17 +37,17 @@ public class GetReceiptTests {
         String requestJson1 = "{\"productName\": \"Tomatoes\", \"productCount\": \"42\"}";
         String requestJson2 = "{\"productName\": \"Potatoes\", \"productCount\": \"24\"}";
 
-        this.mockMvc.perform(delete("/cart/clearCart"));
+        this.mockMvc.perform(delete("/cart"));
 
-        this.mockMvc.perform(post("/cart/addProduct")
+        this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson1));
 
-        this.mockMvc.perform(post("/cart/addProduct")
+        this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson2));
 
-        this.mockMvc.perform(get("/cart/receipt"))
+        this.mockMvc.perform(get("/cart"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Total")))

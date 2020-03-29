@@ -13,7 +13,7 @@ public class ClearCart {
         this.clearCartAction = clearCartAction;
     }
 
-    @DeleteMapping(path = "/cart/clearCart")
+    @DeleteMapping(path = "/cart")
     public String clearCart() {
         clearCartAction.clearCart();
         return "Cart cleared.";
