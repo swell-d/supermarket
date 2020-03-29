@@ -1,7 +1,7 @@
 package com.supermarket.backend.cart.api.rest;
 
 import com.supermarket.backend.cart.actions.ClearCartAction;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -13,7 +13,7 @@ public class ClearCart {
         this.clearCartAction = clearCartAction;
     }
 
-    @PutMapping("/cart/clearCart")
+    @DeleteMapping(path = "/cart/clearCart")
     public String clearCart() {
         clearCartAction.clearCart();
         return "Cart cleared.";

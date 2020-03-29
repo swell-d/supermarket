@@ -13,7 +13,7 @@ public class GetReceipt {
         this.getReceiptAction = getReceiptAction;
     }
 
-    @GetMapping("/cart/receipt")
+    @GetMapping(path = "/cart/receipt")
     public String receipt() {
         return getReceiptAction.getReceipt();
     }

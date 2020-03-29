@@ -2,9 +2,11 @@ package com.supermarket.backend.cart.api.rest;
 
 import com.supermarket.backend.cart.actions.AddProductToCartAction;
 import com.supermarket.backend.catalog.domain.Product;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 public class AddProductToCart {
@@ -15,14 +17,14 @@ public class AddProductToCart {
         this.addProductToCartAction = addProductToCartAction;
     }
 
-    @PutMapping("/cart/addProduct")
-    public String addProduct(@RequestParam(name = "productName") String productName,
-                             @RequestParam(name = "productCount") String productCount) {
-        Product product = addProductToCartAction.findProductByName(productName);
+    @PostMapping(path = "/cart/addProduct", consumes = "application/json")
+    public String addProduct(@RequestBody Map<String, String> newProduct) {
+        Product product = addProductToCartAction.findProductByName(newProduct.get("productName"));
         if (product != null) {
-            addProductToCartAction.addProduct(product, productCount);
-            return productName + " added.";
+            addProductToCartAction.addProduct(product, newProduct.get("productCount"));
+            return newProduct.get("productName") + " added.";
         }
-        return productName + " not found.";
+        return newProduct.get("productName") + " not found.";
     }
+
 }
