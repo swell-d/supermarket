@@ -4,7 +4,6 @@ import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.catalog.domain.Product;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class InMemoryCatalog implements Catalog {
 
@@ -13,7 +12,7 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public void addProduct(Product product) {
         for (Product existProduct : this.products) {
-            if (Objects.equals(existProduct, product)) throw new IllegalArgumentException();
+            if (product.isSameArticle(existProduct)) throw new IllegalArgumentException();
         }
         products.add(product);
     }
@@ -21,8 +20,8 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public void deleteProduct(Product product) {
         for (Product existProduct : this.products) {
-            if (Objects.equals(existProduct, product)) {
-                this.products.remove(product);
+            if (product.isSameArticle(existProduct)) {
+                this.products.remove(existProduct);
                 return;
             }
         }

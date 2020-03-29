@@ -20,17 +20,29 @@ public class Product {
         this.unit = unit;
     }
 
+    public boolean isSameArticle(Product product) {
+        return article.equals(product.article);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return article.equals(product.article);
+        return article.equals(product.article) &&
+                Objects.equals(name, product.name) &&
+                Objects.equals(shortDescription, product.shortDescription) &&
+                Objects.equals(description, product.description) &&
+                Objects.equals(smallImage, product.smallImage) &&
+                Objects.equals(image, product.image) &&
+                unit == product.unit &&
+                Objects.equals(prices, product.prices);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(article);
+        return Objects.hash(article, name, shortDescription, description, smallImage, image, unit, prices);
     }
+
 }
 

@@ -32,8 +32,8 @@ public class ProductTests {
         Product anotherUnitProduct = new Product("test article 1", "test name 1", MeasurementUnit.Kilo);
         assertEquals(baseProduct, sameProduct);
         assertNotEquals(baseProduct, anotherArticleProduct);
-        assertEquals(baseProduct, anotherNameProduct);
-        assertEquals(baseProduct, anotherUnitProduct);
+        assertNotEquals(baseProduct, anotherNameProduct);
+        assertNotEquals(baseProduct, anotherUnitProduct);
     }
 
 }
