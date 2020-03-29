@@ -1,5 +1,7 @@
 package com.supermarket.backend.catalog.domain;
 
-public enum MeasurementUnit {
+import java.io.Serializable;
+
+public enum MeasurementUnit implements Serializable {
     Kilo, Each
 }

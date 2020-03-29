@@ -1,10 +1,11 @@
 package com.supermarket.backend.catalog.domain;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Product {
+public class Product implements Serializable {
     final public String article;
     public String name;
     public String shortDescription;

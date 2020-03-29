@@ -3,11 +3,20 @@ package com.supermarket.backend.catalog.db.memory;
 import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.catalog.domain.Product;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class InMemoryCatalog implements Catalog {
 
-    private ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Product> products = new ArrayList<Product>();
+    private final String FILENAME = "catalog.dat";
+
+    public InMemoryCatalog() {
+        loadFromFile();
+    }
 
     @Override
     public void addProduct(Product product) {
@@ -15,6 +24,7 @@ public class InMemoryCatalog implements Catalog {
             if (product.isSameArticle(existProduct)) throw new IllegalArgumentException();
         }
         products.add(product);
+        saveToFile();
     }
 
     @Override
@@ -22,6 +32,7 @@ public class InMemoryCatalog implements Catalog {
         for (Product existProduct : this.products) {
             if (product.isSameArticle(existProduct)) {
                 this.products.remove(existProduct);
+                saveToFile();
                 return;
             }
         }
@@ -56,6 +67,22 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public Double getBaseProductPrice(Product product) {
         return product.prices.get("Base");
+    }
+
+    public void saveToFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))) {
+            oos.writeObject(products);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void loadFromFile() {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILENAME))) {
+            products = ((ArrayList<Product>) ois.readObject());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
