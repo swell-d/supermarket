@@ -34,7 +34,7 @@ public class AddProductToCartTests {
 
     @Test
     public void noneExistentProductTest() throws Exception {
-        String requestJson3 = "{\"productName\": \"product3\", \"productCount\": \"42\"}";
+        String requestJson3 = "{\"article\": \"product3\", \"count\": \"42\"}";
 
         this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -46,8 +46,8 @@ public class AddProductToCartTests {
 
     @Test
     public void addTwoProductsToCartTest() throws Exception {
-        String requestJson1 = "{\"productName\": \"Tomatoes\", \"productCount\": \"42\"}";
-        String requestJson2 = "{\"productName\": \"Potatoes\", \"productCount\": \"24\"}";
+        String requestJson1 = "{\"article\": \"Tomatoes\", \"count\": \"42\"}";
+        String requestJson2 = "{\"article\": \"Potatoes\", \"count\": \"24\"}";
 
         this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
