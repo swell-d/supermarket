@@ -11,7 +11,7 @@ public class MockCatalogFactory {
 
     public Catalog createMockCatalog() {
 
-        Catalog catalog = new InMemoryCatalog();
+        Catalog catalog = new InMemoryCatalog(true);
 
         Product tomatoes = new Product("Tomatoes", "Tomatoes", MeasurementUnit.Kilo);
         tomatoes.shortDescription = "Tasty tomatoes from sunny Spain";
