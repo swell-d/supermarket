@@ -19,12 +19,12 @@ public class AddProductToCart {
 
     @PostMapping(path = "/cart", consumes = "application/json")
     public String addProduct(@RequestBody Map<String, String> newProduct) {
-        Product product = addProductToCartAction.findProductByName(newProduct.get("productName"));
+        Product product = addProductToCartAction.findProductByArticle(newProduct.get("article"));
         if (product != null) {
-            addProductToCartAction.addProduct(product, newProduct.get("productCount"));
-            return newProduct.get("productName") + " added.";
+            addProductToCartAction.addProduct(product, newProduct.get("count"));
+            return newProduct.get("article") + " added.";
         }
-        return newProduct.get("productName") + " not found.";
+        return newProduct.get("article") + " not found.";
     }
 
 }

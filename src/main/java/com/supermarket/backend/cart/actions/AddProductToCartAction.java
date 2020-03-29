@@ -15,14 +15,14 @@ public class AddProductToCartAction {
         this.catalog = catalog;
     }
 
-    public Product findProductByName(String productName) {
+    public Product findProductByArticle(String article) {
         ShoppingCart cart = cartRepository.getCart("user 1", catalog);
-        return cart.getProductByName(productName);
+        return cart.getProductByArticle(article);
     }
 
-    public void addProduct(Product product, String productCount) {
+    public void addProduct(Product product, String count) {
         ShoppingCart cart = cartRepository.getCart("user 1", catalog);
-        cart.addItemQuantity(product, Double.parseDouble(productCount));
+        cart.addItemQuantity(product, Double.parseDouble(count));
     }
 
 }
