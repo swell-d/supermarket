@@ -1,7 +1,5 @@
-package com.supermarket.backend.catalog;
+package com.supermarket.backend.catalog.domain;
 
-import com.supermarket.backend.catalog.domain.MeasurementUnit;
-import com.supermarket.backend.catalog.domain.Product;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -34,8 +32,8 @@ public class ProductTests {
         Product anotherUnitProduct = new Product("test article 1", "test name 1", MeasurementUnit.Kilo);
         assertEquals(baseProduct, sameProduct);
         assertNotEquals(baseProduct, anotherArticleProduct);
-        assertEquals(baseProduct, anotherNameProduct);
-        assertEquals(baseProduct, anotherUnitProduct);
+        assertNotEquals(baseProduct, anotherNameProduct);
+        assertNotEquals(baseProduct, anotherUnitProduct);
     }
 
 }

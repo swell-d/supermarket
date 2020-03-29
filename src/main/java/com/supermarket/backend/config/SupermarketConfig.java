@@ -1,11 +1,11 @@
 package com.supermarket.backend.config;
 
-import com.supermarket.backend.cart.actions.AddProductAction;
+import com.supermarket.backend.cart.actions.AddProductToCartAction;
 import com.supermarket.backend.cart.actions.ClearCartAction;
 import com.supermarket.backend.cart.actions.GetReceiptAction;
 import com.supermarket.backend.cart.db.memory.InMemoryCartRepository;
 import com.supermarket.backend.cart.domain.CartRepository;
-import com.supermarket.backend.catalog.actions.GetCatalogAction;
+import com.supermarket.backend.catalog.actions.CatalogActions;
 import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
 import com.supermarket.backend.catalog.domain.Catalog;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +25,8 @@ public class SupermarketConfig {
     }
 
     @Bean
-    public AddProductAction addProductAction(Catalog catalog, CartRepository cartRepository) {
-        return new AddProductAction(cartRepository, catalog);
+    public AddProductToCartAction addProductAction(Catalog catalog, CartRepository cartRepository) {
+        return new AddProductToCartAction(cartRepository, catalog);
     }
 
     @Bean
@@ -40,7 +40,8 @@ public class SupermarketConfig {
     }
 
     @Bean
-    public GetCatalogAction getCatalogAction(Catalog catalog) {
-        return new GetCatalogAction(catalog);
+    public CatalogActions getCatalogAction(Catalog catalog) {
+        return new CatalogActions(catalog);
     }
+
 }

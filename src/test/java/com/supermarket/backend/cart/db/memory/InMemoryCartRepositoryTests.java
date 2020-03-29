@@ -1,6 +1,6 @@
-package com.supermarket.backend.cartrepository.db;
+package com.supermarket.backend.cart.db.memory;
 
-import com.supermarket.backend.cart.db.memory.InMemoryCartRepository;
+import com.supermarket.backend.cart.domain.CartRepositoryTests;
 import org.junit.Test;
 
 public class InMemoryCartRepositoryTests {

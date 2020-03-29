@@ -1,8 +1,4 @@
-package com.supermarket.backend.catalog.db;
-
-import com.supermarket.backend.catalog.domain.Catalog;
-import com.supermarket.backend.catalog.domain.MeasurementUnit;
-import com.supermarket.backend.catalog.domain.Product;
+package com.supermarket.backend.catalog.domain;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -11,17 +7,17 @@ public class CatalogTests {
 
     public static void createCatalog(Catalog catalog) {
         assertNotNull(catalog);
-        assertEquals(0, catalog.getCatalog().size());
+        assertEquals(0, catalog.getProducts().size());
     }
 
     public static void addProduct(Catalog catalog) {
         Product product1 = new Product("test article 1", "test name 1", MeasurementUnit.Each);
         Product product2 = new Product("test article 2", "test name 2", MeasurementUnit.Kilo);
         catalog.addProduct(product1);
-        assertEquals(1, catalog.getCatalog().size());
-        assertEquals(product1, catalog.getCatalog().get(0));
+        assertEquals(1, catalog.getProducts().size());
+        assertEquals(product1, catalog.getProducts().get(0));
         catalog.addProduct(product2);
-        assertEquals(2, catalog.getCatalog().size());
+        assertEquals(2, catalog.getProducts().size());
     }
 
     public static void addProductTwice(Catalog catalog) {
@@ -36,9 +32,9 @@ public class CatalogTests {
         catalog.addProduct(product1);
         catalog.addProduct(product2);
         catalog.deleteProduct(product1);
-        assertEquals(1, catalog.getCatalog().size());
+        assertEquals(1, catalog.getProducts().size());
         catalog.deleteProduct(product2);
-        assertEquals(0, catalog.getCatalog().size());
+        assertEquals(0, catalog.getProducts().size());
     }
 
     public static void deleteProductTwice(Catalog catalog) {

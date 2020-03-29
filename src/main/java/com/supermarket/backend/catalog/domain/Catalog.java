@@ -12,7 +12,7 @@ public interface Catalog {
 
     Product getProductByName(String productName);
 
-    ArrayList<Product> getCatalog();
+    ArrayList<Product> getProducts();
 
     Double getBaseProductPrice(Product product);
 

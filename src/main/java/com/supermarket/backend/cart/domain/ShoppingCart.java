@@ -66,8 +66,8 @@ public class ShoppingCart {
         return printer.printReceipt(getReceipt());
     }
 
-    public Product getProductByName(String productName) {
-        return catalog.getProductByName(productName);
+    public Product getProductByArticle(String productArticle) {
+        return catalog.getProductByArticle(productArticle);
     }
 
     public void clearCart() {
