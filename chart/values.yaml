@@ -42,7 +42,7 @@ ingress:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host:
+    - host: dev.supermarket.api.voltage-it.site
       paths: ["/(.*)"]
 
   tls: []
