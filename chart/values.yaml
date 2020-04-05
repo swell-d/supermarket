@@ -43,7 +43,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: supermarket.dev.voltage-it.site
-      paths: ["/(.*)"]
+      paths: ["/(api/.*)"]
 
   tls: []
   #  - secretName: chart-example-tls
