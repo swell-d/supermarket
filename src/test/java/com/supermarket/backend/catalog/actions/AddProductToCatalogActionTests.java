@@ -14,8 +14,18 @@ public class AddProductToCatalogActionTests {
     public void addProductToCatalogTest() {
         Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
         Product product = new Product("test article 1", "test name 1", MeasurementUnit.Each);
+        product.prices.put("Base", 0.0);
         new AddProductToCatalogAction(mockCatalog).addProductToCatalog(product);
         assertEquals(mockCatalog.getProductByArticle("test article 1"), product);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void addExistProductToCatalogTest() {
+        Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
+        Product product = new Product("test article 1", "test name 1", MeasurementUnit.Each);
+        product.prices.put("Base", 0.0);
+        new AddProductToCatalogAction(mockCatalog).addProductToCatalog(product);
+        new AddProductToCatalogAction(mockCatalog).addProductToCatalog(product);
     }
 
 }

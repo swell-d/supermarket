@@ -21,9 +21,13 @@ public class AddProductToCatalogController {
     public void addProductToCatalog(@RequestBody Product newProduct) {
         try {
             action.addProductToCatalog(newProduct);
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, e.toString()
+            );
         } catch (IllegalStateException e) {
             throw new ResponseStatusException(
-                    HttpStatus.CONFLICT, "Error: product already exist"
+                    HttpStatus.CONFLICT, "Product already exist"
             );
         }
     }

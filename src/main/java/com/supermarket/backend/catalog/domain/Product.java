@@ -8,10 +8,10 @@ import java.util.Objects;
 public class Product implements Serializable {
     final public String article;
     public String name;
-    public String shortDescription;
-    public String description;
-    public String smallImage;
-    public String image;
+    public String shortDescription = "";
+    public String description = "";
+    public String smallImage = "";
+    public String image = "";
     public MeasurementUnit unit;
     public Map<String, Double> prices = new HashMap<>();
 

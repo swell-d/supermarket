@@ -22,7 +22,7 @@ public class DeleteProductFromCatalogController {
             action.deleteProductFromCatalog(article);
         } catch (IllegalStateException e) {
             throw new ResponseStatusException(
-                    HttpStatus.CONFLICT, "Error: product not exist"
+                    HttpStatus.CONFLICT, "Product not exist"
             );
         }
     }
