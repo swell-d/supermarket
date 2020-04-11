@@ -39,6 +39,12 @@ public class AddProductToCatalogControllerTests {
                 .content(requestJson))
                 .andDo(print())
                 .andExpect(status().isOk());
+
+        this.mockMvc.perform(post("/catalog")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestJson))
+                .andDo(print())
+                .andExpect(status().isConflict());
     }
 
 }

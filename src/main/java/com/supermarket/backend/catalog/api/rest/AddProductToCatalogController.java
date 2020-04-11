@@ -2,9 +2,11 @@ package com.supermarket.backend.catalog.api.rest;
 
 import com.supermarket.backend.catalog.actions.AddProductToCatalogAction;
 import com.supermarket.backend.catalog.domain.Product;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class AddProductToCatalogController {
@@ -16,12 +18,13 @@ public class AddProductToCatalogController {
     }
 
     @PostMapping(path = "/catalog", consumes = "application/json", produces = "application/json")
-    public String addProductToCatalog(@RequestBody Product newProduct) {
+    public void addProductToCatalog(@RequestBody Product newProduct) {
         try {
             action.addProductToCatalog(newProduct);
-            return "200";
         } catch (IllegalStateException e) {
-            return "409";
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT, "Error: product already exist"
+            );
         }
     }
 
