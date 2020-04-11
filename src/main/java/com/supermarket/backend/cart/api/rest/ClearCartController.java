@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ClearCart {
+public class ClearCartController {
 
     private ClearCartAction clearCartAction;
 
-    public ClearCart(ClearCartAction clearCartAction) {
+    public ClearCartController(ClearCartAction clearCartAction) {
         this.clearCartAction = clearCartAction;
     }
 

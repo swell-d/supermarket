@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ClearCartTests {
+public class GetReceiptControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -33,25 +33,26 @@ public class ClearCartTests {
     }
 
     @Test
-    public void clearCartTest() throws Exception {
+    public void getReceiptTest() throws Exception {
         String requestJson1 = "{\"article\": \"Tomatoes\", \"count\": \"42\"}";
+        String requestJson2 = "{\"article\": \"Potatoes\", \"count\": \"24\"}";
+
+        this.mockMvc.perform(delete("/cart"));
 
         this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(requestJson1))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Tomatoes added.")));
+                .content(requestJson1));
 
-        this.mockMvc.perform(delete("/cart"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Cart cleared.")));
+        this.mockMvc.perform(post("/cart")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestJson2));
 
         this.mockMvc.perform(get("/cart"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("0.00")));
+                .andExpect(content().string(containsString("Total")))
+                .andExpect(content().string(containsString("5742.00")))
+        ;
     }
 
 }
