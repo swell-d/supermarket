@@ -22,16 +22,20 @@ public class AddProductToCatalogAction {
     }
 
     private void validateData(Product product) {
+        String result = "";
         String urlPattern = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
 
-        if (product.article.length() == 0) throw new IllegalArgumentException("'Article' is required");
-        if (product.name.length() == 0) throw new IllegalArgumentException("'Name' is required");
+        if (product.article.length() == 0) result += "'Article' is required. ";
+        if (product.name.length() == 0) result += "'Name' is required. ";
         if (!product.smallImage.equals("") && !product.smallImage.matches(urlPattern))
-            throw new IllegalArgumentException("'smallImage' path is invalid");
+            result += "'smallImage' path is invalid. ";
         if (!product.image.equals("") && !product.image.matches(urlPattern))
-            throw new IllegalArgumentException("'image' path is invalid");
-        if (!product.prices.containsKey("Base")) throw new IllegalArgumentException("'Base' price is required");
-        if (product.prices.get("Base") < 0) throw new IllegalArgumentException("Price shoud not be < 0");
+            result += "'image' path is invalid. ";
+        if (!product.prices.containsKey("Base")) result += "'Base' price is required. ";
+        if (product.prices.containsKey("Base") && product.prices.get("Base") < 0)
+            result += "Price shoud not be negative. ";
+
+        if (!result.equals("")) throw new IllegalArgumentException(result);
     }
 
 }
