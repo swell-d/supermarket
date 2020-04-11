@@ -11,9 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -35,8 +33,7 @@ public class DeleteProductFromCatalogControllerTests {
     public void deleteNonExistProductFromCatalogTest() throws Exception {
         this.mockMvc.perform(delete("/catalog/NonExistProduct")
                 .contentType(MediaType.TEXT_PLAIN))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Product not exist")));
+                .andExpect(status().isOk());
     }
 
 }

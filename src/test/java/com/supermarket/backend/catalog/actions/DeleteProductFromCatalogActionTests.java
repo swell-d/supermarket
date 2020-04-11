@@ -11,7 +11,7 @@ public class DeleteProductFromCatalogActionTests {
     @Test
     public void deleteProductFromCatalogTest() {
         Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
-        new DeleteProductFromCatalogAction(mockCatalog).deleteProductFromCatalog(mockCatalog.getProductByArticle("Phone"));
+        new DeleteProductFromCatalogAction(mockCatalog).deleteProductFromCatalog("Phone");
         assertEquals(3, mockCatalog.getProducts().size());
     }
 

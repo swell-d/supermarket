@@ -3,11 +3,11 @@ package com.supermarket.backend.catalog.actions;
 import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.catalog.domain.Product;
 
-public class GetProductFromCatalogByArticleAction {
+public class GetProductByArticleAction {
 
     private Catalog catalog;
 
-    public GetProductFromCatalogByArticleAction(Catalog catalog) {
+    public GetProductByArticleAction(Catalog catalog) {
         this.catalog = catalog;
     }
 

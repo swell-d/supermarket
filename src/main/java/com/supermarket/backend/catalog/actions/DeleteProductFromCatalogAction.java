@@ -11,8 +11,13 @@ public class DeleteProductFromCatalogAction {
         this.catalog = catalog;
     }
 
-    public void deleteProductFromCatalog(Product product) {
-        catalog.deleteProduct(product);
+    public void deleteProductFromCatalog(String article) {
+        Product product = catalog.getProductByArticle(article);
+        if (product != null) {
+            catalog.deleteProduct(product);
+            return;
+        }
+        throw new IllegalStateException();
     }
 
 }

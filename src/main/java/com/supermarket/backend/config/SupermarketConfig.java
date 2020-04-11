@@ -7,7 +7,7 @@ import com.supermarket.backend.cart.db.memory.InMemoryCartRepository;
 import com.supermarket.backend.cart.domain.CartRepository;
 import com.supermarket.backend.catalog.actions.AddProductToCatalogAction;
 import com.supermarket.backend.catalog.actions.DeleteProductFromCatalogAction;
-import com.supermarket.backend.catalog.actions.GetProductFromCatalogByArticleAction;
+import com.supermarket.backend.catalog.actions.GetProductByArticleAction;
 import com.supermarket.backend.catalog.actions.GetProductsFromCatalogAction;
 import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
 import com.supermarket.backend.catalog.domain.Catalog;
@@ -53,8 +53,8 @@ public class SupermarketConfig {
     }
 
     @Bean
-    public GetProductFromCatalogByArticleAction getProductFromCatalogByArticleAction(Catalog catalog) {
-        return new GetProductFromCatalogByArticleAction(catalog);
+    public GetProductByArticleAction getProductFromCatalogByArticleAction(Catalog catalog) {
+        return new GetProductByArticleAction(catalog);
     }
 
     @Bean

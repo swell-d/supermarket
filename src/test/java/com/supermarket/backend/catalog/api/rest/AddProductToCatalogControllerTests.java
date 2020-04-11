@@ -11,10 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -40,8 +38,7 @@ public class AddProductToCatalogControllerTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(requestJson))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("test article")));
+                .andExpect(status().isOk());
     }
 
 }

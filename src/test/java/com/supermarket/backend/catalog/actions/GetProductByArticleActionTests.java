@@ -7,12 +7,12 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GetProductFromCatalogByArticleActionTests {
+public class GetProductByArticleActionTests {
 
     @Test
     public void getProductByArticleTest() {
         Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
-        Product product = new GetProductFromCatalogByArticleAction(mockCatalog).getProductByArticle("Phone");
+        Product product = new GetProductByArticleAction(mockCatalog).getProductByArticle("Phone");
         assertEquals(mockCatalog.getProductByArticle("Phone"), product);
     }
 

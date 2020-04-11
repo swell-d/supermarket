@@ -1,17 +1,17 @@
 package com.supermarket.backend.catalog.api.rest;
 
-import com.supermarket.backend.catalog.actions.GetProductFromCatalogByArticleAction;
+import com.supermarket.backend.catalog.actions.GetProductByArticleAction;
 import com.supermarket.backend.catalog.domain.Product;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GetProductFromCatalogByArticleController {
+public class GetProductByArticleController {
 
-    private final GetProductFromCatalogByArticleAction action;
+    private final GetProductByArticleAction action;
 
-    public GetProductFromCatalogByArticleController(GetProductFromCatalogByArticleAction action) {
+    public GetProductByArticleController(GetProductByArticleAction action) {
         this.action = action;
     }
 
