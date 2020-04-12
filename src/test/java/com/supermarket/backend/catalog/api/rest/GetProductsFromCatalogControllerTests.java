@@ -1,4 +1,4 @@
-package com.supermarket.backend.cart.api.rest;
+package com.supermarket.backend.catalog.api.rest;
 
 import com.supermarket.backend.catalog.domain.Catalog;
 import com.supermarket.backend.mock.MockCatalogFactory;
@@ -11,15 +11,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class GetReceiptTests {
+public class GetProductsFromCatalogControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -33,26 +31,11 @@ public class GetReceiptTests {
     }
 
     @Test
-    public void getReceiptTest() throws Exception {
-        String requestJson1 = "{\"article\": \"Tomatoes\", \"count\": \"42\"}";
-        String requestJson2 = "{\"article\": \"Potatoes\", \"count\": \"24\"}";
-
-        this.mockMvc.perform(delete("/cart"));
-
-        this.mockMvc.perform(post("/cart")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(requestJson1));
-
-        this.mockMvc.perform(post("/cart")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(requestJson2));
-
-        this.mockMvc.perform(get("/cart"))
-                .andDo(print())
+    public void getCatalogTest() throws Exception {
+        this.mockMvc.perform(get("/catalog")
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Total")))
-                .andExpect(content().string(containsString("5742.00")))
-        ;
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
     }
 
 }

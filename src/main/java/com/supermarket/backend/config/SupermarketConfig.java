@@ -5,7 +5,10 @@ import com.supermarket.backend.cart.actions.ClearCartAction;
 import com.supermarket.backend.cart.actions.GetReceiptAction;
 import com.supermarket.backend.cart.db.memory.InMemoryCartRepository;
 import com.supermarket.backend.cart.domain.CartRepository;
-import com.supermarket.backend.catalog.actions.CatalogActions;
+import com.supermarket.backend.catalog.actions.AddProductToCatalogAction;
+import com.supermarket.backend.catalog.actions.DeleteProductFromCatalogAction;
+import com.supermarket.backend.catalog.actions.GetProductByArticleAction;
+import com.supermarket.backend.catalog.actions.GetProductsFromCatalogAction;
 import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
 import com.supermarket.backend.catalog.domain.Catalog;
 import org.springframework.context.annotation.Bean;
@@ -40,8 +43,23 @@ public class SupermarketConfig {
     }
 
     @Bean
-    public CatalogActions getCatalogAction(Catalog catalog) {
-        return new CatalogActions(catalog);
+    public AddProductToCatalogAction addProductToCatalogAction(Catalog catalog) {
+        return new AddProductToCatalogAction(catalog);
+    }
+
+    @Bean
+    public DeleteProductFromCatalogAction deleteProductFromCatalogAction(Catalog catalog) {
+        return new DeleteProductFromCatalogAction(catalog);
+    }
+
+    @Bean
+    public GetProductByArticleAction getProductFromCatalogByArticleAction(Catalog catalog) {
+        return new GetProductByArticleAction(catalog);
+    }
+
+    @Bean
+    public GetProductsFromCatalogAction getProductsFromCatalogAction(Catalog catalog) {
+        return new GetProductsFromCatalogAction(catalog);
     }
 
 }

@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-public class AddProductToCart {
+public class AddProductToCartController {
 
     private AddProductToCartAction addProductToCartAction;
 
-    public AddProductToCart(AddProductToCartAction addProductToCartAction) {
+    public AddProductToCartController(AddProductToCartAction addProductToCartAction) {
         this.addProductToCartAction = addProductToCartAction;
     }
 

@@ -12,14 +12,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ClearCartTests {
+public class AddProductToCartControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -33,8 +33,21 @@ public class ClearCartTests {
     }
 
     @Test
-    public void clearCartTest() throws Exception {
+    public void noneExistentProductTest() throws Exception {
+        String requestJson3 = "{\"article\": \"product3\", \"count\": \"42\"}";
+
+        this.mockMvc.perform(post("/cart")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestJson3))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("product3 not found.")));
+    }
+
+    @Test
+    public void addTwoProductsToCartTest() throws Exception {
         String requestJson1 = "{\"article\": \"Tomatoes\", \"count\": \"42\"}";
+        String requestJson2 = "{\"article\": \"Potatoes\", \"count\": \"24\"}";
 
         this.mockMvc.perform(post("/cart")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -43,15 +56,12 @@ public class ClearCartTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Tomatoes added.")));
 
-        this.mockMvc.perform(delete("/cart"))
+        this.mockMvc.perform(post("/cart")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestJson2))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Cart cleared.")));
-
-        this.mockMvc.perform(get("/cart"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("0.00")));
+                .andExpect(content().string(containsString("Potatoes added.")));
     }
 
 }
