@@ -23,7 +23,7 @@ public class AddProductToCatalogController {
             action.addProductToCatalog(newProduct);
         } catch (IllegalArgumentException e) {
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, e.toString()
+                    HttpStatus.BAD_REQUEST, e.getMessage()
             );
         } catch (IllegalStateException e) {
             throw new ResponseStatusException(
