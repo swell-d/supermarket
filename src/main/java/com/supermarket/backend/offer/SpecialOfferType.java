@@ -13,7 +13,7 @@ public enum SpecialOfferType implements ISpecialOfferType {
         public void addDiscountToReceipt(Receipt receipt, Bundle bundle, double fullSets, Catalog catalog) {
             for (ProductQuantity pq : bundle.productsSet) {
                 Product product = pq.product;
-                double totalPrice = catalog.getBaseProductPrice(product) * fullSets * pq.quantity;
+                double totalPrice = product.basePrice() * fullSets * pq.quantity;
                 double discountAmount = totalPrice * bundle.value / 100.0;
                 String description = String.format(Locale.UK, "%.0f", bundle.value) + "% off" +
                         " (" + product.importer.name() + ")";
@@ -27,7 +27,7 @@ public enum SpecialOfferType implements ISpecialOfferType {
             double totalPrice = 0;
             StringBuilder productNames = new StringBuilder();
             for (ProductQuantity pq : bundle.productsSet) {
-                totalPrice += catalog.getBaseProductPrice(pq.product) * fullSets * pq.quantity;
+                totalPrice += pq.product.basePrice() * fullSets * pq.quantity;
                 productNames.append(pq.product.importer.name()).append("+");
             }
             double discountAmount = totalPrice - bundle.value * fullSets;

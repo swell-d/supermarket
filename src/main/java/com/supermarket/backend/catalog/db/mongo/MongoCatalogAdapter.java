@@ -31,14 +31,14 @@ public class MongoCatalogAdapter implements Catalog {
     }
 
     @Override
-    public void deleteProduct(Product product) {
-        MongoProduct mongoProduct = mongoCatalog.findByArticle(product.importer.article());
+    public void deleteProduct(String article) {
+        MongoProduct mongoProduct = mongoCatalog.findByArticle(article);
         mongoCatalog.delete(mongoProduct);
     }
 
     @Override
-    public Product byArticle(String productArticle) {
-        MongoProduct mongoProduct = mongoCatalog.findByArticle(productArticle);
+    public Product byArticle(String article) {
+        MongoProduct mongoProduct = mongoCatalog.findByArticle(article);
         Product.Importer importer = new Product.Importer() {
             @Override
             public String article() {
@@ -131,12 +131,6 @@ public class MongoCatalogAdapter implements Catalog {
             result.add(new Product(importer));
         }
         return result;
-    }
-
-    @Override
-    public Double getBaseProductPrice(Product product) {
-        MongoProduct mongoProduct = mongoCatalog.findByArticle(product.importer.article());
-        return mongoProduct.prices.get("Base");
     }
 
     @Override

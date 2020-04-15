@@ -25,18 +25,17 @@ public class InMemoryCatalog implements Catalog {
 
     @Override
     public void add(Product.Importer importer) {
-        Product product = new Product(importer);
-        for (Product existProducts : this.products) {
-            if (product.isSameArticle(existProducts)) throw new IllegalArgumentException();
+        for (Product existProduct : this.products) {
+            if (existProduct.isSameArticle(importer.article())) throw new IllegalArgumentException();
         }
-        products.add(product);
+        products.add(new Product(importer));
         saveToFile();
     }
 
     @Override
-    public void deleteProduct(Product product) {
+    public void deleteProduct(String article) {
         for (Product existProduct : this.products) {
-            if (product.isSameArticle(existProduct)) {
+            if (existProduct.isSameArticle(article)) {
                 this.products.remove(existProduct);
                 saveToFile();
                 return;
@@ -46,9 +45,9 @@ public class InMemoryCatalog implements Catalog {
     }
 
     @Override
-    public Product byArticle(String productArticle) {
+    public Product byArticle(String article) {
         for (Product existProduct : this.products) {
-            if (existProduct.importer.article().equals(productArticle)) {
+            if (existProduct.importer.article().equals(article)) {
                 return existProduct;
             }
         }
@@ -58,11 +57,6 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public ArrayList<Product> getProducts() {
         return products;
-    }
-
-    @Override
-    public Double getBaseProductPrice(Product product) {
-        return product.basePrice();
     }
 
     @Override

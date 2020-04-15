@@ -6,13 +6,12 @@ public interface Catalog {
 
     void add(Product.Importer importer);
 
-    void deleteProduct(Product product);
+    void deleteProduct(String article);
 
-    Product byArticle(String productArticle);
+    Product byArticle(String article);
 
     ArrayList<Product> getProducts();
 
-    Double getBaseProductPrice(Product product);
-
     boolean productExists(String article);
+
 }

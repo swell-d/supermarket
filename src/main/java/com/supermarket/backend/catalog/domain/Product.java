@@ -12,8 +12,8 @@ public class Product implements Serializable {
         this.importer = importer;
     }
 
-    public boolean isSameArticle(Product product) {
-        return importer.article().equals(product.importer.article());
+    public boolean isSameArticle(String article) {
+        return importer.article().equals(article);
     }
 
     @Override

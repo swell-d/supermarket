@@ -33,7 +33,7 @@ public class ShoppingCart {
     public Receipt getReceipt() {
         Receipt receipt = new Receipt();
         for (Map.Entry<Product, Double> entry : productQuantities.entrySet()) {
-            receipt.addProduct(entry.getKey(), entry.getValue(), catalog.getBaseProductPrice(entry.getKey()));
+            receipt.addProduct(entry.getKey(), entry.getValue(), entry.getKey().basePrice());
         }
         handleOffers(receipt);
         return receipt;
