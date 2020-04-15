@@ -19,7 +19,6 @@ public class AddProductToCatalogController {
     @PostMapping(path = "/catalog", consumes = "application/json", produces = "application/json")
     public void addProductToCatalog(@RequestBody AddProductRequest addProductRequest) {
         try {
-
             action.addProductToCatalog(addProductRequest);
         } catch (IllegalArgumentException e) {
             throw new ResponseStatusException(

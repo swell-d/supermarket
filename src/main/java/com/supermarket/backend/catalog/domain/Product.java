@@ -12,7 +12,6 @@ public class Product implements Serializable {
         this.importer = importer;
     }
 
-
     public boolean isSameArticle(Product product) {
         return importer.article().equals(product.importer.article());
     }
