@@ -44,12 +44,6 @@ public class CatalogTests {
         catalog.deleteProduct(new Product(importerBuilder().create()));
     }
 
-    public static void getProductByName(Catalog catalog) {
-        StabImporter importer = importerBuilder().withName("product1").create();
-        catalog.add(importer);
-        assertEquals(new Product(importer), catalog.getProductByName("product1"));
-    }
-
     public static void checkFailureOnSameArticle(Catalog catalog) {
         catalog.add(importerBuilder().withName("test name 1").create());
         catalog.add(importerBuilder().withName("test name 2").create());

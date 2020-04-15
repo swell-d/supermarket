@@ -15,7 +15,7 @@ public class BundleTests {
     @Test
     public void percentBundleTest() {
         Catalog catalog = new MockCatalogFactory().createMockCatalog();
-        Product tomatoes = catalog.getProductByName("Tomatoes");
+        Product tomatoes = catalog.byArticle("Tomatoes");
         ShoppingCart cart = new ShoppingCart(catalog);
         cart.addBundle(MockBundlesFactory.createTenPercentBundle(catalog));
         cart.addItemQuantity(tomatoes, 0.5);
@@ -33,8 +33,8 @@ public class BundleTests {
     @Test
     public void fixAmountBundleTest() {
         Catalog catalog = new MockCatalogFactory().createMockCatalog();
-        Product phone = catalog.getProductByName("Phone");
-        Product bag = catalog.getProductByName("Bag");
+        Product phone = catalog.byArticle("Phone");
+        Product bag = catalog.byArticle("Bag");
         ShoppingCart cart = new ShoppingCart(catalog);
         cart.addBundle(MockBundlesFactory.createFixPriceBundle(catalog));
         cart.addItemQuantity(phone, 1);

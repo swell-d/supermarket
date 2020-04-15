@@ -1,42 +1,38 @@
 package com.supermarket.backend.catalog.db.memory;
 
+import com.supermarket.backend.catalog.db.DBTests;
 import com.supermarket.backend.catalog.domain.CatalogTests;
 import org.junit.Test;
 
-public class InMemoryCatalogTests {
+public class InMemoryCatalogTests implements DBTests {
 
     @Test
-    public void createCatalogTest() {
+    public void createCatalog() {
         CatalogTests.createCatalog(new InMemoryCatalog(true));
     }
 
     @Test
-    public void addProductTest() {
+    public void addProduct() {
         CatalogTests.addProduct(new InMemoryCatalog(true));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void addProductTwiceTest() {
+    public void addProductTwiceShouldFail() {
         CatalogTests.addProductTwiceShouldFail(new InMemoryCatalog(true));
     }
 
     @Test
-    public void deleteProductTest() {
+    public void deleteProduct() {
         CatalogTests.deleteProduct(new InMemoryCatalog(true));
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void deleteProductTwiceTest() {
+    public void deleteProductTwice() {
         CatalogTests.deleteProductTwice(new InMemoryCatalog(true));
     }
 
-    @Test
-    public void getProductByNameTest() {
-        CatalogTests.getProductByName(new InMemoryCatalog(true));
-    }
-
     @Test(expected = IllegalArgumentException.class)
-    public void checkExistsProductTest() {
+    public void checkFailureOnSameArticle() {
         CatalogTests.checkFailureOnSameArticle(new InMemoryCatalog(true));
     }
 

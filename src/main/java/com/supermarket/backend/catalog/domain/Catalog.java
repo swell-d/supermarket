@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 public interface Catalog {
 
-    void add(Product.Importer product);
+    void add(Product.Importer importer);
 
     void deleteProduct(Product product);
 
     Product byArticle(String productArticle);
-
-    Product getProductByName(String productName);
 
     ArrayList<Product> getProducts();
 

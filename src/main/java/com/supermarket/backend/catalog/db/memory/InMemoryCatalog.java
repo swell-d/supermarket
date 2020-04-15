@@ -56,16 +56,6 @@ public class InMemoryCatalog implements Catalog {
     }
 
     @Override
-    public Product getProductByName(String productName) {
-        for (Product existProduct : this.products) {
-            if (existProduct.importer.name().equals(productName)) {
-                return existProduct;
-            }
-        }
-        return null;
-    }
-
-    @Override
     public ArrayList<Product> getProducts() {
         return products;
     }

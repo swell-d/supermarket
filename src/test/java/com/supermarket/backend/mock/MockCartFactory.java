@@ -12,10 +12,10 @@ public class MockCartFactory {
         cart.addBundle(MockBundlesFactory.createTenPercentBundle(catalog));
         cart.addBundle(MockBundlesFactory.createFixPriceBundle(catalog));
 
-        cart.addItemQuantity(catalog.getProductByName("Tomatoes"), 4.4);
-        cart.addItemQuantity(catalog.getProductByName("Potatoes"), 5.5);
-        cart.addItemQuantity(catalog.getProductByName("Phone"), 1);
-        cart.addItemQuantity(catalog.getProductByName("Bag"), 3);
+        cart.addItemQuantity(catalog.byArticle("Tomatoes"), 4.4);
+        cart.addItemQuantity(catalog.byArticle("Potatoes"), 5.5);
+        cart.addItemQuantity(catalog.byArticle("Phone"), 1);
+        cart.addItemQuantity(catalog.byArticle("Bag"), 3);
 
         return cart;
     }
