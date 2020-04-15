@@ -37,7 +37,7 @@ public class ReceiptPrinter implements Report {
 
     private String presentReceiptItem(ReceiptItem item) {
         String totalPricePresentation = presentPrice(item.price * item.quantity);
-        String name = item.product.name;
+        String name = item.product.importer.name();
         String line = formatLineWithWhitespace(name, totalPricePresentation);
         if (item.quantity != 1)
             line += "  " + presentPrice(item.price) + " * " + presentQuantity(item) + LS;
@@ -71,7 +71,7 @@ public class ReceiptPrinter implements Report {
 
     private static String presentQuantity(ReceiptItem item) {
         return MeasurementUnit.Each.equals(
-                item.product.unit) ?
+                item.product.importer.unit()) ?
                 String.format(Locale.UK, "%.0f", item.quantity)
                 : String.format(Locale.UK, "%.3f", item.quantity
         );

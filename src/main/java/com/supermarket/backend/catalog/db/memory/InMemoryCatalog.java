@@ -48,7 +48,7 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public Product byArticle(String productArticle) {
         for (Product existProduct : this.products) {
-            if (existProduct.article.equals(productArticle)) {
+            if (existProduct.importer.article().equals(productArticle)) {
                 return existProduct;
             }
         }
@@ -58,7 +58,7 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public Product getProductByName(String productName) {
         for (Product existProduct : this.products) {
-            if (existProduct.name.equals(productName)) {
+            if (existProduct.importer.name().equals(productName)) {
                 return existProduct;
             }
         }
