@@ -13,7 +13,7 @@ public class GetProductByArticleActionTests {
     public void getProductByArticleTest() {
         Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
         Product product = new GetProductByArticleAction(mockCatalog).getProductByArticle("Phone");
-        assertEquals(mockCatalog.getProductByArticle("Phone"), product);
+        assertEquals(mockCatalog.byArticle("Phone"), product);
     }
 
 }

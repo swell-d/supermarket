@@ -12,7 +12,7 @@ public class DeleteProductFromCatalogAction {
     }
 
     public void deleteProductFromCatalog(String article) {
-        Product product = catalog.getProductByArticle(article);
+        Product product = catalog.byArticle(article);
         if (product != null) {
             catalog.deleteProduct(product);
             return;

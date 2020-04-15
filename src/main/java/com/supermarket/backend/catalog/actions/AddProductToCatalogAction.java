@@ -11,14 +11,12 @@ public class AddProductToCatalogAction {
         this.catalog = catalog;
     }
 
-    public void addProductToCatalog(Product newProduct) {
-        Product exist_product = catalog.getProductByArticle(newProduct.article);
-        if (exist_product == null) {
-            validateData(newProduct);
-            catalog.addProduct(newProduct);
-            return;
-        }
-        throw new IllegalStateException();
+    public void addProductToCatalog(Product.Importer addProductRequest) {
+        if(catalog.productExists(addProductRequest.article()))
+            throw new IllegalStateException();
+        Product newProduct = new Product(addProductRequest);
+        validateData(newProduct);
+        catalog.add(newProduct);
     }
 
     private void validateData(Product product) {

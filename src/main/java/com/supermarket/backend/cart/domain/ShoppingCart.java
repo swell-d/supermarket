@@ -67,7 +67,7 @@ public class ShoppingCart {
     }
 
     public Product getProductByArticle(String productArticle) {
-        return catalog.getProductByArticle(productArticle);
+        return catalog.byArticle(productArticle);
     }
 
     public void clearCart() {

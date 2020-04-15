@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public interface Catalog {
 
-    void addProduct(Product product);
+    void add(Product product);
 
     void deleteProduct(Product product);
 
-    Product getProductByArticle(String productArticle);
+    Product byArticle(String productArticle);
 
     Product getProductByName(String productName);
 
@@ -16,4 +16,5 @@ public interface Catalog {
 
     Double getBaseProductPrice(Product product);
 
+    boolean productExists(String article);
 }

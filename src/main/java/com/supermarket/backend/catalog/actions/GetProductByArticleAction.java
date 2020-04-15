@@ -12,7 +12,7 @@ public class GetProductByArticleAction {
     }
 
     public Product getProductByArticle(String article) {
-        return catalog.getProductByArticle(article);
+        return catalog.byArticle(article);
     }
 
 }

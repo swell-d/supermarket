@@ -15,6 +15,19 @@ public class Product implements Serializable {
     public MeasurementUnit unit;
     public Map<String, Double> prices = new HashMap<>();
 
+
+    public Product(Importer importer){
+        this.article = importer.article();
+        this.name = importer.name();
+        this.shortDescription = importer.shortDescription();
+        this.description = importer.description();
+        this.smallImage = importer.smallImage();
+        this.image = importer.image();
+        this.unit = importer.unit();
+        this.prices = importer.prices();
+    }
+
+
     public Product(String article, String name, MeasurementUnit unit) {
         this.article = article;
         this.name = name;
@@ -45,5 +58,22 @@ public class Product implements Serializable {
         return Objects.hash(article, name, shortDescription, description, smallImage, image, unit, prices);
     }
 
+    public interface Importer {
+        String article();
+
+        String name();
+
+        String shortDescription();
+
+        String description();
+
+        String smallImage();
+
+        String image();
+
+        MeasurementUnit unit();
+
+        Map<String, Double> prices();
+    }
 }
 

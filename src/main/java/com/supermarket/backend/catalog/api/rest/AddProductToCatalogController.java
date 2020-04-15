@@ -1,7 +1,6 @@
 package com.supermarket.backend.catalog.api.rest;
 
 import com.supermarket.backend.catalog.actions.AddProductToCatalogAction;
-import com.supermarket.backend.catalog.domain.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +17,9 @@ public class AddProductToCatalogController {
     }
 
     @PostMapping(path = "/catalog", consumes = "application/json", produces = "application/json")
-    public void addProductToCatalog(@RequestBody Product newProduct) {
+    public void addProductToCatalog(@RequestBody AddProductRequest apr) {
         try {
-            action.addProductToCatalog(newProduct);
+            action.addProductToCatalog(apr);
         } catch (IllegalArgumentException e) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, e.getMessage()
