@@ -1,36 +1,42 @@
 package com.supermarket.backend.catalog.domain;
 
+import com.supermarket.backend.catalog.actions.StabImporter;
+import com.supermarket.backend.catalog.actions.StabImporterBuilder;
+import org.junit.Before;
 import org.junit.Test;
 
+import static com.supermarket.backend.catalog.actions.StabImporterBuilder.importerBuilder;
 import static org.junit.Assert.*;
 
 public class ProductTests {
 
-    @Test
-    public void createProductTest() {
-        Product product = new Product("test article 1", "test name 1", MeasurementUnit.Each);
-        assertNotNull(product);
-        assertEquals("test article 1", product.article);
-        assertEquals("test name 1", product.name);
-        assertEquals(MeasurementUnit.Each, product.unit);
-        product.shortDescription = "short description";
-        assertEquals("short description", product.shortDescription);
-        product.description = "description";
-        assertEquals("description", product.description);
-        product.smallImage = "small image";
-        assertEquals("small image", product.smallImage);
-        product.image = "image";
-        assertEquals("image", product.image);
+    private StabImporter stabImporter;
+    private StabImporterBuilder importerBuilder;
+
+    @Before
+    public void setUp() throws Exception {
+        importerBuilder = importerBuilder();
+        stabImporter = importerBuilder
+                .withArticle("test article 1")
+                .withName("test name 1")
+                .withMesUnit(MeasurementUnit.Each)
+                .create();
     }
 
     @Test
-    public void compareProductsTest() {
-        Product baseProduct = new Product("test article 1", "test name 1", MeasurementUnit.Each);
-        Product sameProduct = new Product("test article 1", "test name 1", MeasurementUnit.Each);
-        Product anotherArticleProduct = new Product("test article 2", "test name 1", MeasurementUnit.Each);
-        Product anotherNameProduct = new Product("test article 1", "test name 2", MeasurementUnit.Each);
-        Product anotherUnitProduct = new Product("test article 1", "test name 1", MeasurementUnit.Kilo);
+    public void compareSameProducts(){
+        Product baseProduct = new Product(stabImporter);
+        Product sameProduct = new Product(stabImporter);
         assertEquals(baseProduct, sameProduct);
+    }
+
+
+    @Test
+    public void compareNotSameProducts() {
+        Product baseProduct = new Product(stabImporter);
+        Product anotherArticleProduct = new Product(importerBuilder.withArticle("test article 2").create());
+        Product anotherNameProduct = new Product(importerBuilder.withName("test name 2").create());
+        Product anotherUnitProduct = new Product(importerBuilder.withMesUnit(MeasurementUnit.Kilo).create());
         assertNotEquals(baseProduct, anotherArticleProduct);
         assertNotEquals(baseProduct, anotherNameProduct);
         assertNotEquals(baseProduct, anotherUnitProduct);

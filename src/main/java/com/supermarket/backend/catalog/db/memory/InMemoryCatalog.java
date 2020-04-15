@@ -71,7 +71,7 @@ public class InMemoryCatalog implements Catalog {
 
     @Override
     public Double getBaseProductPrice(Product product) {
-        return product.prices.get("Base");
+        return product.basePrice();
     }
 
     @Override

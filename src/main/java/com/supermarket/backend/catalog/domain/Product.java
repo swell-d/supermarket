@@ -6,36 +6,22 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Product implements Serializable {
-    final public String article;
-    public String name;
-    public String shortDescription = "";
-    public String description = "";
-    public String smallImage = "";
-    public String image = "";
-    public MeasurementUnit unit;
-    public Map<String, Double> prices = new HashMap<>();
 
+    public final String article;
+    public final String name;
+    public MeasurementUnit unit;
+    private Importer importer;
 
     public Product(Importer importer){
-        this.article = importer.article();
         this.name = importer.name();
-        this.shortDescription = importer.shortDescription();
-        this.description = importer.description();
-        this.smallImage = importer.smallImage();
-        this.image = importer.image();
+        this.article = importer.article();
         this.unit = importer.unit();
-        this.prices = importer.prices();
+        this.importer = importer;
     }
 
-
-    public Product(String article, String name, MeasurementUnit unit) {
-        this.article = article;
-        this.name = name;
-        this.unit = unit;
-    }
 
     public boolean isSameArticle(Product product) {
-        return article.equals(product.article);
+        return importer.article().equals(product.importer.article());
     }
 
     @Override
@@ -43,19 +29,30 @@ public class Product implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return article.equals(product.article) &&
-                Objects.equals(name, product.name) &&
-                Objects.equals(shortDescription, product.shortDescription) &&
-                Objects.equals(description, product.description) &&
-                Objects.equals(smallImage, product.smallImage) &&
-                Objects.equals(image, product.image) &&
-                unit == product.unit &&
-                Objects.equals(prices, product.prices);
+        return importer.article().equals(product.importer.article()) &&
+                Objects.equals(importer.name(), product.importer.name()) &&
+                Objects.equals(importer.shortDescription(), product.importer.shortDescription()) &&
+                Objects.equals(importer.description(), product.importer.description()) &&
+                Objects.equals(importer.smallImage(), product.importer.smallImage()) &&
+                Objects.equals(importer.image(), product.importer.image()) &&
+                importer.unit() == product.importer.unit() &&
+                Objects.equals(importer.prices(), product.importer.prices());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(article, name, shortDescription, description, smallImage, image, unit, prices);
+        return Objects.hash(importer.article(),
+                importer.name(),
+                importer.shortDescription(),
+                importer.description(),
+                importer.smallImage(),
+                importer.image(),
+                importer.unit(),
+                importer.prices());
+    }
+
+    public Double basePrice() {
+        return importer.prices().get("Base");
     }
 
     public interface Importer {

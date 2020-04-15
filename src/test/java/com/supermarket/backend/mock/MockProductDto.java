@@ -1,4 +1,4 @@
-package com.supermarket.backend.catalog.actions;
+package com.supermarket.backend.mock;
 
 import com.supermarket.backend.catalog.domain.MeasurementUnit;
 import com.supermarket.backend.catalog.domain.Product;
@@ -6,17 +6,23 @@ import com.supermarket.backend.catalog.domain.Product;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StabImporter implements Product.Importer {
+public class MockProductDto implements Product.Importer {
+    private final String article;
+    private final String name;
+    private final MeasurementUnit measurementUnit;
+    public String shortDescription;
+    public String description;
+    public String smallImage;
+    public String image;
+    public Map<String, Double> prices;
 
+    public MockProductDto(String article, String name, MeasurementUnit measurementUnit) {
 
-    private String article;
-    private String name;
-    private MeasurementUnit unit;
-
-    public StabImporter(String article, String name, MeasurementUnit unit) {
         this.article = article;
         this.name = name;
-        this.unit = unit;
+        this.measurementUnit = measurementUnit;
+        prices = new HashMap<>();
+
     }
 
     @Override
@@ -31,33 +37,31 @@ public class StabImporter implements Product.Importer {
 
     @Override
     public String shortDescription() {
-        return "";
+        return shortDescription;
     }
 
     @Override
     public String description() {
-        return "";
+        return description;
     }
 
     @Override
     public String smallImage() {
-        return "";
+        return smallImage;
     }
 
     @Override
     public String image() {
-        return "";
+        return image;
     }
 
     @Override
     public MeasurementUnit unit() {
-        return unit;
+        return measurementUnit;
     }
 
     @Override
     public Map<String, Double> prices() {
-        HashMap<String, Double> prices = new HashMap<>();
-        prices.put("Base", 0.0);
         return prices;
     }
 }

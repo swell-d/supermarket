@@ -15,19 +15,15 @@ public class AddProductToCatalogActionTests {
 
     @Before
     public void setUp() throws Exception {
-        productImporter = new StabImporter();
+        productImporter = StabImporterBuilder.importerBuilder().create();
     }
 
     @Test
     public void addProductToCatalogTest() {
         Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
         new AddProductToCatalogAction(mockCatalog).addProductToCatalog(productImporter);
-
-        Product productByArticle = mockCatalog.byArticle("test article 1");
-        assertEquals(productByArticle.article, productImporter.article());
-        assertEquals(productByArticle.name, productImporter.name());
-        assertEquals(productByArticle.unit, productByArticle.unit);
-        assertEquals(productByArticle.prices, productImporter.prices());
+        Product productByArticle = mockCatalog.byArticle("defaultArticle");
+        assertEquals(productByArticle, new Product(productImporter));
     }
 
     @Test(expected = IllegalStateException.class)
@@ -36,5 +32,4 @@ public class AddProductToCatalogActionTests {
         new AddProductToCatalogAction(mockCatalog).addProductToCatalog(productImporter);
         new AddProductToCatalogAction(mockCatalog).addProductToCatalog(productImporter);
     }
-
 }
