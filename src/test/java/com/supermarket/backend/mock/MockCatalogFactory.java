@@ -19,7 +19,7 @@ public class MockCatalogFactory {
         tomatoes.smallImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/%E0%B0%9F%E0%B0%AE%E0%B0%BE%E0%B0%9F%E0%B0%BE%E0%B0%B2%E0%B1%81_%282%29.jpg/1920px-%E0%B0%9F%E0%B0%AE%E0%B0%BE%E0%B0%9F%E0%B0%BE%E0%B0%B2%E0%B1%81_%282%29.jpg";
         tomatoes.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/%E0%B0%9F%E0%B0%AE%E0%B0%BE%E0%B0%9F%E0%B0%BE%E0%B0%B2%E0%B1%81_%282%29.jpg/1920px-%E0%B0%9F%E0%B0%AE%E0%B0%BE%E0%B0%9F%E0%B0%BE%E0%B0%B2%E0%B1%81_%282%29.jpg";
         tomatoes.prices.put("Base", 99.0);
-        catalog.add(new Product(tomatoes));
+        catalog.add(tomatoes);
 
         MockProductDto potatoes = new MockProductDto("Potatoes", "Potatoes", MeasurementUnit.Kilo);
         potatoes.shortDescription = "Young potatoes from the fields of Germany";
@@ -29,7 +29,7 @@ public class MockCatalogFactory {
         potatoes.smallImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Patates.jpg/220px-Patates.jpg";
         potatoes.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Patates.jpg/220px-Patates.jpg";
         potatoes.prices.put("Base", 66.0);
-        catalog.add(new Product(potatoes));
+        catalog.add(potatoes);
 
         MockProductDto phone = new MockProductDto("Phone", "Phone", MeasurementUnit.Each);
         phone.shortDescription = "Apple iPhone 11 Pro Max";
@@ -39,7 +39,7 @@ public class MockCatalogFactory {
         phone.smallImage = "https://images-na.ssl-images-amazon.com/images/I/81HSzsIkJdL._AC_SL1500_.jpg";
         phone.image = "https://images-na.ssl-images-amazon.com/images/I/81HSzsIkJdL._AC_SL1500_.jpg";
         phone.prices.put("Base", 999.90);
-        catalog.add(new Product(phone));
+        catalog.add(phone);
 
         MockProductDto bag = new MockProductDto("Bag", "Bag", MeasurementUnit.Each);
         bag.shortDescription = "Louis Vuitton Onthego";
@@ -47,7 +47,7 @@ public class MockCatalogFactory {
         bag.smallImage = "https://de.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--M44576_PM2_Front%20view.png";
         bag.image = "https://de.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton--M44576_PM2_Front%20view.png";
         bag.prices.put("Base", 9.0);
-        catalog.add(new Product(bag));
+        catalog.add(bag);
 
         return catalog;
     }

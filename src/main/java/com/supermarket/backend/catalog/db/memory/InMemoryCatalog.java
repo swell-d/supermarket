@@ -24,9 +24,10 @@ public class InMemoryCatalog implements Catalog {
     }
 
     @Override
-    public void add(Product product) {
-        for (Product existProduct : this.products) {
-            if (product.isSameArticle(existProduct)) throw new IllegalArgumentException();
+    public void add(Product.Importer importer) {
+        Product product = new Product(importer);
+        for (Product existProducts : this.products) {
+            if (product.isSameArticle(existProducts)) throw new IllegalArgumentException();
         }
         products.add(product);
         saveToFile();

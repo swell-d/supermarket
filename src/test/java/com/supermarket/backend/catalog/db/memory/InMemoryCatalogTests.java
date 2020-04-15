@@ -17,7 +17,7 @@ public class InMemoryCatalogTests {
 
     @Test(expected = IllegalArgumentException.class)
     public void addProductTwiceTest() {
-        CatalogTests.addProductTwice(new InMemoryCatalog(true));
+        CatalogTests.addProductTwiceShouldFail(new InMemoryCatalog(true));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class InMemoryCatalogTests {
 
     @Test(expected = IllegalArgumentException.class)
     public void checkExistsProductTest() {
-        CatalogTests.checkExistsProduct(new InMemoryCatalog(true));
+        CatalogTests.checkFailureOnSameArticle(new InMemoryCatalog(true));
     }
 
 }

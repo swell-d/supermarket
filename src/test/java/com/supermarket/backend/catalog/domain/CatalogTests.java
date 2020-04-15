@@ -1,7 +1,6 @@
 package com.supermarket.backend.catalog.domain;
 
 import com.supermarket.backend.catalog.actions.StabImporter;
-import com.supermarket.backend.catalog.actions.StabImporterBuilder;
 
 import static com.supermarket.backend.catalog.actions.StabImporterBuilder.importerBuilder;
 import static org.junit.Assert.assertEquals;
@@ -15,49 +14,44 @@ public class CatalogTests {
     }
 
     public static void addProduct(Catalog catalog) {
-        Product product1 = new Product(importerBuilder().create());
-        Product product2 = new Product(importerBuilder().withArticle("another").create());
-        catalog.add(product1);
+        StabImporter importer = importerBuilder().create();
+        catalog.add(importer);
         assertEquals(1, catalog.getProducts().size());
-        assertEquals(product1, catalog.getProducts().get(0));
-        catalog.add(product2);
+        assertEquals(new Product(importer), catalog.getProducts().get(0));
+        catalog.add(importerBuilder().withArticle("another").create());
         assertEquals(2, catalog.getProducts().size());
     }
 
-    public static void addProductTwice(Catalog catalog) {
-        Product product1 = new Product(importerBuilder().create());
-        catalog.add(product1);
-        catalog.add(product1);
+    public static void addProductTwiceShouldFail(Catalog catalog) {
+        catalog.add(importerBuilder().create());
+        catalog.add(importerBuilder().create());
     }
 
     public static void deleteProduct(Catalog catalog) {
-        Product product1 = new Product(importerBuilder().withArticle("art1").create());
-        Product product2 = new Product(importerBuilder().withArticle("art2").create());
-        catalog.add(product1);
-        catalog.add(product2);
-        catalog.deleteProduct(product1);
+        StabImporter art1 = importerBuilder().withArticle("art1").create();
+        StabImporter art2 = importerBuilder().withArticle("art2").create();
+        catalog.add(art1);
+        catalog.add(art2);
+        catalog.deleteProduct(new Product(art1));
         assertEquals(1, catalog.getProducts().size());
-        catalog.deleteProduct(product2);
+        catalog.deleteProduct(new Product(art2));
         assertEquals(0, catalog.getProducts().size());
     }
 
     public static void deleteProductTwice(Catalog catalog) {
-        Product product1 = new Product(importerBuilder().create());
-        catalog.add(product1);
-        catalog.deleteProduct(product1);
-        catalog.deleteProduct(product1);
+
+        catalog.deleteProduct(new Product(importerBuilder().create()));
+        catalog.deleteProduct(new Product(importerBuilder().create()));
     }
 
     public static void getProductByName(Catalog catalog) {
-        Product product1 = new Product(importerBuilder().withName("product1").create());
-        catalog.add(product1);
-        assertEquals(product1, catalog.getProductByName("product1"));
+        StabImporter importer = importerBuilder().withName("product1").create();
+        catalog.add(importer);
+        assertEquals(new Product(importer), catalog.getProductByName("product1"));
     }
 
-    public static void checkExistsProduct(Catalog catalog) {
-        Product product1 = new Product(importerBuilder().withName("test name 1").create());
-        Product product2 = new Product(importerBuilder().withName("test name 2").create());
-        catalog.add(product1);
-        catalog.add(product2);
+    public static void checkFailureOnSameArticle(Catalog catalog) {
+        catalog.add(importerBuilder().withName("test name 1").create());
+        catalog.add(importerBuilder().withName("test name 2").create());
     }
 }

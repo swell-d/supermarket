@@ -11,14 +11,17 @@ public class AddProductToCatalogAction {
         this.catalog = catalog;
     }
 
-    public void addProductToCatalog(Product.Importer addProductRequest) {
-        validateData(addProductRequest);
-        verfiyUnique(addProductRequest);
-        Product newProduct = new Product(addProductRequest);
-        catalog.add(newProduct);
+    public void addProductToCatalog(Product.Importer newProductRequest) {
+        validateData(newProductRequest);
+        verifyIsUnique(newProductRequest);
+        catalog.add(newProductRequest);
     }
 
-    private void verfiyUnique(Product.Importer addProductRequest) {
+    private Product createProduct(Product.Importer newProductRequest) {
+        return new Product(newProductRequest);
+    }
+
+    private void verifyIsUnique(Product.Importer addProductRequest) {
         if(catalog.productExists(addProductRequest.article()))
             throw new IllegalStateException();
     }

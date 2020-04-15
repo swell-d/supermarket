@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface Catalog {
 
-    void add(Product product);
+    void add(Product.Importer product);
 
     void deleteProduct(Product product);
 
