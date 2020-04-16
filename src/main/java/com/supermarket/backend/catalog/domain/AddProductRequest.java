@@ -1,7 +1,4 @@
-package com.supermarket.backend.catalog.api.rest;
-
-import com.supermarket.backend.catalog.domain.MeasurementUnit;
-import com.supermarket.backend.catalog.domain.Product;
+package com.supermarket.backend.catalog.domain;
 
 import java.util.HashMap;
 import java.util.Map;

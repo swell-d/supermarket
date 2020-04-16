@@ -17,7 +17,6 @@ public class CatalogTests {
         StabImporter importer = importerBuilder().create();
         catalog.add(importer);
         assertEquals(1, catalog.getProducts().size());
-        assertEquals(new Product(importer), catalog.getProducts().get(0));
         catalog.add(importerBuilder().withArticle("another").create());
         assertEquals(2, catalog.getProducts().size());
     }

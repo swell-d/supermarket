@@ -14,7 +14,7 @@ public class GetProductsFromCatalogActionTests {
     @Test
     public void getProductsTest() {
         Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
-        List<Product> products = new GetProductsFromCatalogAction(mockCatalog).getProducts();
+        List<Product.Importer> products = new GetProductsFromCatalogAction(mockCatalog).getProducts();
         assertEquals(mockCatalog.getProducts(), products);
     }
 
