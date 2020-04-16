@@ -1,6 +1,7 @@
 package com.supermarket.backend.catalog.api.rest;
 
 import com.supermarket.backend.catalog.actions.AddProductToCatalogAction;
+import com.supermarket.backend.catalog.domain.AddProductRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

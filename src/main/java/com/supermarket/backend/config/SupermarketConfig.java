@@ -9,18 +9,12 @@ import com.supermarket.backend.catalog.actions.AddProductToCatalogAction;
 import com.supermarket.backend.catalog.actions.DeleteProductFromCatalogAction;
 import com.supermarket.backend.catalog.actions.GetProductByArticleAction;
 import com.supermarket.backend.catalog.actions.GetProductsFromCatalogAction;
-import com.supermarket.backend.catalog.db.memory.InMemoryCatalog;
 import com.supermarket.backend.catalog.domain.Catalog;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SupermarketConfig {
-
-    @Bean
-    public Catalog catalog() {
-        return new InMemoryCatalog();
-    }
 
     @Bean
     public CartRepository cartRepository() {

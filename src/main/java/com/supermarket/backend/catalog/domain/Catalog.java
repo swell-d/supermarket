@@ -10,7 +10,7 @@ public interface Catalog {
 
     Product byArticle(String article);
 
-    ArrayList<Product> getProducts();
+    ArrayList<Product.Importer> getProducts();
 
     boolean productExists(String article);
 

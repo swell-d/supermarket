@@ -13,7 +13,7 @@ public class GetProductsFromCatalogAction {
         this.catalog = catalog;
     }
 
-    public List<Product> getProducts() {
+    public List<Product.Importer> getProducts() {
         return catalog.getProducts();
     }
 

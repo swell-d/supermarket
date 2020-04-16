@@ -17,7 +17,7 @@ public class GetProductsFromCatalogController {
     }
 
     @GetMapping(path = "/catalog", produces = "application/json")
-    public List<Product> getCatalog() {
+    public List<Product.Importer> getCatalog() {
         return action.getProducts();
     }
 

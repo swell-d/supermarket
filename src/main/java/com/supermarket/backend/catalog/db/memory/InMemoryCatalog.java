@@ -55,8 +55,12 @@ public class InMemoryCatalog implements Catalog {
     }
 
     @Override
-    public ArrayList<Product> getProducts() {
-        return products;
+    public ArrayList<Product.Importer> getProducts() {
+        ArrayList<Product.Importer> result = new ArrayList<>();
+        for (Product product : products) {
+            result.add(product.importer);
+        }
+        return result;
     }
 
     @Override
