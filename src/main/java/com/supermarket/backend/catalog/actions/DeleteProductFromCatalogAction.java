@@ -1,7 +1,6 @@
 package com.supermarket.backend.catalog.actions;
 
 import com.supermarket.backend.catalog.domain.Catalog;
-import com.supermarket.backend.catalog.domain.Product;
 
 public class DeleteProductFromCatalogAction {
 
@@ -12,12 +11,8 @@ public class DeleteProductFromCatalogAction {
     }
 
     public void deleteProductFromCatalog(String article) {
-        Product product = catalog.byArticle(article);
-        if (product != null) {
-            catalog.deleteProduct(product);
-            return;
-        }
-        throw new IllegalStateException();
+        if (!catalog.productExists(article)) throw new IllegalStateException();
+        catalog.deleteProduct(article);
     }
 
 }

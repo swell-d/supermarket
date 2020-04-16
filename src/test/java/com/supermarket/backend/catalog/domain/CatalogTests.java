@@ -32,22 +32,16 @@ public class CatalogTests {
         StabImporter art2 = importerBuilder().withArticle("art2").create();
         catalog.add(art1);
         catalog.add(art2);
-        catalog.deleteProduct(new Product(art1));
+        catalog.deleteProduct(art1.article());
         assertEquals(1, catalog.getProducts().size());
-        catalog.deleteProduct(new Product(art2));
+        catalog.deleteProduct(art2.article());
         assertEquals(0, catalog.getProducts().size());
     }
 
     public static void deleteProductTwice(Catalog catalog) {
 
-        catalog.deleteProduct(new Product(importerBuilder().create()));
-        catalog.deleteProduct(new Product(importerBuilder().create()));
-    }
-
-    public static void getProductByName(Catalog catalog) {
-        StabImporter importer = importerBuilder().withName("product1").create();
-        catalog.add(importer);
-        assertEquals(new Product(importer), catalog.getProductByName("product1"));
+        catalog.deleteProduct(importerBuilder().create().article());
+        catalog.deleteProduct(importerBuilder().create().article());
     }
 
     public static void checkFailureOnSameArticle(Catalog catalog) {

@@ -1,27 +1,19 @@
 package com.supermarket.backend.catalog.domain;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class Product implements Serializable {
 
-    public final String article;
-    public final String name;
-    public MeasurementUnit unit;
-    private Importer importer;
+    public Importer importer;
 
-    public Product(Importer importer){
-        this.name = importer.name();
-        this.article = importer.article();
-        this.unit = importer.unit();
+    public Product(Importer importer) {
         this.importer = importer;
     }
 
-
-    public boolean isSameArticle(Product product) {
-        return importer.article().equals(product.importer.article());
+    public boolean isSameArticle(String article) {
+        return importer.article().equals(article);
     }
 
     @Override
