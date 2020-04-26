@@ -16,7 +16,7 @@ public class GetProductByArticleController {
     }
 
     @GetMapping(path = "/catalog/{article}", produces = "application/json")
-    public Product getProductFromCatalog(@PathVariable String article) {
-        return action.getProductByArticle(article);
+    public Product.Importer getProductFromCatalog(@PathVariable String article) {
+        return action.getProductByArticle(article).importer;
     }
 }
