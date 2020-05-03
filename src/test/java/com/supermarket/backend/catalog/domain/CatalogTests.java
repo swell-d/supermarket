@@ -26,21 +26,27 @@ public class CatalogTests {
         catalog.add(importerBuilder().create());
     }
 
+    public static void editProduct(Catalog catalog) {
+        catalog.add(importerBuilder().create());
+        catalog.edit(importerBuilder().withName("New name").create());
+        assertEquals("New name", catalog.getProducts().get(0).name());
+    }
+
     public static void deleteProduct(Catalog catalog) {
         StabImporter art1 = importerBuilder().withArticle("art1").create();
         StabImporter art2 = importerBuilder().withArticle("art2").create();
         catalog.add(art1);
         catalog.add(art2);
-        catalog.deleteProduct(art1.article());
+        catalog.delete(art1.article());
         assertEquals(1, catalog.getProducts().size());
-        catalog.deleteProduct(art2.article());
+        catalog.delete(art2.article());
         assertEquals(0, catalog.getProducts().size());
     }
 
     public static void deleteProductTwice(Catalog catalog) {
 
-        catalog.deleteProduct(importerBuilder().create().article());
-        catalog.deleteProduct(importerBuilder().create().article());
+        catalog.delete(importerBuilder().create().article());
+        catalog.delete(importerBuilder().create().article());
     }
 
     public static void checkFailureOnSameArticle(Catalog catalog) {

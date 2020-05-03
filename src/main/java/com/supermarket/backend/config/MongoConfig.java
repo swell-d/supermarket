@@ -13,11 +13,6 @@ public class MongoConfig {
     @Autowired
     private MongoProductRepository mongoCatalog;
 
-//    @Bean
-//    public Catalog catalog() {
-//        return new InMemoryCatalog();
-//    }
-
     @Bean
     public Catalog catalog() {
         return new MongoCatalogAdapter(mongoCatalog);
