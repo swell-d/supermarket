@@ -16,7 +16,7 @@ public class InMemoryCatalogTests implements DBTests {
         CatalogTests.addProduct(new InMemoryCatalog(true));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IllegalStateException.class)
     public void addProductTwiceShouldFail() {
         CatalogTests.addProductTwiceShouldFail(new InMemoryCatalog(true));
     }
@@ -26,12 +26,12 @@ public class InMemoryCatalogTests implements DBTests {
         CatalogTests.deleteProduct(new InMemoryCatalog(true));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IllegalStateException.class)
     public void deleteProductTwice() {
         CatalogTests.deleteProductTwice(new InMemoryCatalog(true));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IllegalStateException.class)
     public void checkFailureOnSameArticle() {
         CatalogTests.checkFailureOnSameArticle(new InMemoryCatalog(true));
     }

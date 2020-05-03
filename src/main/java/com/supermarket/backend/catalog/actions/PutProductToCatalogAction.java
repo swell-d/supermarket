@@ -17,14 +17,7 @@ public class PutProductToCatalogAction {
     public void putProductToCatalog(Product.Importer newProductRequest) {
         logger.info("Try to edit product in catalog");
         new ValidateProductData().validate(newProductRequest);
-        verifyIsExist(newProductRequest);
-        catalog.delete(newProductRequest.article());
-        catalog.add(newProductRequest);
-    }
-
-    private void verifyIsExist(Product.Importer productRequest) {
-        if (!catalog.productExists(productRequest.article()))
-            throw new IllegalStateException();
+        catalog.edit(newProductRequest);
     }
 
 }

@@ -22,7 +22,7 @@ public class PutProductToCatalogActionTests {
         Catalog mockCatalog = new MockCatalogFactory().createMockCatalog();
         new PutProductToCatalogAction(mockCatalog).putProductToCatalog(productImporter);
         Product productByArticle = mockCatalog.byArticle("Phone");
-        assertEquals(productByArticle.importer.name(), "New phone!");
+        assertEquals("New phone!", productByArticle.importer.name());
     }
 
 }

@@ -30,7 +30,7 @@ public class MongoCatalogTests implements DBTests {
     public void addProductTwiceShouldFail() throws Exception {
         mongoCatalog.deleteAll();
         assertThrows(
-                IllegalArgumentException.class,
+                IllegalStateException.class,
                 () -> {
                     CatalogTests.addProductTwiceShouldFail(new MongoCatalogAdapter(mongoCatalog));
                 }
@@ -47,7 +47,7 @@ public class MongoCatalogTests implements DBTests {
     public void deleteProductTwice() throws Exception {
         mongoCatalog.deleteAll();
         assertThrows(
-                IllegalArgumentException.class,
+                IllegalStateException.class,
                 () -> {
                     CatalogTests.deleteProductTwice(new MongoCatalogAdapter(mongoCatalog));
                 }
@@ -58,7 +58,7 @@ public class MongoCatalogTests implements DBTests {
     public void checkFailureOnSameArticle() throws Exception {
         mongoCatalog.deleteAll();
         assertThrows(
-                IllegalArgumentException.class,
+                IllegalStateException.class,
                 () -> {
                     CatalogTests.checkFailureOnSameArticle(new MongoCatalogAdapter(mongoCatalog));
                 }

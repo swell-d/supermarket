@@ -25,31 +25,31 @@ public class InMemoryCatalog implements Catalog {
 
     @Override
     public void add(Product.Importer importer) {
-        for (Product existProduct : this.products) {
-            if (existProduct.isSameArticle(importer.article())) throw new IllegalArgumentException();
-        }
+        if (byArticle(importer.article()) != null) throw new IllegalStateException();
         products.add(new Product(importer));
         saveToFile();
     }
 
     @Override
+    public void edit(Product.Importer importer) {
+        Product product = byArticle(importer.article());
+        if (product == null) throw new IllegalStateException();
+        product.importer = importer;
+        saveToFile();
+    }
+
+    @Override
     public void delete(String article) {
-        for (Product existProduct : this.products) {
-            if (existProduct.isSameArticle(article)) {
-                this.products.remove(existProduct);
-                saveToFile();
-                return;
-            }
-        }
-        throw new IllegalArgumentException();
+        Product product = byArticle(article);
+        if (product == null) throw new IllegalStateException();
+        this.products.remove(product);
+        saveToFile();
     }
 
     @Override
     public Product byArticle(String article) {
         for (Product existProduct : this.products) {
-            if (existProduct.importer.article().equals(article)) {
-                return existProduct;
-            }
+            if (existProduct.importer.article().equals(article)) return existProduct;
         }
         return null;
     }
@@ -57,9 +57,7 @@ public class InMemoryCatalog implements Catalog {
     @Override
     public ArrayList<Product.Importer> getProducts() {
         ArrayList<Product.Importer> result = new ArrayList<>();
-        for (Product product : products) {
-            result.add(product.importer);
-        }
+        for (Product product : products) result.add(product.importer);
         return result;
     }
 

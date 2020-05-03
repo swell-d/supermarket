@@ -16,7 +16,8 @@ public class MongoCatalogAdapter implements Catalog {
 
     @Override
     public void add(Product.Importer importer) {
-        if (mongoCatalog.findByArticle(importer.article()) != null) throw new IllegalArgumentException();
+        if (mongoCatalog.findByArticle(importer.article()) != null)
+            throw new IllegalStateException("Product already exist");
         MongoProduct mongoProduct = new MongoProduct(
                 importer.article(),
                 importer.name(),
@@ -30,8 +31,25 @@ public class MongoCatalogAdapter implements Catalog {
     }
 
     @Override
+    public void edit(Product.Importer importer) {
+        MongoProduct mongoProduct = mongoCatalog.findByArticle(importer.article());
+        if (mongoProduct == null) throw new IllegalStateException("Product not exist");
+        mongoProduct.article = importer.article();
+        mongoProduct.name = importer.name();
+        mongoProduct.shortDescription = importer.shortDescription();
+        mongoProduct.description = importer.description();
+        mongoProduct.smallImage = importer.smallImage();
+        mongoProduct.image = importer.image();
+        mongoProduct.unit = importer.unit();
+        mongoProduct.prices = importer.prices();
+
+        mongoCatalog.save(mongoProduct);
+    }
+
+    @Override
     public void delete(String article) {
         MongoProduct mongoProduct = mongoCatalog.findByArticle(article);
+        if (mongoProduct == null) throw new IllegalStateException("Product not exist");
         mongoCatalog.delete(mongoProduct);
     }
 
