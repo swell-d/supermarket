@@ -31,7 +31,7 @@ public class AddProductToCatalogControllerTests {
     }
 
     @Test
-    public void addProductToCatalogTest() throws Exception {
+    public void addProductToCatalog() throws Exception {
         String requestJson = "{" +
                 "\"article\": \"test article 1\", " +
                 "\"name\": \"test name\", " +
@@ -40,7 +40,7 @@ public class AddProductToCatalogControllerTests {
                 "\"smallImage\": \"https://www.google.com/\", " +
                 "\"image\": \"https://www.google.com/\", " +
                 "\"unit\": \"Kilo\", " +
-                "\"prices\": {\"Base\": 0.0}}";
+                "\"prices\": {\"Base\": \"0.0\"}}";
 
         this.mockMvc.perform(post("/catalog")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -56,42 +56,49 @@ public class AddProductToCatalogControllerTests {
     }
 
     @Test
-    public void articleValidateTest() throws Exception {
+    public void articleValidate() throws Exception {
         String requestJson = "{\"article\": \"\", \"name\": \"test name\", \"unit\": \"Kilo\"," +
                 "\"prices\": {\"Base\": 0.0}}";
         checkBadRequest(requestJson);
     }
 
     @Test
-    public void nameValidateTest() throws Exception {
+    public void nameValidate() throws Exception {
         String requestJson = "{\"article\": \"test article 2\", \"name\": \"\", \"unit\": \"Kilo\"," +
                 "\"prices\": {\"Base\": 0.0}}";
         checkBadRequest(requestJson);
     }
 
     @Test
-    public void smallImageValidateTest() throws Exception {
+    public void smallImageValidate() throws Exception {
         String requestJson = "{\"article\": \"test article 3\", \"name\": \"test name\", \"unit\": \"Kilo\"," +
                 "\"prices\": {\"Base\": 0.0}, \"smallImage\": \"https:/www.google.com/\"}";
         checkBadRequest(requestJson);
     }
 
     @Test
-    public void imageValidateTest() throws Exception {
+    public void imageValidate() throws Exception {
         String requestJson = "{\"article\": \"test article 4\", \"name\": \"test name\", \"unit\": \"Kilo\"," +
                 "\"prices\": {\"Base\": 0.0}, \"image\": \"https:/www.google.com/\"}";
         checkBadRequest(requestJson);
     }
 
     @Test
-    public void wrongPriceValidateTest() throws Exception {
+    public void wrongPriceValidate() throws Exception {
         String requestJson = "{\"article\": \"test article 5\", \"name\": \"test name\", \"unit\": \"Kilo\"," +
                 "\"prices\": {\"NonBase\": 1.1}}";
         checkBadRequest(requestJson);
     }
 
     @Test
-    public void negativePriceValidateTest() throws Exception {
+    public void commaInPrice() throws Exception {
+        String requestJson = "{\"article\": \"test article 5\", \"name\": \"test name\", \"unit\": \"Kilo\"," +
+                "\"prices\": {\"Base\": 1,1}}";
+        checkBadRequest(requestJson);
+    }
+
+    @Test
+    public void negativePriceValidate() throws Exception {
         String requestJson = "{\"article\": \"test article 6\", \"name\": \"test name\", \"unit\": \"Kilo\"," +
                 "\"prices\": {\"Base\": -1}}";
         checkBadRequest(requestJson);
