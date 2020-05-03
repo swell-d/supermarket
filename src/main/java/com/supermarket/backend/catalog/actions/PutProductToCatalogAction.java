@@ -5,24 +5,25 @@ import com.supermarket.backend.catalog.domain.Product;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AddProductToCatalogAction {
+public class PutProductToCatalogAction {
 
     private Catalog catalog;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public AddProductToCatalogAction(Catalog catalog) {
+    public PutProductToCatalogAction(Catalog catalog) {
         this.catalog = catalog;
     }
 
-    public void addProductToCatalog(Product.Importer newProductRequest) {
-        logger.info("Try to add product to catalog");
+    public void putProductToCatalog(Product.Importer newProductRequest) {
+        logger.info("Try to edit product in catalog");
         new ValidateProductData().validate(newProductRequest);
-        verifyIsUnique(newProductRequest);
+        verifyIsExist(newProductRequest);
+        catalog.deleteProduct(newProductRequest.article());
         catalog.add(newProductRequest);
     }
 
-    private void verifyIsUnique(Product.Importer addProductRequest) {
-        if(catalog.productExists(addProductRequest.article()))
+    private void verifyIsExist(Product.Importer productRequest) {
+        if (!catalog.productExists(productRequest.article()))
             throw new IllegalStateException();
     }
 
