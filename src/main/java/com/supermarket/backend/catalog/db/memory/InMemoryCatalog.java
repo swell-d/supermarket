@@ -33,7 +33,7 @@ public class InMemoryCatalog implements Catalog {
     }
 
     @Override
-    public void deleteProduct(String article) {
+    public void delete(String article) {
         for (Product existProduct : this.products) {
             if (existProduct.isSameArticle(article)) {
                 this.products.remove(existProduct);

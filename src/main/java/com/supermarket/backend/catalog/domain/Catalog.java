@@ -6,7 +6,7 @@ public interface Catalog {
 
     void add(Product.Importer importer);
 
-    void deleteProduct(String article);
+    void delete(String article);
 
     Product byArticle(String article);
 

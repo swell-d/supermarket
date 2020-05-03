@@ -18,7 +18,7 @@ public class PutProductToCatalogAction {
         logger.info("Try to edit product in catalog");
         new ValidateProductData().validate(newProductRequest);
         verifyIsExist(newProductRequest);
-        catalog.deleteProduct(newProductRequest.article());
+        catalog.delete(newProductRequest.article());
         catalog.add(newProductRequest);
     }
 

@@ -16,7 +16,7 @@ public class DeleteProductFromCatalogAction {
     public void deleteProductFromCatalog(String article) {
         logger.info("Try to delete product from catalog");
         if (!catalog.productExists(article)) throw new IllegalStateException();
-        catalog.deleteProduct(article);
+        catalog.delete(article);
     }
 
 }

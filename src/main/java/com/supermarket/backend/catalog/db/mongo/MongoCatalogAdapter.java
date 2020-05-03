@@ -30,7 +30,7 @@ public class MongoCatalogAdapter implements Catalog {
     }
 
     @Override
-    public void deleteProduct(String article) {
+    public void delete(String article) {
         MongoProduct mongoProduct = mongoCatalog.findByArticle(article);
         mongoCatalog.delete(mongoProduct);
     }
