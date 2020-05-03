@@ -38,6 +38,12 @@ public class MongoCatalogTests implements DBTests {
     }
 
     @Test
+    public void editProduct() throws Exception {
+        mongoCatalog.deleteAll();
+        CatalogTests.editProduct(new MongoCatalogAdapter(mongoCatalog));
+    }
+
+    @Test
     public void deleteProduct() throws Exception {
         mongoCatalog.deleteAll();
         CatalogTests.deleteProduct(new MongoCatalogAdapter(mongoCatalog));

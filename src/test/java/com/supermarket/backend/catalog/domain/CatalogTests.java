@@ -26,6 +26,12 @@ public class CatalogTests {
         catalog.add(importerBuilder().create());
     }
 
+    public static void editProduct(Catalog catalog) {
+        catalog.add(importerBuilder().create());
+        catalog.edit(importerBuilder().withName("New name").create());
+        assertEquals("New name", catalog.getProducts().get(0).name());
+    }
+
     public static void deleteProduct(Catalog catalog) {
         StabImporter art1 = importerBuilder().withArticle("art1").create();
         StabImporter art2 = importerBuilder().withArticle("art2").create();

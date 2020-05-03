@@ -22,6 +22,11 @@ public class InMemoryCatalogTests implements DBTests {
     }
 
     @Test
+    public void editProduct() {
+        CatalogTests.editProduct(new InMemoryCatalog(true));
+    }
+
+    @Test
     public void deleteProduct() {
         CatalogTests.deleteProduct(new InMemoryCatalog(true));
     }
